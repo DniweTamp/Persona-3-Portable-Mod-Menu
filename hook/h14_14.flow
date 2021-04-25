@@ -1,0 +1,7 @@
+import( "../original/h14_14.bf" );
+import( "../ModMenu.flow" );
+
+void f014_014_shortcut_hook()
+{
+	ModMenuInit();
+} 

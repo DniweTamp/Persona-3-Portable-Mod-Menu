@@ -1,0 +1,8 @@
+import( "ModMenu.msg" );
+
+void ModMenuInit()
+{
+	MSG_WND_DSP();
+	MSG( MSG_testmsg );
+	MSG_WND_CLS();
+}

@@ -1,0 +1,7 @@
+import( "../../original/init_free/field.bf" );
+import( "../../ModMenu.flow" );
+
+void field_order_party_hook()
+{
+	ModMenuInit();
+} 
