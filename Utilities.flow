@@ -6,14 +6,14 @@ int SelectDigit()
 {
     while ( true )
     {
-		FUNCTION_0056( MSGDummy, Select0to4Dialog, 0 );
+        FUNCTION_0056( MSGDummy, Select0to4Dialog, 0 );
         int temp = FUNCTION_000D( 0 );
         if ( temp == -1 )
             break;
             
         if ( temp == 5 ) // higher
         {
-			FUNCTION_0056( MSGDummy, Select5to9Dialog, 0 );
+            FUNCTION_0056( MSGDummy, Select5to9Dialog, 0 );
             temp = FUNCTION_000D( 0 );
             if ( temp == -1 )
                 break;
@@ -36,7 +36,7 @@ int SelectNumber( int digitCount )
     
     for ( int i = 0; i < digitCount; i++ )
     {
-		FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
+        FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
         int digit = FUNCTION_000D( 0 );
         
         if ( digit == -1 )
@@ -66,7 +66,7 @@ float SelectFloat()
     float ipart = 0;
     while ( true )
     {
-		FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
+        FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
         float digit = FUNCTION_000D( 0 );
         
         if ( digit == -1 )
@@ -89,7 +89,7 @@ float SelectFloat()
     float fpart = 0;
     while ( true )
     {
-		FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
+        FUNCTION_0056( MSGDummy, Select0to9Dialog, 0 );
         float digit = FUNCTION_000D( 0 );
         
         if ( digit == -1 )
@@ -109,28 +109,28 @@ float SelectFloat()
 
 int SelectYesNo()
 {
-	FUNCTION_0056( MSGDummy, SelectYesNo, 0 );
+    FUNCTION_0056( MSGDummy, SelectYesNo, 0 );
     int selection = FUNCTION_000D( 0 );
     return selection;
 }
 
 int SelectNoYes()
 {
-	FUNCTION_0056( MSGDummy, SelectOffOn, 0 );
+    FUNCTION_0056( MSGDummy, SelectOffOn, 0 );
     int selection = FUNCTION_000D( 0 );
     return selection;
 }
 
 int SelectOnOff()
 {
-	FUNCTION_0056( MSGDummy, SelectOnOff, 0 );
+    FUNCTION_0056( MSGDummy, SelectOnOff, 0 );
     int selection = FUNCTION_000D( 0 );
     return selection;
 }
 
 int SelectOffOn()
 {
-	FUNCTION_0056( MSGDummy, SelectOffOn, 0 );
+    FUNCTION_0056( MSGDummy, SelectOffOn, 0 );
     int selection = FUNCTION_000D( 0 );
     return selection;
 }
@@ -160,7 +160,7 @@ int SelectPrompt( int promptMessageId, int selectMessageId )
 {
     MSG_WND_DSP(); 
     MSG( promptMessageId );
-	FUNCTION_0056( MSGDummy, selectMessageId, 0 );
+    FUNCTION_0056( MSGDummy, selectMessageId, 0 );
     int selection = FUNCTION_000D( 0 );
     MSG_WND_CLS();
     return selection;
