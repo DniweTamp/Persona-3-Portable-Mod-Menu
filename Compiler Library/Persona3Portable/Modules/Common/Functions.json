@@ -11045,8 +11045,24 @@
     "Index": "0x303f",
     "ReturnType": "void",
     "Name": "FUNCTION_303F",
-    "Description": "Null pointer",
-    "Parameters": []
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param3",
+        "Description": ""
+      }
+    ]
   },
   {
     "Index": "0x3040",
@@ -11189,16 +11205,6 @@
     "Name": "FUNCTION_3049",
     "Description": "",
     "Parameters": [
-      {
-        "Type": "int",
-        "Name": "param1",
-        "Description": ""
-      },
-      {
-        "Type": "int",
-        "Name": "param2",
-        "Description": ""
-      }
     ]
   },
   {
@@ -11210,11 +11216,6 @@
       {
         "Type": "int",
         "Name": "param1",
-        "Description": ""
-      },
-      {
-        "Type": "int",
-        "Name": "param2",
         "Description": ""
       }
     ]
@@ -15153,9 +15154,15 @@
   {
     "Index": "0x5014",
     "ReturnType": "void",
-    "Name": "FUNCTION_5014",
+    "Name": "PERSONA_EVOLUTION",
     "Description": "",
-    "Parameters": []
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+	  }
+	]
   },
   {
     "Index": "0x5015",

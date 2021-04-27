@@ -115,7 +115,7 @@ void PersonaEditorOpen()
 			DisplayMessagePrompt( NotImplemented );
 			return;
 		case 4://Evolve Persona
-			DisplayMessagePrompt( NotImplemented );
+			EvolvePersona();
 			return;
 		case 5://Cancel
 			return;
@@ -142,6 +142,54 @@ void PersonaAddSkillSelect()
 	skillId = SelectNumberPrompt( SkillPrompt, 3 );
 	SKILL_ADD( ( unitId + 1 ), skillId );*/
 	DisplayMessagePrompt( NotImplemented );
+}
+
+void EvolvePersona()
+{
+	MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0:
+			PERSONA_EVOLUTION( 2 );
+			return;
+		case 1:
+			PERSONA_EVOLUTION( 3 );
+			return;
+		case 2:
+			PERSONA_EVOLUTION( 4 );
+			return;
+		case 3:
+			PERSONA_EVOLUTION( 5 );
+			return;
+		case 4:
+			EvolvePersona2();
+	}	
+}
+void EvolvePersona2()
+{
+	MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0:
+			PERSONA_EVOLUTION( 6 );
+			return;
+		case 1:
+			PERSONA_EVOLUTION( 7 );
+			return;
+		case 2:
+			PERSONA_EVOLUTION( 8 );
+			return;
+		case 3:
+			PERSONA_EVOLUTION( 9 );
+			return;
+		case 4:
+			PERSONA_EVOLUTION( 10 );
+			return;
+		case 5:
+			EvolvePersona();
+	}
 }
 
 void BattleSelect()

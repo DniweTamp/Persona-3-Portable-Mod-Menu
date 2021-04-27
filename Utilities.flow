@@ -2,202 +2,246 @@
 import( "Utilities.msg" );
 import( "Math.flow" );
 
-int SelectDigit()
+/*int SelectDigit()
 {
-    while ( true )
-    {
-        MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
-        int temp = GET_MSG_SELECTION( 0 );
-        if ( temp == -1 )
-            break;
-            
-        if ( temp == 5 ) // higher
-        {
-            MSG_SELECT( MSGDummy, Select5to9Dialog, 0 );
-            temp = GET_MSG_SELECTION( 0 );
-            if ( temp == -1 )
-                break;
-                
-            if ( temp == 5 ) // lower
-                continue;
+	while ( true )
+	{
+		MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
+		int temp = GET_MSG_SELECTION( 0 );
+		if ( temp == -1 )
+			break;
+			
+		if ( temp == 5 ) // higher
+		{
+			MSG_SELECT( MSGDummy, Select5to9Dialog, 0 );
+			temp = GET_MSG_SELECTION( 0 );
+			if ( temp == -1 )
+				break;
+				
+			if ( temp == 5 ) // lower
+				continue;
 
-            return temp + 5;
-        }
+			return temp + 5;
+		}
 
-        return temp;
-    }
-    
-    return -1;
+		return temp;
+	}
+	
+	return -1;
+}*/
+
+int SelectDigit( MSGDummy )
+{
+	while ( true )
+	{
+		MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
+		int digit = GET_MSG_SELECTION( 0 );
+		if ( digit < 5 ) //0 through 4
+			return digit;
+		if ( digit == 5 )
+		{
+			MSG_SELECT( MSGDummy, Select5to9Dialog, 0 );
+			digit = GET_MSG_SELECTION( 0 ) + 5;
+			if ( digit < 10 )
+				return digit; //5 through 9 or back
+			else if (digit == 16)
+			{	
+				digit = -1; //exit
+				break;
+			}
+		}
+		else if (digit == 11)
+		{
+			digit = -1; //exit
+			break;
+		}
+	}
+	return -1;
 }
 
 int SelectNumber( int digitCount )
 {
-    int number = 0;
-    
-    for ( int i = 0; i < digitCount; i++ )
-    {
-        MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
-        int digit = GET_MSG_SELECTION( 0 );
-        
-        if ( digit == -1 )
-        {
-            // Number should only equal negative one if we cancel
-            // before entering anything.
-            if ( i == 0 )
-            {
-                number = -1;
-                break;
-            }
-            else
-                break;
-        }
-        
-        number *= 10;
-        number += digit;
-    }
-    return number;
+	int number = 0;
+	
+	for ( int i = 0; i < digitCount; i++ )
+	{
+		int digit = SelectDigit(MSGDummy);
+		if (digit == -1)
+			return -1;
+		number *= 10;
+		number += digit;
+	}
+	return number;
 }
+
+/*int SelectNumber( int digitCount )
+{
+	int number = 0;
+	
+	for ( int i = 0; i < digitCount; i++ )
+	{
+		MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
+		int digit = GET_MSG_SELECTION( 0 );
+		
+		if ( digit == -1 )
+		{
+			// Number should only equal negative one if we cancel
+			// before entering anything.
+			if ( i == 0 )
+			{
+				number = -1;
+				break;
+			}
+			else
+				break;
+		}
+		
+		number *= 10;
+		number += digit;
+	}
+	return number;
+}*/
 
 float SelectFloat()
 {
-    DisplayMessagePrompt( SelectFloatInteger );
-    
-    int i = 0;
-    float ipart = 0;
-    while ( true )
-    {
-        MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
-        float digit = GET_MSG_SELECTION( 0 );
-        
-        if ( digit == -1 )
-        {
-            // Number should only equal negative one if we cancel
-            // before entering anything.
-            if ( i == 0 )
-                return -1;
-            else
-                break;
-        }
-        
-        ipart *= 10;
-        ipart += digit;
-        i++;
-    }
-    DisplayMessagePrompt( SelectFloatFractional );
-    
-    i = 0;
-    float fpart = 0;
-    while ( true )
-    {
-        MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
-        float digit = GET_MSG_SELECTION( 0 );
-        
-        if ( digit == -1 )
-            break;
-        
-        fpart *= 10;
-        fpart += digit;
-        i++;
-    }
-    
-    fpart = fpart / Pow( 10, i );
-    
-    
-    float number = ipart + fpart;
-    return number;
+	DisplayMessagePrompt( SelectFloatInteger );
+	
+	int i = 0;
+	float ipart = 0;
+	while ( true )
+	{
+		MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
+		float digit = GET_MSG_SELECTION( 0 );
+		
+		if ( digit == -1 )
+		{
+			// Number should only equal negative one if we cancel
+			// before entering anything.
+			if ( i == 0 )
+				return -1;
+			else
+				break;
+		}
+		
+		ipart *= 10;
+		ipart += digit;
+		i++;
+	}
+	DisplayMessagePrompt( SelectFloatFractional );
+	
+	i = 0;
+	float fpart = 0;
+	while ( true )
+	{
+		MSG_SELECT( MSGDummy, Select0to9Dialog, 0 );
+		float digit = GET_MSG_SELECTION( 0 );
+		
+		if ( digit == -1 )
+			break;
+		
+		fpart *= 10;
+		fpart += digit;
+		i++;
+	}
+	
+	fpart = fpart / Pow( 10, i );
+	
+	
+	float number = ipart + fpart;
+	return number;
 }
 
 int SelectYesNo()
 {
-    MSG_SELECT( MSGDummy, SelectYesNo, 0 );
-    int selection = GET_MSG_SELECTION( 0 );
-    return selection;
+	MSG_SELECT( MSGDummy, SelectYesNo, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	return selection;
 }
 
 int SelectNoYes()
 {
-    MSG_SELECT( MSGDummy, SelectOffOn, 0 );
-    int selection = GET_MSG_SELECTION( 0 );
-    return selection;
+	MSG_SELECT( MSGDummy, SelectOffOn, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	return selection;
 }
 
 int SelectOnOff()
 {
-    MSG_SELECT( MSGDummy, SelectOnOff, 0 );
-    int selection = GET_MSG_SELECTION( 0 );
-    return selection;
+	MSG_SELECT( MSGDummy, SelectOnOff, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	return selection;
 }
 
 int SelectOffOn()
 {
-    MSG_SELECT( MSGDummy, SelectOffOn, 0 );
-    int selection = GET_MSG_SELECTION( 0 );
-    return selection;
+	MSG_SELECT( MSGDummy, SelectOffOn, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	return selection;
 }
 
 void DisplayMessagePrompt( int messageId )
 {
-    MSG_WND_DSP(); 
-    MSG( messageId ); 
-    MSG_WND_CLS();
+	MSG_WND_DSP(); 
+	MSG( messageId ); 
+	MSG_WND_CLS();
 }
 
 int SelectNumberPrompt( int messageId, int digits )
 {
-    DisplayMessagePrompt( messageId );
-    int i = SelectNumber( digits );
-    return i;
+	DisplayMessagePrompt( messageId );
+	int i = SelectNumber( digits );
+	return i;
 }
 
 float SelectFloatPrompt( int messageId )
 {
-    DisplayMessagePrompt( messageId );
-    float i = SelectFloat();
-    return i;
+	DisplayMessagePrompt( messageId );
+	float i = SelectFloat();
+	return i;
 }
 
 int SelectPrompt( int promptMessageId, int selectMessageId )
 {
-    MSG_WND_DSP(); 
-    MSG( promptMessageId );
-    MSG_SELECT( MSGDummy, selectMessageId, 0 );
-    int selection = GET_MSG_SELECTION( 0 );
-    MSG_WND_CLS();
-    return selection;
+	MSG_WND_DSP(); 
+	MSG( promptMessageId );
+	MSG_SELECT( MSGDummy, selectMessageId, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	MSG_WND_CLS();
+	return selection;
 }
 
 int SelectYesNoPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
-    MSG( promptMessageId );
-    int selection = SelectYesNo();
-    MSG_WND_CLS();
-    return selection;
+	MSG_WND_DSP(); 
+	MSG( promptMessageId );
+	int selection = SelectYesNo();
+	MSG_WND_CLS();
+	return selection;
 }
 
 int SelectNoYesPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
-    MSG( promptMessageId );
-    int selection = SelectNoYes();
-    MSG_WND_CLS();
-    return selection;
+	MSG_WND_DSP(); 
+	MSG( promptMessageId );
+	int selection = SelectNoYes();
+	MSG_WND_CLS();
+	return selection;
 }
 
 int SelectOnOffPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
-    MSG( promptMessageId );
-    int selection = SelectOnOff();
-    MSG_WND_CLS();
-    return selection;
+	MSG_WND_DSP(); 
+	MSG( promptMessageId );
+	int selection = SelectOnOff();
+	MSG_WND_CLS();
+	return selection;
 }
 
 int SelectOffOnPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
-    MSG( promptMessageId );
-    int selection = SelectOffOn();
-    MSG_WND_CLS();
-    return selection;
+	MSG_WND_DSP(); 
+	MSG( promptMessageId );
+	int selection = SelectOffOn();
+	MSG_WND_CLS();
+	return selection;
 }
