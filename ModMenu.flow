@@ -1,8 +1,146 @@
+//import flow files
+import( "OriginalShortcutFuncs.flow" );
+import( "Utilities.flow" );
+//import msg files
 import( "ModMenu.msg" );
+//global variables
+global int gEventMajor;
+global int gEventMinor;
 
 void ModMenuInit()
 {
-	MSG_WND_DSP();
-	MSG( MSG_testmsg );
-	MSG_WND_CLS();
+	FUNCTION_0056( ModMenuName, ModMenu, 0 );
+	int selection = FUNCTION_000D( 0 );
+	switch (selection)
+	{
+		case 0://Use original square function
+			DisplayMessagePrompt( NotImplemented );
+			SquareVanilla();
+			return;
+		case 1://Battle Select
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Sound Test
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 3://Field Select
+			FieldSelect();
+			return;
+		case 4://Event Select
+			EventSelect();
+			return;
+		case 5://Next Page
+			ModMenuPage2();
+			return;
+		case 6://Cancel
+			return;
+	}
+}
+
+void ModMenuPage2()
+{
+	FUNCTION_0056( ModMenuName, ModMenu2, 0 );
+	int selection = FUNCTION_000D( 0 );
+	switch (selection)
+	{
+		case 0://Flags
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 1://Font Test
+			DisplayMessagePrompt( FontTest );
+			return;
+		case 2://About
+			DisplayMessagePrompt( AboutMsg );
+			return;
+		case 3://Previous Page
+			ModMenuInit();
+			return;
+		case 4://Cancel
+			return;
+	}
+}
+
+void FieldSelect()
+{
+	FUNCTION_0056( NotImplemented, FieldSelect, 0 );
+	int selection = FUNCTION_000D( 0 );
+	switch (selection)
+	{
+		case 0://Quick Travel Select
+			ShortcutSelect();
+			return;
+		case 1://Enter Field ID
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Load Field ID
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 3://Cancel
+			return;
+	}
+}
+void ShortcutSelect()
+{
+	FUNCTION_0056( ModMenuName, ShortcutSelect, 0 );
+	int selection = FUNCTION_000D( 0 );
+	switch (selection)
+	{
+		case 0://School Shortcuts
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 1://Dorm Shortcuts
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Station Shortcuts
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 3://Kyoto Shortcuts
+			FieldSelect_kyoto_shortcut();
+			return;
+		case 4://Cancel
+			return;
+	}
+}
+
+void EventSelect()
+{
+	FUNCTION_0056( ModMenuName, EventSelect, 0 );
+	int selection = FUNCTION_000D( 0 );
+	switch (selection)
+	{
+		case 0://Enter Event ID
+			EventSelectIds();
+			return;
+		case 1://Load Event ID
+			EventLoadSelected();
+			return;
+		case 2://Cancel
+			return;
+	}
+}
+
+void EventSelectIds()
+{
+    int temp = SelectNumberPrompt( EventDlg, 3 );
+    if ( temp == -1 )
+        return;
+    gEventMajor = temp;
+    
+    temp = SelectNumberPrompt( EventDlg2, 3 );
+    if ( temp == -1 )
+        return;
+        
+    gEventMinor = temp;
+	EventSelect();
+}
+
+void EventLoadSelected()
+{
+    if ( gEventMajor == 0 && gEventMinor == 0 )
+    {
+        MSG(LoadCheckError);
+        return;
+    }
+    FUNCTION_000E( 3, 20 );
+    FUNCTION_4000( gEventMajor, gEventMinor );
 }
