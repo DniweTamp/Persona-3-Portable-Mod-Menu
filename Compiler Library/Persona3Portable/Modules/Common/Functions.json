@@ -944,17 +944,12 @@
   {
     "Index": "0x0042",
     "ReturnType": "int",
-    "Name": "GET_SOCIAL_STATS",
-    "Description": "Code function name: shdScript_sub_81038D40",
+    "Name": "FUNCTION_0042",
+    "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
-        "Description": ""
-      },
-      {
-        "Type": "int",
-        "Name": "param2",
         "Description": ""
       }
     ]
@@ -1064,7 +1059,7 @@
   {
     "Index": "0x0049",
     "ReturnType": "void",
-    "Name": "DAIDARA_SHOP",
+    "Name": "FUNCTION_0049",
     "Description": "",
     "Parameters": []
   },
@@ -1085,8 +1080,8 @@
   {
     "Index": "0x004c",
     "ReturnType": "int",
-    "Name": "GET_WEATHER",
-    "Description": "Returns the weather,0=Clear,1= Rain, 2= Cloudy, Thunderstorm",
+    "Name": "FUNCTION_004C",
+    "Description": "",
     "Parameters": []
   },
   {
@@ -1389,7 +1384,45 @@
   {
     "Index": "0x0064",
     "ReturnType": "void",
-    "Name": "PLAY_CUTSCENE",
+    "Name": "FUNCTION_0064",
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },      {
+        "Type": "int",
+        "Name": "param3",
+        "Description": ""
+      },      {
+        "Type": "int",
+        "Name": "param4",
+        "Description": ""
+      },      {
+        "Type": "int",
+        "Name": "param5",
+        "Description": ""
+      },      {
+        "Type": "int",
+        "Name": "param6",
+        "Description": ""
+      },      {
+        "Type": "int",
+        "Name": "param7",
+        "Description": ""
+      },
+    ]
+  },
+  {
+    "Index": "0x0065",
+    "ReturnType": "void",
+    "Name": "FUNCTION_0065",
     "Description": "",
     "Parameters": [
       {
@@ -1398,13 +1431,6 @@
         "Description": ""
       }
     ]
-  },
-  {
-    "Index": "0x0065",
-    "ReturnType": "void",
-    "Name": "FUNCTION_0065",
-    "Description": "",
-    "Parameters": []
   },
   {
     "Index": "0x0066",
@@ -2673,7 +2699,7 @@
   {
     "Index": "0x1016",
     "ReturnType": "int",
-    "Name": "CALL_BATTLE",
+    "Name": "FUNCTION_1016",
     "Description": "",
     "Parameters": [
       {
@@ -2729,7 +2755,18 @@
     "ReturnType": "int",
     "Name": "FUNCTION_1019",
     "Description": "",
-    "Parameters": []
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      }
+    ]
   },
   {
     "Index": "0x101a",
@@ -11476,9 +11513,15 @@
   {
     "Index": "0x4011",
     "ReturnType": "void",
-    "Name": "FUNCTION_4011",
+    "Name": "CALL_BATTLE",
     "Description": "",
-    "Parameters": []
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      }
+	]
   },
   {
     "Index": "0x4012",

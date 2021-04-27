@@ -59,6 +59,13 @@
 [msg MoneyAdded]
 [s]You recieved [clr 1]99999999[clr 0] yen.[w][e]
 
+[sel BattleTypeMenu]
+[s]Regular Encounter[e]
+[s]Cancel[e]
+
+[msg EncounterPrompt]
+[s]Set the number of the encounter[n]you want to fight (max. 3 digits).[w][e]
+
 [sel FieldSelect]
 [s]Quick Travel Select[e]
 [s]Enter Field ID[e]

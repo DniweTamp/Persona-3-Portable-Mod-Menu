@@ -24,7 +24,7 @@ void ModMenuInit()
 			PlayerEditorDisplay();
 			return;
 		case 2://Battle Select
-			DisplayMessagePrompt( NotImplemented );
+			BattleSelect();
 			return;
 		case 3://Sound Test
 			DisplayMessagePrompt( NotImplemented );
@@ -142,6 +142,26 @@ void PersonaAddSkillSelect()
 	skillId = SelectNumberPrompt( SkillPrompt, 3 );
 	SKILL_ADD( ( unitId + 1 ), skillId );*/
 	DisplayMessagePrompt( NotImplemented );
+}
+
+void BattleSelect()
+{
+	MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0://Regular Encounter
+			RegularEncounter();
+			return;
+		case 1://Cancel
+			return;
+	}
+}
+
+void RegularEncounter()
+{
+	int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
+	CALL_BATTLE( Encounter );
 }
 
 void FieldSelect()
