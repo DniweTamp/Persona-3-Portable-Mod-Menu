@@ -47,3 +47,8 @@ Off[e]
 [sel SelectOffOn]
 Off[e]
 On[e]
+
+[sel SelectOnOffCheck]
+On[e]
+Off[e]
+Check[e]

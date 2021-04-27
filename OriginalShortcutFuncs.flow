@@ -8,8 +8,8 @@ void SquareVanilla()
 
 void MMschool_shortcut()
 {
-	FUNCTION_0056( FLD_ORDER, SCHOOL_SHOTCUTSEL, 0 );
-	int selection = FUNCTION_000D( 0 );
+	MSG_SELECT( FLD_ORDER, SCHOOL_SHOTCUTSEL, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
 }
 
 void MMdormitory_shortcut()
@@ -25,7 +25,7 @@ void MMstation_shortcut()
 void MMkyoto_shortcut()
 {
     FUNCTION_3058();
-    int CurMinorField = FUNCTION_000D( 0 );
+    int CurMinorField = GET_MSG_SELECTION( 0 );
     int StartPoint2F = 0;
     int StartPoint3F = 0;
     int SelException = 0;
@@ -98,24 +98,24 @@ void MMkyoto_shortcut()
     }
 
     FUNCTION_002C( 14, 3 );
-    FUNCTION_0056( FLD_ORDER, KYOTO_SHOTCUTSEL, SelException );
-    int selection = FUNCTION_000D( 0 );
+    MSG_SELECT( FLD_ORDER, KYOTO_SHOTCUTSEL, SelException );
+    int selection = GET_MSG_SELECTION( 0 );
     
     if ( selection == 0 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 2, 1, 0 );
         return;
     }
     else if ( selection == 1 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 3, StartPoint2F, 0 );
         return;
     }
     else if ( selection == 2 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 0x10, StartPoint3F, 0 );
         return;
     }
@@ -195,24 +195,24 @@ void MM037_002_shortcut()
 void FieldSelect_kyoto_shortcut()
 {
     FUNCTION_002C( 14, 3 );
-    FUNCTION_0056( FLD_ORDER, KYOTO_SHOTCUTSEL, 0 );
-    int selection = FUNCTION_000D( 0 );
+    MSG_SELECT( FLD_ORDER, KYOTO_SHOTCUTSEL, 0 );
+    int selection = GET_MSG_SELECTION( 0 );
     
     if ( selection == 0 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 2, 1, 0 );
         return;
     }
     else if ( selection == 1 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 3, 2, 0 );
         return;
     }
     else if ( selection == 2 )
     {
-        FUNCTION_000E( 3, 20 );
+        FADE( 3, 20 );
         FUNCTION_4001( 14, 0x10, 2, 0 );
         return;
     }

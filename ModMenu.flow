@@ -4,30 +4,33 @@ import( "Utilities.flow" );
 //import msg files
 import( "ModMenu.msg" );
 //global variables
+global int gFieldMajor;
+global int gFieldMinor;
 global int gEventMajor;
 global int gEventMinor;
+global int unitId;
 
 void ModMenuInit()
 {
-	FUNCTION_0056( ModMenuName, ModMenu, 0 );
-	int selection = FUNCTION_000D( 0 );
-	switch (selection)
+	MSG_SELECT( ModMenuName, ModMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
 	{
 		case 0://Use original square function
-			DisplayMessagePrompt( NotImplemented );
+			return;
 			SquareVanilla();
+			DisplayMessagePrompt( NotImplemented );
+		case 1://Player
+			PlayerEditorDisplay();
 			return;
-		case 1://Battle Select
+		case 2://Battle Select
 			DisplayMessagePrompt( NotImplemented );
 			return;
-		case 2://Sound Test
+		case 3://Sound Test
 			DisplayMessagePrompt( NotImplemented );
 			return;
-		case 3://Field Select
+		case 4://Field Select
 			FieldSelect();
-			return;
-		case 4://Event Select
-			EventSelect();
 			return;
 		case 5://Next Page
 			ModMenuPage2();
@@ -39,51 +42,156 @@ void ModMenuInit()
 
 void ModMenuPage2()
 {
-	FUNCTION_0056( ModMenuName, ModMenu2, 0 );
-	int selection = FUNCTION_000D( 0 );
-	switch (selection)
+	MSG_SELECT( ModMenuName, ModMenu2, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
 	{
-		case 0://Flags
-			DisplayMessagePrompt( NotImplemented );
+		case 0://Event Select
+			EventSelect();
 			return;
-		case 1://Font Test
+		case 1://Flags
+			FlagsEditorDisplay();
+			return;
+		case 2://Font Test
 			DisplayMessagePrompt( FontTest );
 			return;
-		case 2://About
+		case 3://About
 			DisplayMessagePrompt( AboutMsg );
 			return;
-		case 3://Previous Page
+		case 4://Previous Page
 			ModMenuInit();
 			return;
-		case 4://Cancel
+		case 5://Cancel
 			return;
 	}
 }
 
+void PlayerEditorDisplay()
+{
+	MSG_SELECT( ModMenuName, PlayerMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0://Personas
+			PersonaEditorOpen();
+			return;
+		case 1://Social Stats
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Items
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 3://Set Confidant Rank
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 4://Set Protagonist Name
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 5://Max Money
+			ADD_PC_MONEY( 99999999 );
+			DisplayMessagePrompt( MoneyAdded );
+			return;
+		case 6://Cancel
+			return;
+	}
+}
+
+void PersonaEditorOpen()
+{
+	MSG_SELECT( ModMenuName, PersonaMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0://Add Persona
+			PersonaAddSelect();
+			return;
+		case 1://Delete Personas
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Add Skill
+			PersonaAddSkillSelect();
+			return;
+		case 3://Unlock Full Compendium
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 4://Evolve Persona
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 5://Cancel
+			return;
+	}
+}
+
+void PersonaAddSelect()
+{
+	//int personaId;
+	//personaId = SelectNumberPrompt( PersonaAddPrompt, 3 ); 
+	//	if ( personaId == -1 )
+	//		return;
+	//ADD_PERSONA_STOCK( personaId );
+	//DisplayMessagePrompt( PersonaAdded );
+	DisplayMessagePrompt( NotImplemented );
+}
+
+void PersonaAddSkillSelect()
+
+{
+	/*MSG_SELECT( ModMenuName, UnitSelect, 0 );
+	unitId = GET_MSG_SELECTION( 0 );
+	int skillId = 0;
+	skillId = SelectNumberPrompt( SkillPrompt, 3 );
+	SKILL_ADD( ( unitId + 1 ), skillId );*/
+	DisplayMessagePrompt( NotImplemented );
+}
+
 void FieldSelect()
 {
-	FUNCTION_0056( NotImplemented, FieldSelect, 0 );
-	int selection = FUNCTION_000D( 0 );
-	switch (selection)
+	MSG_SELECT( ModMenuName, FieldSelect, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
 	{
 		case 0://Quick Travel Select
 			ShortcutSelect();
 			return;
 		case 1://Enter Field ID
-			DisplayMessagePrompt( NotImplemented );
+			FieldSelectIds();
 			return;
 		case 2://Load Field ID
-			DisplayMessagePrompt( NotImplemented );
+			FieldLoadSelected();
 			return;
 		case 3://Cancel
 			return;
 	}
 }
+
+void FieldSelectIds()
+{
+	int temp = SelectNumberPrompt( FieldDlg, 3 );
+	if ( temp == -1 )
+		return;
+	gFieldMajor = temp;
+	
+	temp = SelectNumberPrompt( FieldDlg2, 3 );
+	if ( temp == -1 )
+		return;
+	gFieldMinor = temp;
+	FieldSelect();
+}
+
+void FieldLoadSelected()
+{
+	if (gFieldMajor == 0 && gFieldMinor == 0)
+		DisplayMessagePrompt( LoadCheckError );
+	else
+		FADE( 3, 20 );
+		FUNCTION_4001( gFieldMajor, gFieldMinor, 0, 0  );
+}
+
 void ShortcutSelect()
 {
-	FUNCTION_0056( ModMenuName, ShortcutSelect, 0 );
-	int selection = FUNCTION_000D( 0 );
-	switch (selection)
+	MSG_SELECT( ModMenuName, ShortcutSelect, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
 	{
 		case 0://School Shortcuts
 			DisplayMessagePrompt( NotImplemented );
@@ -104,9 +212,9 @@ void ShortcutSelect()
 
 void EventSelect()
 {
-	FUNCTION_0056( ModMenuName, EventSelect, 0 );
-	int selection = FUNCTION_000D( 0 );
-	switch (selection)
+	MSG_SELECT( ModMenuName, EventSelect, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
 	{
 		case 0://Enter Event ID
 			EventSelectIds();
@@ -121,26 +229,130 @@ void EventSelect()
 
 void EventSelectIds()
 {
-    int temp = SelectNumberPrompt( EventDlg, 3 );
-    if ( temp == -1 )
-        return;
-    gEventMajor = temp;
-    
-    temp = SelectNumberPrompt( EventDlg2, 3 );
-    if ( temp == -1 )
-        return;
-        
-    gEventMinor = temp;
+	int temp = SelectNumberPrompt( EventDlg, 3 );
+	if ( temp == -1 )
+		return;
+	gEventMajor = temp;
+	
+	temp = SelectNumberPrompt( EventDlg2, 3 );
+	if ( temp == -1 )
+		return;
+		
+	gEventMinor = temp;
 	EventSelect();
 }
 
 void EventLoadSelected()
 {
-    if ( gEventMajor == 0 && gEventMinor == 0 )
-    {
-        MSG(LoadCheckError);
-        return;
-    }
-    FUNCTION_000E( 3, 20 );
-    FUNCTION_4000( gEventMajor, gEventMinor );
+	if ( gEventMajor == 0 && gEventMinor == 0 )
+	{
+		DisplayMessagePrompt(LoadCheckError);
+		return;
+	}
+	FADE( 3, 20 );
+	CALL_EVENT( gEventMajor, gEventMinor );
+}
+
+void FlagsEditorDisplay()
+{
+	MSG_SELECT( ModMenuName, FlagMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0://Add Party Members
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 1://Remove Party Members
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 2://Enable Party Editing
+			DisplayMessagePrompt( NotImplemented );
+			return;
+		case 3://Manual Input
+			FlagManualInput();
+			return;
+		case 4://Mass Flag Editor
+			FlagMassEditor();
+			return;
+		case 5://Cancel
+			return;
+	}
+	
+}
+
+void FlagManualInput()
+{
+	int id = SelectNumber( 4 );
+	MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
+	int onOff = GET_MSG_SELECTION( 0 );
+	switch (onOff) 
+	{
+		case 0: // On
+			BIT_ON( id );
+			return;
+		case 1: // Off
+			BIT_OFF( id );
+			return;
+		case 2: // Check
+			if ( BIT_CHK( id ) )
+			{
+				DisplayMessagePrompt( FlagCheckOn );
+			}
+			else
+			{
+				DisplayMessagePrompt( FlagCheckOff );
+			}
+			return;
+	}
+}
+
+void FlagMassEditor()
+{
+	MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	switch ( selection )
+	{
+		case 0://Disable all flags
+			DisableAllBits();
+			return;
+		case 1://Enable all flags
+			EnableAllBits();
+			return;
+		case 2://Swap enabled/disabled flags
+			ToggleAllBits();
+			return;
+		case 3://Cancel
+			return;
+	}
+}
+
+void DisableAllBits() 
+{
+	for ( int i = 0; i < 0x13FF; i++ ) 
+	{
+		BIT_OFF( i ); 
+	}
+}
+
+void EnableAllBits()
+{
+	for ( int i = 0; i < 0x13FF; i++ ) 
+	{
+		BIT_ON( i ); 
+	}
+}
+
+void ToggleAllBits() 
+{
+	for ( int i = 0; i < 0x13FF; i++ ) 
+	{
+		if (BIT_CHK(i)) 
+		{
+			BIT_OFF(i);
+		}
+		else
+		{
+			BIT_ON(i);
+		}
+	}
 }

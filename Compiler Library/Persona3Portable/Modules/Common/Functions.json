@@ -147,20 +147,20 @@
   {
     "Index": "0x000d",
     "ReturnType": "int",
-    "Name": "FUNCTION_000D",
+    "Name": "GET_MSG_SELECTION",
     "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
-        "Description": "Unknown type; assumed int"
+        "Description": ""
       }
     ]
   },
   {
     "Index": "0x000e",
     "ReturnType": "void",
-    "Name": "FUNCTION_000E",
+    "Name": "FADE",
     "Description": "",
     "Parameters": [
       {
@@ -283,7 +283,7 @@
   {
     "Index": "0x0016",
     "ReturnType": "void",
-    "Name": "FADE",
+    "Name": "FUNCTION_0016",
     "Description": "",
     "Parameters": [
       {
@@ -714,7 +714,7 @@
   {
     "Index": "0x0032",
     "ReturnType": "void",
-    "Name": "CALL_EVENT",
+    "Name": "FUNCTION_0032",
     "Description": "",
     "Parameters": [
       {
@@ -1078,7 +1078,7 @@
   {
     "Index": "0x004b",
     "ReturnType": "void",
-    "Name": "VELVET_ROOM",
+    "Name": "FUNCTION_004B",
     "Description": "",
     "Parameters": []
   },
@@ -1200,7 +1200,7 @@
   {
     "Index": "0x0056",
     "ReturnType": "void",
-    "Name": "FUNCTION_0056",
+    "Name": "MSG_SELECT",
     "Description": "",
     "Parameters": [
       {
@@ -1244,12 +1244,17 @@
   {
     "Index": "0x005a",
     "ReturnType": "int",
-    "Name": "GET_PARTY_MEMBER_ID",
-    "Description": "Returns the id of the party member in the slot specified 0-3 (0 always being protagonist)",
+    "Name": "FUNCTION_005A",
+    "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
         "Description": ""
       }
     ]
@@ -1270,27 +1275,12 @@
   {
     "Index": "0x005c",
     "ReturnType": "int",
-    "Name": "NAVI_BU_OPEN",
-    "Description": "Opens given navi bustup in given position. Returns id for NAVI_BU_CLOSE to close.",
+    "Name": "FUNCTION_005C",
+    "Description": "",
     "Parameters": [
       {
         "Type": "int",
-        "Name": "pos_x",
-        "Description": "X position. Usually 280"
-      },
-      {
-        "Type": "int",
-        "Name": "pos_y",
-        "Description": "Y position. Usually -40"
-      },
-      {
-        "Type": "int",
-        "Name": "major",
-        "Description": ""
-      },
-      {
-        "Type": "int",
-        "Name": "minor",
+        "Name": "param1",
         "Description": ""
       }
     ]
@@ -1298,12 +1288,17 @@
   {
     "Index": "0x005d",
     "ReturnType": "void",
-    "Name": "NAVI_BU_CLOSE",
-    "Description": "Closes navi bustup opened by NAVI_BU_OPEN",
+    "Name": "FUNCTION_005D",
+    "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
         "Description": ""
       }
     ]
@@ -1324,12 +1319,17 @@
   {
     "Index": "0x005f",
     "ReturnType": "int",
-    "Name": "GET_TOT_HP",
+    "Name": "FUNCTION_005F",
     "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
         "Description": ""
       }
     ]
@@ -1368,30 +1368,20 @@
   {
     "Index": "0x0062",
     "ReturnType": "int",
-    "Name": "GET_TOT_SP",
+    "Name": "FUNCTION_0062",
     "Description": "",
     "Parameters": [
-      {
-        "Type": "int",
-        "Name": "param1",
-        "Description": ""
-      }
     ]
   },
   {
     "Index": "0x0063",
     "ReturnType": "void",
-    "Name": "SET_SP",
+    "Name": "FUNCTION_0063",
     "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
-        "Description": ""
-      },
-      {
-        "Type": "int",
-        "Name": "param2",
         "Description": ""
       }
     ]
@@ -10935,12 +10925,17 @@
   {
     "Index": "0x3039",
     "ReturnType": "void",
-    "Name": "ACCEPT_QUEST",
+    "Name": "FUNCTION_3039",
     "Description": "Code function name: cmpMisc_sub_81164064",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
         "Description": ""
       }
     ]
@@ -10951,11 +10946,6 @@
     "Name": "COMPLETE_QUEST",
     "Description": "Code function name: cmpMisc_sub_81164152",
     "Parameters": [
-      {
-        "Type": "int",
-        "Name": "param1",
-        "Description": ""
-      }
     ]
   },
   {
@@ -11200,6 +11190,99 @@
     "Parameters": []
   },
   {
+    "Index": "0x304c",
+    "ReturnType": "void",
+    "Name": "FUNCTION_304C",
+    "Description": "",
+    "Parameters": []
+  },
+  {
+    "Index": "0x304d",
+    "ReturnType": "void",
+    "Name": "FUNCTION_304D",
+    "Description": "",
+    "Parameters": []
+  },
+  {
+    "Index": "0x304e",
+    "ReturnType": "void",
+    "Name": "FUNCTION_304E",
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param3",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param4",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param5",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param6",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param7",
+        "Description": ""
+      }
+	]
+  },
+  {
+    "Index": "0x3050",
+    "ReturnType": "void",
+    "Name": "FUNCTION_3050",
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      }
+    ]
+  },
+  {
+    "Index": "0x3053",
+    "ReturnType": "void",
+    "Name": "FUNCTION_3053",
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param3",
+        "Description": ""
+      }
+    ]
+  },
+  {
     "Index": "0x3055",
     "ReturnType": "void",
     "Name": "FUNCTION_3055",
@@ -11236,7 +11319,7 @@
   {
     "Index": "0x4000",
     "ReturnType": "void",
-    "Name": "FUNCTION_4000",
+    "Name": "CALL_EVENT",
     "Description": "",
     "Parameters": [
       {
@@ -14890,9 +14973,15 @@
   {
     "Index": "0x5003",
     "ReturnType": "void",
-    "Name": "FUNCTION_5003",
+    "Name": "ADD_PC_MONEY",
     "Description": "",
-    "Parameters": []
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      }
+	]
   },
   {
     "Index": "0x5004",
