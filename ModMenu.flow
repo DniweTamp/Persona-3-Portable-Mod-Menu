@@ -17,9 +17,9 @@ void ModMenuInit()
 	switch ( selection )
 	{
 		case 0://Use original square function
-			return;
 			SquareVanilla();
 			DisplayMessagePrompt( NotImplemented );
+			return;
 		case 1://Player
 			PlayerEditorDisplay();
 			return;
