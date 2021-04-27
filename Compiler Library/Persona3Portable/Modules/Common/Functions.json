@@ -442,7 +442,7 @@
   {
     "Index": "0x0022",
     "ReturnType": "void",
-    "Name": "FUNCTION_0022",
+    "Name": "BGM",
     "Description": "",
     "Parameters": [
       {

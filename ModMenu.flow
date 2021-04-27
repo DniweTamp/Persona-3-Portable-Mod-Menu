@@ -27,7 +27,7 @@ void ModMenuInit()
 			BattleSelect();
 			return;
 		case 3://Sound Test
-			DisplayMessagePrompt( NotImplemented );
+			BGMSelect();
 			return;
 		case 4://Field Select
 			FieldSelect();
@@ -164,6 +164,7 @@ void EvolvePersona()
 			return;
 		case 4:
 			EvolvePersona2();
+			return;
 	}	
 }
 void EvolvePersona2()
@@ -189,6 +190,7 @@ void EvolvePersona2()
 			return;
 		case 5:
 			EvolvePersona();
+			return;
 	}
 }
 
@@ -210,6 +212,13 @@ void RegularEncounter()
 {
 	int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
 	CALL_BATTLE( Encounter );
+}
+
+void BGMSelect()
+{
+	DisplayMessagePrompt( SelectBgmDialog );
+    int bgmId = SelectNumber( 3 );
+    BGM( bgmId );
 }
 
 void FieldSelect()

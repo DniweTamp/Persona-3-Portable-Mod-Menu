@@ -85,6 +85,9 @@
 [msg EncounterPrompt]
 [s]Set the number of the encounter[n]you want to fight (max. 3 digits).[w][e]
 
+[msg SelectBgmDialog]
+[s]Select a bgm to play (max. 3 digits).[w][e]
+
 [sel FieldSelect]
 [s]Quick Travel Select[e]
 [s]Enter Field ID[e]
