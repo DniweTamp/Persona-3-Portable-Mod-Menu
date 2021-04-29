@@ -21,11 +21,6 @@ int SelectDigit( MSGDummy )
 				break;
 			}
 		}
-		else if (digit == 11)
-		{
-			digit = -1; //exit
-			break;
-		}
 	}
 	return -1;
 }
@@ -85,6 +80,32 @@ int SelectNumberPrompt( int messageId, int digits )
 	DisplayMessagePrompt( messageId );
 	int i = SelectNumber( digits );
 	return i;
+}
+
+int Select10NumberPrompt( int messageId )
+{
+	DisplayMessagePrompt( messageId );
+		page1:
+	MSG_SELECT( MSGDummy, Select1to5Dialog, 0 );
+	int number = GET_MSG_SELECTION( 0 ) + 1;
+	if ( number <= 5 )
+	{
+		return number;
+	}
+	else if ( number == 6 )
+	{
+		MSG_SELECT( MSGDummy, Select6to10Dialog, 0 );
+		number = GET_MSG_SELECTION( 0 ) + 6;
+		if ( number <= 10 )
+		{
+			return number;
+		}
+		else if ( number == 11 )
+		{
+			goto page1;
+		}
+	}
+	return 0;
 }
 
 int SelectYesNoPrompt( int promptMessageId )

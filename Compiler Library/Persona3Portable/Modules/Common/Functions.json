@@ -134,7 +134,7 @@
   {
     "Index": "0x000c",
     "ReturnType": "void",
-    "Name": "FUNCTION_000C",
+    "Name": "WAIT",
     "Description": "",
     "Parameters": [
       {
@@ -636,8 +636,14 @@
     "Index": "0x002d",
     "ReturnType": "void",
     "Name": "FUNCTION_002D",
-    "Description": "Null pointer",
-    "Parameters": []
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      }
+	]
   },
   {
     "Index": "0x002e",
@@ -10754,12 +10760,22 @@
   {
     "Index": "0x302b",
     "ReturnType": "int",
-    "Name": "FUNCTION_302B",
+    "Name": "CMM_SET_LV",
     "Description": "",
     "Parameters": [
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param3",
         "Description": ""
       }
     ]
@@ -15037,6 +15053,11 @@
         "Type": "int",
         "Name": "param1",
         "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
       }
 	]
   },
@@ -15049,6 +15070,11 @@
       {
         "Type": "int",
         "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
         "Description": ""
       }
 	]

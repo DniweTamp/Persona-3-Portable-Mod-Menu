@@ -58,10 +58,16 @@ void ModMenuPage2()
 		case 3://About
 			DisplayMessagePrompt( AboutMsg );
 			return;
-		case 4://Previous Page
+		case 4://Quick tests
+			int category = SelectNumberPrompt( EncounterPrompt, 3 );
+			FUNCTION_5005( 1, GET_MSG_SELECTION( 0 ) + FUNCTION_5004( 1536 + 87, 1 ) );
+			DisplayMessagePrompt( MSGVarTest );
+			//FUNCTION_003C( 11 ); //play sound effect
+			return;
+		case 5://Previous Page
 			ModMenuInit();
 			return;
-		case 5://Cancel
+		case 6://Cancel
 			return;
 	}
 }
@@ -79,10 +85,10 @@ void PlayerEditorDisplay()
 			DisplayMessagePrompt( NotImplemented );
 			return;
 		case 2://Items
-			DisplayMessagePrompt( NotImplemented );
+			ItemEditorDisplay();
 			return;
-		case 3://Set Confidant Rank
-			DisplayMessagePrompt( NotImplemented );
+		case 3://Set Social Link Rank
+			CommuSetRankSelect();
 			return;
 		case 4://Set Protagonist Name
 			DisplayMessagePrompt( NotImplemented );
@@ -146,51 +152,130 @@ void PersonaAddSkillSelect()
 
 void EvolvePersona()
 {
+		page1:
 	MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
-	switch ( selection )
+	int selection = GET_MSG_SELECTION( 0 ) + 2;
+	if ( selection <= 5 )
 	{
-		case 0:
-			PERSONA_EVOLUTION( 2 );
-			return;
-		case 1:
-			PERSONA_EVOLUTION( 3 );
-			return;
-		case 2:
-			PERSONA_EVOLUTION( 4 );
-			return;
-		case 3:
-			PERSONA_EVOLUTION( 5 );
-			return;
-		case 4:
-			EvolvePersona2();
-			return;
-	}	
+		PERSONA_EVOLUTION( selection );
+	}
+	else if ( selection == 6 ) //page 2
+	{
+		MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 );
+		selection = GET_MSG_SELECTION( 0 ) + 6;
+		if ( selection <= 10 )
+		{
+			PERSONA_EVOLUTION( selection );
+		}
+		else if ( selection == 11 )
+		{
+			goto page1;
+		}
+	}
 }
-void EvolvePersona2()
+
+void ItemEditorDisplay()
 {
-	MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
-	switch ( selection )
+	MSG_SELECT( ModMenuName, ItemMenu, 0 );
+	int itemType = GET_MSG_SELECTION( 0 );
+	switch ( itemType ) 
 	{
-		case 0:
-			PERSONA_EVOLUTION( 6 );
+		case 0: // Melee Weapons
+			ItemGetSelect( 0 );
 			return;
-		case 1:
-			PERSONA_EVOLUTION( 7 );
+		case 1: // Armor
+			ItemGetSelect( 0x100 );
 			return;
-		case 2:
-			PERSONA_EVOLUTION( 8 );
+		case 2: // Boots
+			ItemGetSelect( 0x200 );
 			return;
-		case 3:
-			PERSONA_EVOLUTION( 9 );
+		case 3: // Accessories
+			ItemGetSelect( 0x300 );
 			return;
-		case 4:
-			PERSONA_EVOLUTION( 10 );
+		case 4: // Items
+			ItemGetSelect( 0x400 );
 			return;
-		case 5:
-			EvolvePersona();
+		case 5: // Key Items
+			ItemGetSelect( 0x500 );
 			return;
+		case 6: // Cancel
+			return;
+	}
+}
+
+void ItemGetSelect( int type )
+{
+	int itemId = SelectNumberPrompt( ItemPrompt, 4 );
+	int amount = SelectNumberPrompt( ItemPrompt2, 2 );
+	FUNCTION_5004( type + itemId, amount );
+}
+
+void CommuSetRankSelect()
+{
+	MSG_SELECT( ModMenuName, CommuCharSel1, 0 );
+	int cmmId = GET_MSG_SELECTION( 0 ) + 1;
+	if ( cmmId <= 6 )
+	{
+		int lvl = Select10NumberPrompt( CommuPrompt );
+		CMM_SET_LV( cmmId, lvl, 9999 );
+	}
+	else if ( cmmId == 7 ) //page 2
+	{
+		CommuSetRankSelect2();
+	}
+}
+
+void CommuSetRankSelect2()
+{
+	MSG_SELECT( ModMenuName, CommuCharSel2, 0 );
+	int cmmId = GET_MSG_SELECTION( 0 ) + 7;
+	if ( cmmId <= 11 )
+	{
+		int lvl = Select10NumberPrompt( CommuPrompt );
+		CMM_SET_LV( cmmId, lvl, 9999 );
+	}
+	else if ( cmmId == 12 ) //page 1
+	{
+		CommuSetRankSelect();
+	}
+	else if ( cmmId == 13 ) //page 3
+	{
+		CommuSetRankSelect3();
+	}
+
+}
+
+void CommuSetRankSelect3()
+{
+	MSG_SELECT( ModMenuName, CommuCharSel3, 0 );
+	int cmmId = GET_MSG_SELECTION( 0 ) + 12;
+	if ( cmmId <= 16 )
+	{
+		int lvl = Select10NumberPrompt( CommuPrompt );
+		CMM_SET_LV( cmmId, lvl, 9999 );
+	}
+	else if ( cmmId == 17 ) //page 2
+	{
+		CommuSetRankSelect2();
+	}
+	else if ( cmmId == 18 ) //page 4
+	{
+		CommuSetRankSelect4();
+	}
+}
+
+void CommuSetRankSelect4()
+{
+	MSG_SELECT( ModMenuName, CommuCharSel4, 0 );
+	int cmmId = GET_MSG_SELECTION( 0 ) + 17;
+	if ( cmmId <= 22 )
+	{
+		int lvl = Select10NumberPrompt( CommuPrompt );
+		CMM_SET_LV( cmmId, lvl, 9999 );
+	}
+	else if ( cmmId == 23 ) //page 3
+	{
+		CommuSetRankSelect3();
 	}
 }
 
@@ -217,8 +302,8 @@ void RegularEncounter()
 void BGMSelect()
 {
 	DisplayMessagePrompt( SelectBgmDialog );
-    int bgmId = SelectNumber( 3 );
-    BGM( bgmId );
+	int bgmId = SelectNumber( 3 );
+	BGM( bgmId );
 }
 
 void FieldSelect()
@@ -328,6 +413,7 @@ void EventLoadSelected()
 	}
 	FADE( 3, 20 );
 	CALL_EVENT( gEventMajor, gEventMinor );
+	return;
 }
 
 void FlagsEditorDisplay()
