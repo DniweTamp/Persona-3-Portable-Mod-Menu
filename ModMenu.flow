@@ -226,7 +226,7 @@ void ItemGetSelect( int type )
 
 void CommuSetRankSelect()
 {
-	int selection = MSG_SELECT( ModMenuName, CommuCharSel1, 0 );
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel1, 0 );
 	int lvl = 0;
 	switch (selection)
 	{
@@ -243,7 +243,7 @@ void CommuSetRankSelect()
 
 void CommuSetRankSelect2()
 {
-	int selection = MSG_SELECT( ModMenuName, CommuCharSel2, 0 );
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel2, 0 );
 	int lvl = 0;
 	switch (selection)
 	{
@@ -260,7 +260,7 @@ void CommuSetRankSelect2()
 
 void CommuSetRankSelect3()
 {
-	int selection = MSG_SELECT( ModMenuName, CommuCharSel3, 0 );
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel3, 0 );
 	int lvl = 0;
 	switch (selection)
 	{
@@ -277,7 +277,7 @@ void CommuSetRankSelect3()
 
 void CommuSetRankSelect4()
 {
-	int selection = MSG_SELECT( ModMenuName, CommuCharSel4, 0 );
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel4, 0 );
 	int lvl = 0;
 	switch (selection)
 	{
@@ -294,7 +294,7 @@ void CommuSetRankSelect4()
 
 void CommuSetRankSelect5()
 {
-	int selection = MSG_SELECT( ModMenuName, CommuCharSel5, 0 );
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel5, 0 );
 	int lvl = 0;
 	switch (selection)
 	{
