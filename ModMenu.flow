@@ -82,7 +82,7 @@ void PlayerEditorDisplay()
 			PersonaEditorOpen();
 			return;
 		case 1://Social Stats
-			DisplayMessagePrompt( NotImplemented );
+			StatEditorDisplay();
 			return;
 		case 2://Items
 			ItemEditorDisplay();
@@ -171,6 +171,30 @@ void EvolvePersona()
 		{
 			goto page1;
 		}
+	}
+}
+
+void StatEditorDisplay()
+{
+	MSG_SELECT( ModMenuName, StatsMenu, 0 );
+	int selection = GET_MSG_SELECTION( 0 );
+	int pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
+	if ( pointsToAdd == 0 )
+		return;
+
+	switch ( selection )
+	{
+		case 0: // Academics
+			ADD_PC_STAT( 0, pointsToAdd );
+			return;
+		case 1: // Charm
+			ADD_PC_STAT( 1, pointsToAdd );
+			return;
+		case 2: // Courage
+			ADD_PC_STAT( 2, pointsToAdd );
+			return;
+		case 4: // Cancel
+			return;
 	}
 }
 

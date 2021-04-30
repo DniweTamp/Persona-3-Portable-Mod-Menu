@@ -768,9 +768,30 @@
   {
     "Index": "0x0035",
     "ReturnType": "int",
-    "Name": "GET_DAY_OF_WEEK",
-    "Description": "Returns day of the week as int from 0 to 6.",
-    "Parameters": []
+    "Name": "FUNCTION_0035",
+    "Description": "",
+    "Parameters": [
+      {
+        "Type": "int",
+        "Name": "param1",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param2",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param3",
+        "Description": ""
+      },
+      {
+        "Type": "int",
+        "Name": "param4",
+        "Description": ""
+      }
+    ]
   },
   {
     "Index": "0x0036",
@@ -15001,7 +15022,7 @@
   {
     "Index": "0x5000",
     "ReturnType": "void",
-    "Name": "FUNCTION_5000",
+    "Name": "ADD_PC_STAT",
     "Description": "",
     "Parameters": [
       {

@@ -76,6 +76,15 @@
 [s]Koromaru[e]
 [s]Previous Page[e]
 
+[sel StatsMenu]
+[s]Academics[e]
+[s]Charm[e]
+[s]Courage[e]
+[s]Cancel[e]
+
+[msg StatPrompt [Stats]]
+Add how many points?[n](max. 2 digits)[w][e]
+
 [sel ItemMenu]
 [s]Melee Weapons[e]
 [s]Armor[e]
