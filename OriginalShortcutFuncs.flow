@@ -103,19 +103,19 @@ void MMkyoto_shortcut()
     if ( selection == 0 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 2, 1, 0 );
+        CALL_FIELD( 14, 2, 1, 0 );
         return;
     }
     else if ( selection == 1 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 3, StartPoint2F, 0 );
+        CALL_FIELD( 14, 3, StartPoint2F, 0 );
         return;
     }
     else if ( selection == 2 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 0x10, StartPoint3F, 0 );
+        CALL_FIELD( 14, 0x10, StartPoint3F, 0 );
         return;
     }
     else 
@@ -200,19 +200,22 @@ void FieldSelect_kyoto_shortcut()
     if ( selection == 0 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 2, 1, 0 );
+        FUNCTION_4017();
+        CALL_FIELD( 14, 2, 1, 0 );
         return;
     }
     else if ( selection == 1 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 3, 2, 0 );
+        FUNCTION_4017();
+        CALL_FIELD( 14, 3, 2, 0 );
         return;
     }
     else if ( selection == 2 )
     {
         FADE( 3, 20 );
-        FUNCTION_4001( 14, 0x10, 2, 0 );
+        FUNCTION_4017();
+        CALL_FIELD( 14, 0x10, 2, 0 );
         return;
     }
     else 

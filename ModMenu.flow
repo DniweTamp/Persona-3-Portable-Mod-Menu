@@ -57,10 +57,6 @@ void ModMenuPage2()
 			DisplayMessagePrompt( AboutMsg );
 			return;
 		case 4://Quick tests
-			int category = SelectNumberPrompt( EncounterPrompt, 3 );
-			FUNCTION_5005( 1, GET_MSG_SELECTION( 0 ) + FUNCTION_5004( 1536 + 87, 1 ) );
-			DisplayMessagePrompt( MSGVarTest );
-			//FUNCTION_003C( 11 ); //play sound effect
 			return;
 		case 5://Previous Page
 			ModMenuInit();
@@ -87,8 +83,8 @@ void PlayerEditorDisplay()
 		case 3://Set Social Link Rank
 			CommuSetRankSelect();
 			return;
-		case 4://Set Protagonist Name
-			DisplayMessagePrompt( NotImplemented );
+		case 4://Party Edit
+			PartyEditorDisplay();
 			return;
 		case 5://Max Money
 			ADD_PC_MONEY( 99999999 );
@@ -146,24 +142,8 @@ void PersonaAddSkillSelect()
 
 void EvolvePersona()
 {
-		page1:
-	int selection = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
-	if ( selection <= 5 )
-	{
-		PERSONA_EVOLUTION( selection );
-	}
-	else if ( selection == 6 ) //page 2
-	{
-		selection = MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 ) + 6;
-		if ( selection <= 10 )
-		{
-			PERSONA_EVOLUTION( selection );
-		}
-		else if ( selection == 11 )
-		{
-			goto page1;
-		}
-	}
+	int selection = SelectUnitNoProtag();
+	PERSONA_EVOLUTION( selection );
 }
 
 void StatEditorDisplay()
@@ -309,6 +289,24 @@ void CommuSetRankSelect5()
 	}
 }
 
+void PartyEditorDisplay()
+{
+	int unit = 0;
+	int selection = MSG_SELECT( ModMenuName, PartyEditMenu, 0 );
+	switch ( selection )
+	{
+		case 0://Add Party Members
+			unit = SelectUnitNoProtagNoFuuka();
+			PARTY_IN( unit );
+			return;
+		case 1://Remove Party Members
+			unit = SelectUnitNoProtagNoFuuka();
+			PARTY_OUT( unit );
+			return;
+		case 2://Cancel
+			return;
+	}
+}
 void BattleSelect()
 {
 	int selection = MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
@@ -372,8 +370,8 @@ void FieldLoadSelected()
 	if (gFieldMajor == 0 && gFieldMinor == 0)
 		DisplayMessagePrompt( LoadCheckError );
 	else
-		FADE( 3, 20 );
-		FUNCTION_4001( gFieldMajor, gFieldMinor, 0, 0  );
+		FUNCTION_4017();
+		CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
 }
 
 void ShortcutSelect()
@@ -452,16 +450,13 @@ void FlagsEditorDisplay()
 		case 1://Remove Party Members
 			DisplayMessagePrompt( NotImplemented );
 			return;
-		case 2://Enable Party Editing
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 3://Manual Input
+		case 2://Manual Input
 			FlagManualInput();
 			return;
-		case 4://Mass Flag Editor
+		case 3://Mass Flag Editor
 			FlagMassEditor();
 			return;
-		case 5://Cancel
+		case 4://Cancel
 			return;
 	}
 	

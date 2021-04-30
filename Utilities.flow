@@ -38,6 +38,75 @@ int SelectNumber( int digitCount )
 	return number;
 }
 
+int SelectUnit()
+{
+		page1:
+	int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 0 ) + 1;
+	if ( unitID <= 5 )
+	{
+		return unitID;
+	}
+	else if ( unitID == 6 ) //page 2
+	{
+		unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
+		if ( unitID <= 10 )
+		{
+			return unitID;
+		}
+		else if ( unitID == 11 )
+		{
+			goto page1;
+		}
+	}
+	return unitID;
+}
+
+int SelectUnitNoProtag()
+{
+		page1:
+	int unitID = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
+	if ( unitID <= 5 )
+	{
+		return unitID;
+	}
+	else if ( unitID == 6 ) //page 2
+	{
+		unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
+		if ( unitID <= 10 )
+		{
+			return unitID;
+		}
+		else if ( unitID == 11 )
+		{
+			goto page1;
+		}
+	}
+	return unitID;
+}
+
+int SelectUnitNoProtagNoFuuka()
+{
+		page1:
+	int unitID = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
+	if ( unitID <= 5 )
+	{
+		return unitID;
+	}
+	else if ( unitID == 6 ) //page 2
+	{
+		unitID = MSG_SELECT( ModMenuName, UnitSelect2NoProtagNoFuuka, 0 ) + 7;
+		if ( unitID <= 10 )
+		{
+			return unitID;
+		}
+		else if ( unitID == 11 )
+		{
+			goto page1;
+		}
+	}
+	return unitID;
+}
+
 int SelectYesNo()
 {
 	int selection = MSG_SELECT( MSGDummy, SelectYesNo, 0 );
