@@ -5,14 +5,12 @@ int SelectDigit( MSGDummy )
 {
 	while ( true )
 	{
-		MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
-		int digit = GET_MSG_SELECTION( 0 );
+		int digit = MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
 		if ( digit < 5 ) //0 through 4
 			return digit;
 		if ( digit == 5 )
 		{
-			MSG_SELECT( MSGDummy, Select5to9Dialog, 0 );
-			digit = GET_MSG_SELECTION( 0 ) + 5;
+			digit = MSG_SELECT( MSGDummy, Select5to9Dialog, 0 ) + 5;
 			if ( digit < 10 )
 				return digit; //5 through 9 or back
 			else if (digit == 16)
@@ -42,29 +40,25 @@ int SelectNumber( int digitCount )
 
 int SelectYesNo()
 {
-	MSG_SELECT( MSGDummy, SelectYesNo, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( MSGDummy, SelectYesNo, 0 );
 	return selection;
 }
 
 int SelectNoYes()
 {
-	MSG_SELECT( MSGDummy, SelectOffOn, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( MSGDummy, SelectOffOn, 0 );
 	return selection;
 }
 
 int SelectOnOff()
 {
-	MSG_SELECT( MSGDummy, SelectOnOff, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( MSGDummy, SelectOnOff, 0 );
 	return selection;
 }
 
 int SelectOffOn()
 {
-	MSG_SELECT( MSGDummy, SelectOffOn, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( MSGDummy, SelectOffOn, 0 );
 	return selection;
 }
 
@@ -86,16 +80,14 @@ int Select10NumberPrompt( int messageId )
 {
 	DisplayMessagePrompt( messageId );
 		page1:
-	MSG_SELECT( MSGDummy, Select1to5Dialog, 0 );
-	int number = GET_MSG_SELECTION( 0 ) + 1;
+	int number = MSG_SELECT( MSGDummy, Select1to5Dialog, 0 ) + 1;
 	if ( number <= 5 )
 	{
 		return number;
 	}
 	else if ( number == 6 )
 	{
-		MSG_SELECT( MSGDummy, Select6to10Dialog, 0 );
-		number = GET_MSG_SELECTION( 0 ) + 6;
+		number = MSG_SELECT( MSGDummy, Select6to10Dialog, 0 ) + 6;
 		if ( number <= 10 )
 		{
 			return number;

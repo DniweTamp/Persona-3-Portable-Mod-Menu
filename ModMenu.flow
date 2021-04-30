@@ -12,8 +12,7 @@ global int unitId;
 
 void ModMenuInit()
 {
-	MSG_SELECT( ModMenuName, ModMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, ModMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Use original square function
@@ -42,8 +41,7 @@ void ModMenuInit()
 
 void ModMenuPage2()
 {
-	MSG_SELECT( ModMenuName, ModMenu2, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, ModMenu2, 0 );
 	switch ( selection )
 	{
 		case 0://Event Select
@@ -74,8 +72,7 @@ void ModMenuPage2()
 
 void PlayerEditorDisplay()
 {
-	MSG_SELECT( ModMenuName, PlayerMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, PlayerMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Personas
@@ -104,8 +101,7 @@ void PlayerEditorDisplay()
 
 void PersonaEditorOpen()
 {
-	MSG_SELECT( ModMenuName, PersonaMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, PersonaMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Add Persona
@@ -141,9 +137,7 @@ void PersonaAddSelect()
 
 void PersonaAddSkillSelect()
 
-{
-	/*MSG_SELECT( ModMenuName, UnitSelect, 0 );
-	unitId = GET_MSG_SELECTION( 0 );
+	/*unitId = MSG_SELECT( ModMenuName, UnitSelect, 0 );
 	int skillId = 0;
 	skillId = SelectNumberPrompt( SkillPrompt, 3 );
 	SKILL_ADD( ( unitId + 1 ), skillId );*/
@@ -153,16 +147,14 @@ void PersonaAddSkillSelect()
 void EvolvePersona()
 {
 		page1:
-	MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 );
-	int selection = GET_MSG_SELECTION( 0 ) + 2;
+	int selection = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
 	if ( selection <= 5 )
 	{
 		PERSONA_EVOLUTION( selection );
 	}
 	else if ( selection == 6 ) //page 2
 	{
-		MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 );
-		selection = GET_MSG_SELECTION( 0 ) + 6;
+		selection = MSG_SELECT( ModMenuName, UnitSelect2NoProtag, 0 ) + 6;
 		if ( selection <= 10 )
 		{
 			PERSONA_EVOLUTION( selection );
@@ -176,12 +168,10 @@ void EvolvePersona()
 
 void StatEditorDisplay()
 {
-	MSG_SELECT( ModMenuName, StatsMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, StatsMenu, 0 );
 	int pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
 	if ( pointsToAdd == 0 )
 		return;
-
 	switch ( selection )
 	{
 		case 0: // Academics
@@ -200,8 +190,7 @@ void StatEditorDisplay()
 
 void ItemEditorDisplay()
 {
-	MSG_SELECT( ModMenuName, ItemMenu, 0 );
-	int itemType = GET_MSG_SELECTION( 0 );
+	int itemType = MSG_SELECT( ModMenuName, ItemMenu, 0 );
 	switch ( itemType ) 
 	{
 		case 0: // Melee Weapons
@@ -236,8 +225,7 @@ void ItemGetSelect( int type )
 
 void CommuSetRankSelect()
 {
-	MSG_SELECT( ModMenuName, CommuCharSel1, 0 );
-	int cmmId = GET_MSG_SELECTION( 0 ) + 1;
+	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel1, 0 ) + 1;
 	if ( cmmId <= 6 )
 	{
 		int lvl = Select10NumberPrompt( CommuPrompt );
@@ -251,8 +239,7 @@ void CommuSetRankSelect()
 
 void CommuSetRankSelect2()
 {
-	MSG_SELECT( ModMenuName, CommuCharSel2, 0 );
-	int cmmId = GET_MSG_SELECTION( 0 ) + 7;
+	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel2, 0 ) + 7;
 	if ( cmmId <= 11 )
 	{
 		int lvl = Select10NumberPrompt( CommuPrompt );
@@ -271,8 +258,7 @@ void CommuSetRankSelect2()
 
 void CommuSetRankSelect3()
 {
-	MSG_SELECT( ModMenuName, CommuCharSel3, 0 );
-	int cmmId = GET_MSG_SELECTION( 0 ) + 12;
+	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel3, 0 ) + 12;
 	if ( cmmId <= 16 )
 	{
 		int lvl = Select10NumberPrompt( CommuPrompt );
@@ -290,8 +276,7 @@ void CommuSetRankSelect3()
 
 void CommuSetRankSelect4()
 {
-	MSG_SELECT( ModMenuName, CommuCharSel4, 0 );
-	int cmmId = GET_MSG_SELECTION( 0 ) + 17;
+	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel4, 0 ) + 17;
 	if ( cmmId <= 22 )
 	{
 		int lvl = Select10NumberPrompt( CommuPrompt );
@@ -305,8 +290,7 @@ void CommuSetRankSelect4()
 
 void BattleSelect()
 {
-	MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Regular Encounter
@@ -332,8 +316,7 @@ void BGMSelect()
 
 void FieldSelect()
 {
-	MSG_SELECT( ModMenuName, FieldSelect, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
 	switch ( selection )
 	{
 		case 0://Quick Travel Select
@@ -375,8 +358,7 @@ void FieldLoadSelected()
 
 void ShortcutSelect()
 {
-	MSG_SELECT( ModMenuName, ShortcutSelect, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, ShortcutSelect, 0 );
 	switch ( selection )
 	{
 		case 0://School Shortcuts
@@ -398,8 +380,7 @@ void ShortcutSelect()
 
 void EventSelect()
 {
-	MSG_SELECT( ModMenuName, EventSelect, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, EventSelect, 0 );
 	switch ( selection )
 	{
 		case 0://Enter Event ID
@@ -442,8 +423,7 @@ void EventLoadSelected()
 
 void FlagsEditorDisplay()
 {
-	MSG_SELECT( ModMenuName, FlagMenu, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, FlagMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Add Party Members
@@ -470,8 +450,7 @@ void FlagsEditorDisplay()
 void FlagManualInput()
 {
 	int id = SelectNumber( 4 );
-	MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
-	int onOff = GET_MSG_SELECTION( 0 );
+	int onOff = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
 	switch (onOff) 
 	{
 		case 0: // On
@@ -495,8 +474,7 @@ void FlagManualInput()
 
 void FlagMassEditor()
 {
-	MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
 	switch ( selection )
 	{
 		case 0://Disable all flags

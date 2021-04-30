@@ -8,8 +8,7 @@ void SquareVanilla()
 
 void MMschool_shortcut()
 {
-	MSG_SELECT( FLD_ORDER, SCHOOL_SHOTCUTSEL, 0 );
-	int selection = GET_MSG_SELECTION( 0 );
+	int selection = MSG_SELECT( FLD_ORDER, SCHOOL_SHOTCUTSEL, 0 );
 }
 
 void MMdormitory_shortcut()

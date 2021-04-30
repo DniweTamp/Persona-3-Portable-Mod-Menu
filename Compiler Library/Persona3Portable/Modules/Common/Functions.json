@@ -1221,7 +1221,7 @@
   },
   {
     "Index": "0x0056",
-    "ReturnType": "void",
+    "ReturnType": "int",
     "Name": "MSG_SELECT",
     "Description": "",
     "Parameters": [
