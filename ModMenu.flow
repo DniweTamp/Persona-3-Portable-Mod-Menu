@@ -136,7 +136,7 @@ void PersonaAddSelect()
 }
 
 void PersonaAddSkillSelect()
-
+{
 	/*unitId = MSG_SELECT( ModMenuName, UnitSelect, 0 );
 	int skillId = 0;
 	skillId = SelectNumberPrompt( SkillPrompt, 3 );
@@ -169,21 +169,22 @@ void EvolvePersona()
 void StatEditorDisplay()
 {
 	int selection = MSG_SELECT( ModMenuName, StatsMenu, 0 );
-	int pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
-	if ( pointsToAdd == 0 )
-		return;
+	int pointsToAdd = 0;
 	switch ( selection )
 	{
 		case 0: // Academics
+			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
 			ADD_PC_STAT( 0, pointsToAdd );
 			return;
 		case 1: // Charm
+			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
 			ADD_PC_STAT( 1, pointsToAdd );
 			return;
 		case 2: // Courage
+			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
 			ADD_PC_STAT( 2, pointsToAdd );
 			return;
-		case 4: // Cancel
+		case 3: // Cancel
 			return;
 	}
 }
@@ -225,66 +226,86 @@ void ItemGetSelect( int type )
 
 void CommuSetRankSelect()
 {
-	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel1, 0 ) + 1;
-	if ( cmmId <= 6 )
+	int selection = MSG_SELECT( ModMenuName, CommuCharSel1, 0 );
+	int lvl = 0;
+	switch (selection)
 	{
-		int lvl = Select10NumberPrompt( CommuPrompt );
-		CMM_SET_LV( cmmId, lvl, 9999 );
-	}
-	else if ( cmmId == 7 ) //page 2
-	{
-		CommuSetRankSelect2();
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 1, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 2, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 3, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 4, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 5, lvl, 9999 ); return;
+		case 5: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 6, lvl, 9999 ); return;
+		case 6: CommuSetRankSelect2(); return;
+
 	}
 }
 
 void CommuSetRankSelect2()
 {
-	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel2, 0 ) + 7;
-	if ( cmmId <= 11 )
+	int selection = MSG_SELECT( ModMenuName, CommuCharSel2, 0 );
+	int lvl = 0;
+	switch (selection)
 	{
-		int lvl = Select10NumberPrompt( CommuPrompt );
-		CMM_SET_LV( cmmId, lvl, 9999 );
-	}
-	else if ( cmmId == 12 ) //page 1
-	{
-		CommuSetRankSelect();
-	}
-	else if ( cmmId == 13 ) //page 3
-	{
-		CommuSetRankSelect3();
-	}
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 7, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 8, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 9, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 10, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 11, lvl, 9999 ); return;
+		case 5: CommuSetRankSelect(); return;
+		case 6: CommuSetRankSelect3(); return;
 
+	}
 }
 
 void CommuSetRankSelect3()
 {
-	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel3, 0 ) + 12;
-	if ( cmmId <= 16 )
+	int selection = MSG_SELECT( ModMenuName, CommuCharSel3, 0 );
+	int lvl = 0;
+	switch (selection)
 	{
-		int lvl = Select10NumberPrompt( CommuPrompt );
-		CMM_SET_LV( cmmId, lvl, 9999 );
-	}
-	else if ( cmmId == 17 ) //page 2
-	{
-		CommuSetRankSelect2();
-	}
-	else if ( cmmId == 18 ) //page 4
-	{
-		CommuSetRankSelect4();
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 12, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 13, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 14, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 15, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 16, lvl, 9999 ); return;
+		case 5: CommuSetRankSelect2(); return;
+		case 6: CommuSetRankSelect4(); return;
+
 	}
 }
 
 void CommuSetRankSelect4()
 {
-	int cmmId = MSG_SELECT( ModMenuName, CommuCharSel4, 0 ) + 17;
-	if ( cmmId <= 22 )
+	int selection = MSG_SELECT( ModMenuName, CommuCharSel4, 0 );
+	int lvl = 0;
+	switch (selection)
 	{
-		int lvl = Select10NumberPrompt( CommuPrompt );
-		CMM_SET_LV( cmmId, lvl, 9999 );
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 17, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 18, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 19, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 20, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 21, lvl, 9999 ); return;
+		case 5: CommuSetRankSelect3(); return;
+		case 6: CommuSetRankSelect5(); return;
+
 	}
-	else if ( cmmId == 23 ) //page 3
+}
+
+void CommuSetRankSelect5()
+{
+	int selection = MSG_SELECT( ModMenuName, CommuCharSel5, 0 );
+	int lvl = 0;
+	switch (selection)
 	{
-		CommuSetRankSelect3();
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 22, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 23, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 24, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 25, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 26, lvl, 9999 ); return;
+		case 5: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 27, lvl, 9999 ); return;
+		case 6: CommuSetRankSelect4(); return;
+
 	}
 }
 
@@ -309,8 +330,7 @@ void RegularEncounter()
 
 void BGMSelect()
 {
-	DisplayMessagePrompt( SelectBgmDialog );
-	int bgmId = SelectNumber( 3 );
+	int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
 	BGM( bgmId );
 }
 

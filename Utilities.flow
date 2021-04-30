@@ -1,7 +1,7 @@
 
 import( "Utilities.msg" );
 
-int SelectDigit( MSGDummy )
+int SelectDigit( int messageId )
 {
 	while ( true )
 	{
