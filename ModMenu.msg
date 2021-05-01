@@ -78,6 +78,10 @@ Add how many points?[n](max. 2 digits)[w][e]
 [msg ItemAdded]
 [s]Obtained [f 2 4 2] of [f 2 4 1].[w][e]
 
+[sel CommuEditorOpen]
+[s]Edit SLink Ranks[e]
+[s]Cancel[e]
+
 [msg CommuPrompt]
 [s]Set the Social Link level[n]you want to have.[w][e]
 
@@ -181,17 +185,21 @@ Add how many points?[n](max. 2 digits)[w][e]
 [s]Choose the last 3 digits of[n]the event to load.[n][w][e]
 
 [sel FlagMenu]
-[s]Add Party Members[e]
-[s]Remove Party Members[e]
 [s]Manual Input[e]
 [s]Mass Flag Editor[e]
 [s]Cancel[e]
 
 [msg FlagCheckOn]
-[s]The flag is on.[w][e]
+[s]Flag [f 2 4 1] is on.[w][e]
 
 [msg FlagCheckOff]
-[s]The flag is off.[w][e]
+[s]Flag [f 2 4 1] is off.[w][e]
+
+[msg FlagOn]
+[s]Flag [f 2 4 1] has been enabled.[w][e]
+
+[msg FlagOff]
+[s]Flag [f 2 4 1] has been disabled.[w][e]
 
 [sel FlagMassEditor]
 [s]Disable all flags[e]

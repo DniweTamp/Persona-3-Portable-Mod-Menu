@@ -26,7 +26,8 @@ void ModMenuInit()
 			return;
 		case 3://Sound Test
 			int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
-			BGM( bgmId );
+			if (bgmId != -1)
+				BGM( bgmId );
 			return;
 		case 4://Field Select
 			FieldSelect();
@@ -137,7 +138,8 @@ void PersonaEditorOpen()
 			return;
 		case 4://Evolve Persona
 			int unit = SelectUnitNoProtag();
-			PERSONA_EVOLUTION( unit );
+			if ( unit != -1 )
+				PERSONA_EVOLUTION( unit );
 			return;
 		case 5://Cancel
 			return;
@@ -172,15 +174,18 @@ void StatEditorDisplay()
 	{
 		case 0: // Academics
 			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
-			ADD_PC_STAT( 0, pointsToAdd );
+			if ( pointsToAdd != -1 )
+				ADD_PC_STAT( 0, pointsToAdd );
 			return;
 		case 1: // Charm
 			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
-			ADD_PC_STAT( 1, pointsToAdd );
+			if ( pointsToAdd != -1 )
+				ADD_PC_STAT( 1, pointsToAdd );
 			return;
 		case 2: // Courage
 			pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
-			ADD_PC_STAT( 2, pointsToAdd );
+			if ( pointsToAdd != -1 )
+				ADD_PC_STAT( 2, pointsToAdd );
 			return;
 		case 3: // Cancel
 			return;
@@ -219,10 +224,17 @@ void ItemGetSelect( int type )
 {
 	int itemId = SelectNumberPrompt( ItemPrompt, 4 );
 	int amount = SelectNumberPrompt( ItemPrompt2, 2 );
-	SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
-	SET_MSG_VAR( 1, type + itemId, 5 );
-	SET_MSG_VAR( 2, amount, 0 );
-	DisplayMessagePrompt( ItemAdded );
+	if ( ( itemId = -1 ) || ( amount = -1 ) )
+	{
+		return;
+	}
+	else
+	{
+		SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
+		SET_MSG_VAR( 1, type + itemId, 5 );
+		SET_MSG_VAR( 2, amount, 0 );
+		DisplayMessagePrompt( ItemAdded );
+	}
 }
 
 void CommuSetRankSelect()
@@ -231,12 +243,12 @@ void CommuSetRankSelect()
 	int lvl = 0;
 	switch (selection)
 	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 1, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 2, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 3, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 4, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 5, lvl, 9999 ); return;
-		case 5: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 6, lvl, 9999 ); return;
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 1, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 2, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 3, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 4, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 5, lvl, 9999 ); return;
+		case 5: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 6, lvl, 9999 ); return;
 		case 6: CommuSetRankSelect2(); return;
 
 	}
@@ -248,11 +260,11 @@ void CommuSetRankSelect2()
 	int lvl = 0;
 	switch (selection)
 	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 7, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 8, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 9, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 10, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 11, lvl, 9999 ); return;
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 7, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 8, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 9, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 10, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 11, lvl, 9999 ); return;
 		case 5: CommuSetRankSelect(); return;
 		case 6: CommuSetRankSelect3(); return;
 
@@ -265,11 +277,11 @@ void CommuSetRankSelect3()
 	int lvl = 0;
 	switch (selection)
 	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 12, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 13, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 14, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 15, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 16, lvl, 9999 ); return;
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 12, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 13, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 14, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 15, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 16, lvl, 9999 ); return;
 		case 5: CommuSetRankSelect2(); return;
 		case 6: CommuSetRankSelect4(); return;
 
@@ -282,11 +294,11 @@ void CommuSetRankSelect4()
 	int lvl = 0;
 	switch (selection)
 	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 17, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 18, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 19, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 20, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 21, lvl, 9999 ); return;
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 17, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 18, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 19, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 20, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 21, lvl, 9999 ); return;
 		case 5: CommuSetRankSelect3(); return;
 		case 6: CommuSetRankSelect5(); return;
 
@@ -299,12 +311,12 @@ void CommuSetRankSelect5()
 	int lvl = 0;
 	switch (selection)
 	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 22, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 23, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 24, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 25, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 26, lvl, 9999 ); return;
-		case 5: lvl = Select10NumberPrompt( CommuPrompt ); CMM_SET_LV( 27, lvl, 9999 ); return;
+		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 22, lvl, 9999 ); return;
+		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 23, lvl, 9999 ); return;
+		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 24, lvl, 9999 ); return;
+		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 25, lvl, 9999 ); return;
+		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 26, lvl, 9999 ); return;
+		case 5: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 27, lvl, 9999 ); return;
 		case 6: CommuSetRankSelect4(); return;
 
 	}
@@ -318,12 +330,14 @@ void PartyEditorDisplay()
 	{
 		case 0://Add Party Members
 			unit = SelectUnitNoProtagNoFuuka();
-			PARTY_IN( unit );
+			if ( unit != -1 )
+				PARTY_IN( unit );
 			PartyEditorDisplay();
 			return;
 		case 1://Remove Party Members
 			unit = SelectUnitNoProtagNoFuuka();
-			PARTY_OUT( unit );
+			if ( unit != -1 )
+				PARTY_OUT( unit );
 			PartyEditorDisplay();
 			return;
 		case 2://Cancel
@@ -340,9 +354,12 @@ void BattleSelect()
 	{
 		case 0://Regular Encounter
 			int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
-			CALL_BATTLE( Encounter );
-			WAIT_BATTLE();
-			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			if ( Encounter != -1 )
+			{
+				CALL_BATTLE( Encounter );
+				WAIT_BATTLE();
+				CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			}
 			return;
 		case 1://Cancel
 			return;
@@ -438,19 +455,13 @@ void FlagsEditorDisplay()
 	int selection = MSG_SELECT( ModMenuName, FlagMenu, 0 );
 	switch ( selection )
 	{
-		case 0://Add Party Members
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 1://Remove Party Members
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 2://Manual Input
+		case 0://Manual Input
 			FlagManualInput();
 			return;
-		case 3://Mass Flag Editor
+		case 1://Mass Flag Editor
 			FlagMassEditor();
 			return;
-		case 4://Cancel
+		case 2://Cancel
 			return;
 	}
 	
@@ -459,25 +470,31 @@ void FlagsEditorDisplay()
 void FlagManualInput()
 {
 	int id = SelectNumber( 4 );
-	int onOff = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
-	switch (onOff) 
+	if ( id != -1 )
 	{
-		case 0: // On
-			BIT_ON( id );
-			return;
-		case 1: // Off
-			BIT_OFF( id );
-			return;
-		case 2: // Check
-			if ( BIT_CHK( id ) )
-			{
-				DisplayMessagePrompt( FlagCheckOn );
-			}
-			else
-			{
-				DisplayMessagePrompt( FlagCheckOff );
-			}
-			return;
+		SET_MSG_VAR( 1, id, 0 );
+		int onOff = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
+		switch (onOff) 
+		{
+			case 0: // On
+				BIT_ON( id );
+				DisplayMessagePrompt( FlagOn );
+				return;
+			case 1: // Off
+				BIT_OFF( id );
+				DisplayMessagePrompt( FlagOff );
+				return;
+			case 2: // Check
+				if ( BIT_CHK( id ) )
+				{
+					DisplayMessagePrompt( FlagCheckOn );
+				}
+				else
+				{
+					DisplayMessagePrompt( FlagCheckOff );
+				}
+				return;
+		}
 	}
 }
 
