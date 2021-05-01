@@ -139,7 +139,6 @@ Add how many points?[n](max. 2 digits)[w][e]
 [s]Select a bgm to play (max. 3 digits).[w][e]
 
 [sel FieldSelect]
-[s]Quick Travel Select[e]
 [s]Enter Field ID[e]
 [s]Load Field ID[e]
 [s]Cancel[e]

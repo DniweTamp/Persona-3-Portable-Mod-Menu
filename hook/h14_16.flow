@@ -4,4 +4,9 @@ import( "../ModMenu.flow" );
 void f014_016_shortcut_hook()
 {
 	ModMenuInit();
+}
+
+void CallOriginalSquareMenu()
+{
+	kyoto_shortcut();
 } 

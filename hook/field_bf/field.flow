@@ -4,4 +4,46 @@ import( "../../ModMenu.flow" );
 void field_order_party_hook()
 {
 	ModMenuInit();
-} 
+}
+
+void CallOriginalSquareMenu()
+{
+	FLD_FUNCTION_0040();
+	
+	if ( ( ( FLD_FUNCTION_0046() == 1 ) && BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 498 ) ) ) )
+	{
+		fes_order_party();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 507 ) ) )
+	{
+		tutorial_order_party();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 572 ) ) )
+	{
+		f031_operation();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 610 ) ) )
+	{
+		f052_operation();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 702 ) ) )
+	{
+		f034_operation();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 799 ) ) )
+	{
+		f035_operation();
+		return;
+	}
+	else if ( BIT_CHK( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 498 ) ) )
+	{
+		tartaros_order_party();
+		return;
+	}
+
+}

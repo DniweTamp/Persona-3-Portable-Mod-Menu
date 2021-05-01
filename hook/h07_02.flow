@@ -4,4 +4,9 @@ import( "../ModMenu.flow" );
 void f007_002_shortcut_hook()
 {
 	ModMenuInit();
+}
+
+void CallOriginalSquareMenu()
+{
+	dormitory_shortcut();
 } 

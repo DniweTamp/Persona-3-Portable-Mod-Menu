@@ -1,5 +1,4 @@
 //import flow files
-import( "OriginalShortcutFuncs.flow" );
 import( "Utilities.flow" );
 //import msg files
 import( "ModMenu.msg" );
@@ -16,8 +15,7 @@ void ModMenuInit()
 	switch ( selection )
 	{
 		case 0://Use original square function
-			SquareVanilla();
-			DisplayMessagePrompt( NotImplemented );
+			CallOriginalSquareMenu();
 			return;
 		case 1://Player
 			PlayerEditorDisplay();
@@ -26,7 +24,8 @@ void ModMenuInit()
 			BattleSelect();
 			return;
 		case 3://Sound Test
-			BGMSelect();
+			int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
+			BGM( bgmId );
 			return;
 		case 4://Field Select
 			FieldSelect();
@@ -113,7 +112,8 @@ void PersonaEditorOpen()
 			DisplayMessagePrompt( NotImplemented );
 			return;
 		case 4://Evolve Persona
-			EvolvePersona();
+			int unit = SelectUnitNoProtag();
+			PERSONA_EVOLUTION( unit );
 			return;
 		case 5://Cancel
 			return;
@@ -138,12 +138,6 @@ void PersonaAddSkillSelect()
 	skillId = SelectNumberPrompt( SkillPrompt, 3 );
 	SKILL_ADD( ( unitId + 1 ), skillId );*/
 	DisplayMessagePrompt( NotImplemented );
-}
-
-void EvolvePersona()
-{
-	int selection = SelectUnitNoProtag();
-	PERSONA_EVOLUTION( selection );
 }
 
 void StatEditorDisplay()
@@ -201,7 +195,6 @@ void ItemGetSelect( int type )
 {
 	int itemId = SelectNumberPrompt( ItemPrompt, 4 );
 	int amount = SelectNumberPrompt( ItemPrompt2, 2 );
-	FUNCTION_5004( type + itemId, amount );
 }
 
 void CommuSetRankSelect()
@@ -298,38 +291,30 @@ void PartyEditorDisplay()
 		case 0://Add Party Members
 			unit = SelectUnitNoProtagNoFuuka();
 			PARTY_IN( unit );
+			PartyEditorDisplay();
 			return;
 		case 1://Remove Party Members
 			unit = SelectUnitNoProtagNoFuuka();
 			PARTY_OUT( unit );
+			PartyEditorDisplay();
 			return;
 		case 2://Cancel
 			return;
 	}
 }
+
 void BattleSelect()
 {
 	int selection = MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Regular Encounter
-			RegularEncounter();
+			int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
+			CALL_BATTLE( Encounter );
 			return;
 		case 1://Cancel
 			return;
 	}
-}
-
-void RegularEncounter()
-{
-	int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
-	CALL_BATTLE( Encounter );
-}
-
-void BGMSelect()
-{
-	int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
-	BGM( bgmId );
 }
 
 void FieldSelect()
@@ -337,16 +322,13 @@ void FieldSelect()
 	int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
 	switch ( selection )
 	{
-		case 0://Quick Travel Select
-			ShortcutSelect();
-			return;
-		case 1://Enter Field ID
+		case 0://Enter Field ID
 			FieldSelectIds();
 			return;
-		case 2://Load Field ID
+		case 1://Load Field ID
 			FieldLoadSelected();
 			return;
-		case 3://Cancel
+		case 2://Cancel
 			return;
 	}
 }
@@ -370,30 +352,7 @@ void FieldLoadSelected()
 	if (gFieldMajor == 0 && gFieldMinor == 0)
 		DisplayMessagePrompt( LoadCheckError );
 	else
-		FUNCTION_4017();
 		CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
-}
-
-void ShortcutSelect()
-{
-	int selection = MSG_SELECT( ModMenuName, ShortcutSelect, 0 );
-	switch ( selection )
-	{
-		case 0://School Shortcuts
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 1://Dorm Shortcuts
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 2://Station Shortcuts
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 3://Kyoto Shortcuts
-			FieldSelect_kyoto_shortcut();
-			return;
-		case 4://Cancel
-			return;
-	}
 }
 
 void EventSelect()

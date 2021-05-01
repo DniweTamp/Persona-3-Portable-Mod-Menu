@@ -1,4 +1,5 @@
 .vscode
 AtlusScriptCompiler.log
 build_local.bat
+build_local_all.bat
 *.lnk

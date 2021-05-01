@@ -4,4 +4,29 @@ import( "../ModMenu.flow" );
 void f008_009_shortcut_hook()
 {
 	ModMenuInit();
+}
+
+void CallOriginalSquareMenu()
+{
+	FUNCTION_002C( 14, 2 );
+	int var0 = MSG_SELECT( 2, 1, 0 );
+	
+	if ( ( var0 == 0 ) )
+	{
+		HIT_SCRIPT_00();
+		return;
+	}
+	else if ( ( var0 == 1 ) )
+	{
+		BIT_ON( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 19 ) );
+		FADE( 3, 20 );
+		CLD_FUNCTION_0003( 1 );
+		return;
+	}
+	else 
+	{
+		MSG_WND_CLS();
+		return;
+	}
+
 } 
