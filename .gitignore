@@ -2,4 +2,6 @@
 AtlusScriptCompiler.log
 build_local.bat
 build_local_all.bat
+QuickTests.msg
+QuickTests.flow
 *.lnk

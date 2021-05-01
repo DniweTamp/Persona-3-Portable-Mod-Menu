@@ -1,4 +1,3 @@
-
 [
     {
         "Index": "0x4000",
@@ -190,7 +189,7 @@
     {
         "Index": "0x4012",
         "ReturnType": "void",
-        "Name": "CLD_FUNCTION_0012",
+        "Name": "WAIT_BATTLE",
         "Description": "Address: 0x089BA858",
         "Parameters": []
     },

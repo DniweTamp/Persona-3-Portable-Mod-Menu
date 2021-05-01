@@ -419,7 +419,7 @@
     {
         "Index": "0x001d",
         "ReturnType": "void",
-        "Name": "FUNCTION_001D",
+        "Name": "SET_MSG_VAR",
         "Description": "Address: 0x08986F8C",
         "Parameters": [
             {

@@ -28,7 +28,13 @@
 [s]Items[e]
 [s]Set Social Link Rank[e]
 [s]Party Edit[e]
+[s]Next Page[e]
+[s]Cancel[e]
+
+[sel PlayerMenu2]
+[s]Set Protagonist Name[e]
 [s]Max Money[e]
+[s]Previous Page[e]
 [s]Cancel[e]
 
 [sel PersonaMenu]
@@ -68,6 +74,9 @@ Add how many points?[n](max. 2 digits)[w][e]
 
 [msg ItemPrompt2 [Items]]
 [s]Enter how many items you want.[n](max. 2 digits)[w][e]
+
+[msg ItemAdded]
+[s]Obtained [f 2 4 2] of [f 2 4 1].[w][e]
 
 [msg CommuPrompt]
 [s]Set the Social Link level[n]you want to have.[w][e]
@@ -195,7 +204,7 @@ Add how many points?[n](max. 2 digits)[w][e]
 [clr 16]16 [clr 17]17 [clr 18]18 [clr 19]19 [clr 20]20 [clr 21]21 [clr 22]22 [clr 23]23 [clr 24]24 [clr 25]25 [clr 26]26 [clr 27]27 [clr 28]28 [clr 29]29 [clr 30]30 [clr 31]31[w][e]
 
 [msg MSGVarTest]
-[s]Variable: [f 4 4 3 0 1][w][e]
+[s]Variable: [f 2 4 1][w][e]
 
 [msg LoadCheckError]
 [s]Set the required parameters[n]before attempting to load![w][e]

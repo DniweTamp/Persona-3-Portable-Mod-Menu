@@ -1,5 +1,6 @@
 //import flow files
 import( "Utilities.flow" );
+//import( "QuickTests.flow" );
 //import msg files
 import( "ModMenu.msg" );
 //global variables
@@ -56,6 +57,7 @@ void ModMenuPage2()
 			DisplayMessagePrompt( AboutMsg );
 			return;
 		case 4://Quick tests
+			//QuickTests();
 			return;
 		case 5://Previous Page
 			ModMenuInit();
@@ -85,11 +87,33 @@ void PlayerEditorDisplay()
 		case 4://Party Edit
 			PartyEditorDisplay();
 			return;
-		case 5://Max Money
+		case 5://Next Page
+			PlayerEditorDisplay2();
+			return;
+		case 6://Cancel
+			return;
+	}
+}
+
+void PlayerEditorDisplay2()
+{
+	int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
+	switch ( selection )
+	{
+		case 0://Set Protagonist Name
+			int FldCurMaj = FLD_GET_MAJOR();
+			int FldCurMin = FLD_GET_MINOR();
+			CLD_FUNCTION_0007();
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			return;
+		case 1://Max Money
 			ADD_PC_MONEY( 99999999 );
 			DisplayMessagePrompt( MoneyAdded );
 			return;
-		case 6://Cancel
+		case 2://Previous Page
+			PlayerEditorDisplay();
+			return;
+		case 3://Cancel
 			return;
 	}
 }
@@ -172,19 +196,19 @@ void ItemEditorDisplay()
 			ItemGetSelect( 0 );
 			return;
 		case 1: // Armor
-			ItemGetSelect( 0x100 );
-			return;
-		case 2: // Boots
 			ItemGetSelect( 0x200 );
 			return;
-		case 3: // Accessories
+		case 2: // Boots
 			ItemGetSelect( 0x300 );
 			return;
-		case 4: // Items
+		case 3: // Accessories
 			ItemGetSelect( 0x400 );
 			return;
-		case 5: // Key Items
+		case 4: // Items
 			ItemGetSelect( 0x500 );
+			return;
+		case 5: // Key Items
+			ItemGetSelect( 0x600 );
 			return;
 		case 6: // Cancel
 			return;
@@ -195,6 +219,10 @@ void ItemGetSelect( int type )
 {
 	int itemId = SelectNumberPrompt( ItemPrompt, 4 );
 	int amount = SelectNumberPrompt( ItemPrompt2, 2 );
+	SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
+	SET_MSG_VAR( 1, type + itemId, 5 );
+	SET_MSG_VAR( 2, amount, 0 );
+	DisplayMessagePrompt( ItemAdded );
 }
 
 void CommuSetRankSelect()
@@ -305,12 +333,16 @@ void PartyEditorDisplay()
 
 void BattleSelect()
 {
+	int FldCurMaj = FLD_GET_MAJOR();
+	int FldCurMin = FLD_GET_MINOR();
 	int selection = MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
 	switch ( selection )
 	{
 		case 0://Regular Encounter
 			int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
 			CALL_BATTLE( Encounter );
+			WAIT_BATTLE();
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
 			return;
 		case 1://Cancel
 			return;
@@ -388,6 +420,8 @@ void EventSelectIds()
 
 void EventLoadSelected()
 {
+	int FldCurMaj = FLD_GET_MAJOR();
+	int FldCurMin = FLD_GET_MINOR();
 	if ( gEventMajor == 0 && gEventMinor == 0 )
 	{
 		DisplayMessagePrompt(LoadCheckError);
@@ -395,6 +429,7 @@ void EventLoadSelected()
 	}
 	FADE( 3, 20 );
 	CALL_EVENT( gEventMajor, gEventMinor );
+	CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
 	return;
 }
 

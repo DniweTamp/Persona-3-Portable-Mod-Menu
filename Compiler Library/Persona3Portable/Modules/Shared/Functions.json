@@ -64,7 +64,7 @@
     {
         "Index": "0x5004",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0004",
+        "Name": "GET_ITEM_NUM",
         "Description": "Address: 0x08973488",
         "Parameters": [
             {
@@ -77,7 +77,7 @@
     {
         "Index": "0x5005",
         "ReturnType": "void",
-        "Name": "SHD_FUNCTION_0005",
+        "Name": "SET_ITEM_NUM",
         "Description": "Address: 0x089734B8",
         "Parameters": [
             {
@@ -95,7 +95,7 @@
     {
         "Index": "0x5006",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0006",
+        "Name": "GET_EQUIP",
         "Description": "Address: 0x089736A0",
         "Parameters": [
             {
@@ -113,7 +113,7 @@
     {
         "Index": "0x5007",
         "ReturnType": "void",
-        "Name": "SHD_FUNCTION_0007",
+        "Name": "SET_EQUIP",
         "Description": "Address: 0x089736E8",
         "Parameters": [
             {
@@ -136,7 +136,7 @@
     {
         "Index": "0x5008",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0008",
+        "Name": "GET_SMN_LEVEL",
         "Description": "Address: 0x08979C30",
         "Parameters": [
             {
@@ -149,7 +149,7 @@
     {
         "Index": "0x5009",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0009",
+        "Name": "GET_HP",
         "Description": "Address: 0x08979AE0",
         "Parameters": [
             {
@@ -162,7 +162,7 @@
     {
         "Index": "0x500a",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_000A",
+        "Name": "GET_MAXHP",
         "Description": "Address: 0x08979B10",
         "Parameters": [
             {
@@ -175,7 +175,7 @@
     {
         "Index": "0x500b",
         "ReturnType": "void",
-        "Name": "SHD_FUNCTION_000B",
+        "Name": "SET_HP",
         "Description": "Address: 0x08979B40",
         "Parameters": [
             {
@@ -193,7 +193,7 @@
     {
         "Index": "0x500c",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_000C",
+        "Name": "GET_SP",
         "Description": "Address: 0x08979B80",
         "Parameters": [
             {
@@ -206,7 +206,7 @@
     {
         "Index": "0x500d",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_000D",
+        "Name": "GET_MAXSP",
         "Description": "Address: 0x08979BB0",
         "Parameters": [
             {
@@ -219,7 +219,7 @@
     {
         "Index": "0x500e",
         "ReturnType": "void",
-        "Name": "SHD_FUNCTION_000E",
+        "Name": "SET_SP",
         "Description": "Address: 0x08979BE0",
         "Parameters": [
             {

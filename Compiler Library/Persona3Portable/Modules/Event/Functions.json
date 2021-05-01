@@ -78,7 +78,7 @@
     {
         "Index": "0x3006",
         "ReturnType": "int",
-        "Name": "EVT_FUNCTION_0006",
+        "Name": "CMM_GET_LV",
         "Description": "Address: 0x08A5F3D4",
         "Parameters": [
             {
@@ -1168,14 +1168,14 @@
     {
         "Index": "0x3057",
         "ReturnType": "int",
-        "Name": "EVT_FUNCTION_0057",
+        "Name": "FLD_GET_MAJOR",
         "Description": "Address: 0x08994F64",
         "Parameters": []
     },
     {
         "Index": "0x3058",
         "ReturnType": "int",
-        "Name": "EVT_FUNCTION_0058",
+        "Name": "FLD_GET_MINOR",
         "Description": "Address: 0x08994FB0",
         "Parameters": []
     },
