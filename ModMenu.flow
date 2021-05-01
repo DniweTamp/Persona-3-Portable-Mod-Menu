@@ -1,6 +1,5 @@
 //import flow files
 import( "Utilities.flow" );
-//import( "QuickTests.flow" );
 //import msg files
 import( "ModMenu.msg" );
 //global variables
@@ -57,13 +56,10 @@ void ModMenuPage2()
 		case 3://About
 			DisplayMessagePrompt( AboutMsg );
 			return;
-		case 4://Quick tests
-			//QuickTests();
-			return;
-		case 5://Previous Page
+		case 4://Previous Page
 			ModMenuInit();
 			return;
-		case 6://Cancel
+		case 5://Cancel
 			return;
 	}
 }
@@ -98,23 +94,36 @@ void PlayerEditorDisplay()
 
 void PlayerEditorDisplay2()
 {
+	int FldCurMaj = 0;
+	int FldCurMin = 0;
 	int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
 	switch ( selection )
 	{
 		case 0://Set Protagonist Name
-			int FldCurMaj = FLD_GET_MAJOR();
-			int FldCurMin = FLD_GET_MINOR();
+			FldCurMaj = FLD_GET_MAJOR();
+			FldCurMin = FLD_GET_MINOR();
 			CLD_FUNCTION_0007();
 			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
 			return;
-		case 1://Max Money
+		case 1://Sex Change
+			FldCurMaj = FLD_GET_MAJOR();
+			FldCurMin = FLD_GET_MINOR();
+			BIT_ON( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
+			CLD_FUNCTION_001A();
+			CLD_FUNCTION_0019();
+			BIT_ON( ( 0 + 255 ) );
+			BIT_OFF( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
+			WAIT( 60 );
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			return;
+		case 2://Max Money
 			ADD_PC_MONEY( 99999999 );
 			DisplayMessagePrompt( MoneyAdded );
 			return;
-		case 2://Previous Page
+		case 3://Previous Page
 			PlayerEditorDisplay();
 			return;
-		case 3://Cancel
+		case 4://Cancel
 			return;
 	}
 }
@@ -215,7 +224,8 @@ void ItemEditorDisplay()
 		case 5: // Key Items
 			ItemGetSelect( 0x600 );
 			return;
-		case 6: // Cancel
+		case 6: // Skill Cards
+			ItemGetSelect( 0x690 );
 			return;
 	}
 }
@@ -224,11 +234,7 @@ void ItemGetSelect( int type )
 {
 	int itemId = SelectNumberPrompt( ItemPrompt, 4 );
 	int amount = SelectNumberPrompt( ItemPrompt2, 2 );
-	if ( ( itemId = -1 ) || ( amount = -1 ) )
-	{
-		return;
-	}
-	else
+	if ( ( itemId != -1 ) || ( amount != -1 ) )
 	{
 		SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
 		SET_MSG_VAR( 1, type + itemId, 5 );

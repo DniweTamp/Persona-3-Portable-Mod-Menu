@@ -18,7 +18,6 @@
 [s]Flags[e]
 [s]Font Test[e]
 [s]About[e]
-[s]Quick tests[e]
 [s]Previous Page[e]
 [s]Cancel[e]
 
@@ -33,6 +32,7 @@
 
 [sel PlayerMenu2]
 [s]Set Protagonist Name[e]
+[s]Sex Change (Unstable!)[e]
 [s]Max Money[e]
 [s]Previous Page[e]
 [s]Cancel[e]
@@ -67,7 +67,7 @@ Add how many points?[n](max. 2 digits)[w][e]
 [s]Accessories[e]
 [s]Items[e]
 [s]Key Items[e]
-[s]Cancel[e]
+[s]Skill Cards[e]
 
 [msg ItemPrompt [Items]]
 [s]Enter the item ID you want.[n](max. 4 digits)[w][e]
