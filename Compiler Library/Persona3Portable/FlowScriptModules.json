@@ -4,7 +4,7 @@
     "ShortName": "Common",
     "Description": "Non-domain specific commonly used functions.",
     "ConstantsPath": "",
-    "EnumsPath": "",
+    "EnumsPath": "Persona3Portable\\Enums.json",
     "FunctionsPath": "Persona3Portable\\Modules\\Common\\Functions.json"
   },
   {
@@ -12,7 +12,7 @@
     "ShortName": "Field",
     "Description": "Field related functions.",
     "ConstantsPath": "",
-    "EnumsPath": "",
+    "EnumsPath": "Persona3Portable\\Enums.json",
     "FunctionsPath": "Persona3Portable\\Modules\\Field\\Functions.json"
   },
   {
@@ -20,7 +20,7 @@
     "ShortName": "AI",
     "Description": "AI related functions.",
     "ConstantsPath": "",
-    "EnumsPath": "",
+    "EnumsPath": "Persona3Portable\\Enums.json",
     "FunctionsPath": "Persona3Portable\\Modules\\AI\\Functions.json"
   },
   {
@@ -36,7 +36,7 @@
     "ShortName": "Calendar",
     "Description": "Calendar based scene transition related functions.",
     "ConstantsPath": "",
-    "EnumsPath": "",
+    "EnumsPath": "Persona3Portable\\Enums.json",
     "FunctionsPath": "Persona3Portable\\Modules\\Calendar\\Functions.json"
   },
   {
@@ -44,7 +44,7 @@
     "ShortName": "Shared data",
     "Description": "",
     "ConstantsPath": "",
-    "EnumsPath": "",
+    "EnumsPath": "Persona3Portable\\Enums.json",
     "FunctionsPath": "Persona3Portable\\Modules\\Shared\\Functions.json"
   }
 ]

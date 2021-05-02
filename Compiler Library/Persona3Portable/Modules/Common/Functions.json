@@ -922,7 +922,7 @@
         "Description": "Address: 0x089734F8",
         "Parameters": [
             {
-                "Type": "int",
+                "Type": "PartyMember",
                 "Name": "param1",
                 "Description": ""
             }
@@ -935,7 +935,7 @@
         "Description": "Address: 0x089735BC",
         "Parameters": [
             {
-                "Type": "int",
+                "Type": "PartyMember",
                 "Name": "param1",
                 "Description": ""
             }
