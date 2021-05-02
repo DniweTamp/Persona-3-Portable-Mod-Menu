@@ -325,7 +325,7 @@
         "Description": "Address: 0x089738A8",
         "Parameters": [
             {
-                "Type": "int",
+                "Type": "PartyMember",
                 "Name": "PartyMember",
                 "Description": ""
             }
