@@ -1,5 +1,6 @@
 //import flow files
 import( "Utilities.flow" );
+//import( "QuickTests.flow" );
 //import msg files
 import( "ModMenu.msg" );
 //global variables
@@ -11,6 +12,8 @@ global int unitId;
 
 void ModMenuInit()
 {
+	int FldCurMaj = FLD_GET_MAJOR();
+	int FldCurMin = FLD_GET_MINOR();
 	int selection = MSG_SELECT( ModMenuName, ModMenu, 0 );
 	switch ( selection )
 	{
@@ -21,7 +24,13 @@ void ModMenuInit()
 			PlayerEditorDisplay();
 			return;
 		case 2://Battle Select
-			BattleSelect();
+			int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
+			if ( Encounter != -1 )
+			{
+				CALL_BATTLE( Encounter );
+				WAIT_BATTLE();
+				CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			}
 			return;
 		case 3://Sound Test
 			int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
@@ -47,19 +56,22 @@ void ModMenuPage2()
 		case 0://Event Select
 			EventSelect();
 			return;
-		case 1://Flags
+		case 1://Facility
+			CallFacilityDisplay();
+			return;
+		case 2://Flags
 			FlagsEditorDisplay();
 			return;
-		case 2://Font Test
+		case 3://Font Test
 			DisplayMessagePrompt( FontTest );
 			return;
-		case 3://About
+		case 4://About
 			DisplayMessagePrompt( AboutMsg );
 			return;
-		case 4://Previous Page
+		case 5://Previous Page
 			ModMenuInit();
 			return;
-		case 5://Cancel
+		case 6://Cancel
 			return;
 	}
 }
@@ -69,8 +81,10 @@ void PlayerEditorDisplay()
 	int selection = MSG_SELECT( ModMenuName, PlayerMenu, 0 );
 	switch ( selection )
 	{
-		case 0://Personas
-			PersonaEditorOpen();
+		case 0://Evolve party member persona
+			int unit = SelectUnitNoProtag();
+			if ( unit != -1 )
+				PERSONA_EVOLUTION( unit );
 			return;
 		case 1://Social Stats
 			StatEditorDisplay();
@@ -79,7 +93,10 @@ void PlayerEditorDisplay()
 			ItemEditorDisplay();
 			return;
 		case 3://Set Social Link Rank
-			CommuSetRankSelect();
+			int SLink = SelectSLink();
+			int lvl = Select10NumberPrompt( CommuPrompt );
+			if ( lvl != -1 )
+				CMM_SET_LV( SLink, lvl, 9999 );
 			return;
 		case 4://Party Edit
 			PartyEditorDisplay();
@@ -94,23 +111,19 @@ void PlayerEditorDisplay()
 
 void PlayerEditorDisplay2()
 {
-	int FldCurMaj = 0;
-	int FldCurMin = 0;
+	int FldCurMaj = FLD_GET_MAJOR();
+	int FldCurMin = FLD_GET_MINOR();
 	int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
 	switch ( selection )
 	{
 		case 0://Set Protagonist Name
-			FldCurMaj = FLD_GET_MAJOR();
-			FldCurMin = FLD_GET_MINOR();
-			CLD_FUNCTION_0007();
+			CALL_NAME_ENTRY();
 			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
 			return;
 		case 1://Sex Change
-			FldCurMaj = FLD_GET_MAJOR();
-			FldCurMin = FLD_GET_MINOR();
 			BIT_ON( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
-			CLD_FUNCTION_001A();
-			CLD_FUNCTION_0019();
+			CALL_SEX_SELECT();
+			FCL_FUNCTION_0019();
 			BIT_ON( ( 0 + 255 ) );
 			BIT_OFF( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
 			WAIT( 60 );
@@ -126,53 +139,6 @@ void PlayerEditorDisplay2()
 		case 4://Cancel
 			return;
 	}
-}
-
-void PersonaEditorOpen()
-{
-	int selection = MSG_SELECT( ModMenuName, PersonaMenu, 0 );
-	switch ( selection )
-	{
-		case 0://Add Persona
-			PersonaAddSelect();
-			return;
-		case 1://Delete Personas
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 2://Add Skill
-			PersonaAddSkillSelect();
-			return;
-		case 3://Unlock Full Compendium
-			DisplayMessagePrompt( NotImplemented );
-			return;
-		case 4://Evolve Persona
-			int unit = SelectUnitNoProtag();
-			if ( unit != -1 )
-				PERSONA_EVOLUTION( unit );
-			return;
-		case 5://Cancel
-			return;
-	}
-}
-
-void PersonaAddSelect()
-{
-	//int personaId;
-	//personaId = SelectNumberPrompt( PersonaAddPrompt, 3 ); 
-	//	if ( personaId == -1 )
-	//		return;
-	//ADD_PERSONA_STOCK( personaId );
-	//DisplayMessagePrompt( PersonaAdded );
-	DisplayMessagePrompt( NotImplemented );
-}
-
-void PersonaAddSkillSelect()
-{
-	/*unitId = MSG_SELECT( ModMenuName, UnitSelect, 0 );
-	int skillId = 0;
-	skillId = SelectNumberPrompt( SkillPrompt, 3 );
-	SKILL_ADD( ( unitId + 1 ), skillId );*/
-	DisplayMessagePrompt( NotImplemented );
 }
 
 void StatEditorDisplay()
@@ -243,91 +209,6 @@ void ItemGetSelect( int type )
 	}
 }
 
-void CommuSetRankSelect()
-{
-	int selection = MSG_SELECT( CommuDesc, CommuCharSel1, 0 );
-	int lvl = 0;
-	switch (selection)
-	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 1, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 2, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 3, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 4, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 5, lvl, 9999 ); return;
-		case 5: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 6, lvl, 9999 ); return;
-		case 6: CommuSetRankSelect2(); return;
-
-	}
-}
-
-void CommuSetRankSelect2()
-{
-	int selection = MSG_SELECT( CommuDesc, CommuCharSel2, 0 );
-	int lvl = 0;
-	switch (selection)
-	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 7, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 8, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 9, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 10, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 11, lvl, 9999 ); return;
-		case 5: CommuSetRankSelect(); return;
-		case 6: CommuSetRankSelect3(); return;
-
-	}
-}
-
-void CommuSetRankSelect3()
-{
-	int selection = MSG_SELECT( CommuDesc, CommuCharSel3, 0 );
-	int lvl = 0;
-	switch (selection)
-	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 12, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 13, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 14, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 15, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 16, lvl, 9999 ); return;
-		case 5: CommuSetRankSelect2(); return;
-		case 6: CommuSetRankSelect4(); return;
-
-	}
-}
-
-void CommuSetRankSelect4()
-{
-	int selection = MSG_SELECT( CommuDesc, CommuCharSel4, 0 );
-	int lvl = 0;
-	switch (selection)
-	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 17, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 18, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 19, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 20, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 21, lvl, 9999 ); return;
-		case 5: CommuSetRankSelect3(); return;
-		case 6: CommuSetRankSelect5(); return;
-
-	}
-}
-
-void CommuSetRankSelect5()
-{
-	int selection = MSG_SELECT( CommuDesc, CommuCharSel5, 0 );
-	int lvl = 0;
-	switch (selection)
-	{
-		case 0: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 22, lvl, 9999 ); return;
-		case 1: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 23, lvl, 9999 ); return;
-		case 2: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 24, lvl, 9999 ); return;
-		case 3: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 25, lvl, 9999 ); return;
-		case 4: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 26, lvl, 9999 ); return;
-		case 5: lvl = Select10NumberPrompt( CommuPrompt ); if ( lvl != -1 ) CMM_SET_LV( 27, lvl, 9999 ); return;
-		case 6: CommuSetRankSelect4(); return;
-
-	}
-}
-
 void PartyEditorDisplay()
 {
 	int unit = 0;
@@ -351,63 +232,32 @@ void PartyEditorDisplay()
 	}
 }
 
-void BattleSelect()
-{
-	int FldCurMaj = FLD_GET_MAJOR();
-	int FldCurMin = FLD_GET_MINOR();
-	int selection = MSG_SELECT( ModMenuName, BattleTypeMenu, 0 );
-	switch ( selection )
-	{
-		case 0://Regular Encounter
-			int Encounter = SelectNumberPrompt( EncounterPrompt, 3 );
-			if ( Encounter != -1 )
-			{
-				CALL_BATTLE( Encounter );
-				WAIT_BATTLE();
-				CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-			}
-			return;
-		case 1://Cancel
-			return;
-	}
-}
-
 void FieldSelect()
 {
 	int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
 	switch ( selection )
 	{
 		case 0://Enter Field ID
-			FieldSelectIds();
+			int temp = SelectNumberPrompt( FieldDlg, 3 );
+			if ( temp == -1 )
+				return;
+			gFieldMajor = temp;
+
+			temp = SelectNumberPrompt( FieldDlg2, 3 );
+			if ( temp == -1 )
+				return;
+			gFieldMinor = temp;
+			FieldSelect();
 			return;
 		case 1://Load Field ID
-			FieldLoadSelected();
+			if (gFieldMajor == 0 && gFieldMinor == 0)
+				DisplayMessagePrompt( LoadCheckError );
+			else
+				CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
 			return;
 		case 2://Cancel
 			return;
 	}
-}
-
-void FieldSelectIds()
-{
-	int temp = SelectNumberPrompt( FieldDlg, 3 );
-	if ( temp == -1 )
-		return;
-	gFieldMajor = temp;
-	
-	temp = SelectNumberPrompt( FieldDlg2, 3 );
-	if ( temp == -1 )
-		return;
-	gFieldMinor = temp;
-	FieldSelect();
-}
-
-void FieldLoadSelected()
-{
-	if (gFieldMajor == 0 && gFieldMinor == 0)
-		DisplayMessagePrompt( LoadCheckError );
-	else
-		CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
 }
 
 void EventSelect()
@@ -416,44 +266,64 @@ void EventSelect()
 	switch ( selection )
 	{
 		case 0://Enter Event ID
-			EventSelectIds();
+			int temp = SelectNumberPrompt( EventDlg, 3 );
+			if ( temp == -1 )
+				return;
+			gEventMajor = temp;
+			temp = SelectNumberPrompt( EventDlg2, 3 );
+			if ( temp == -1 )
+				return;
+			gEventMinor = temp;
+			EventSelect();
 			return;
 		case 1://Load Event ID
-			EventLoadSelected();
+			int FldCurMaj = FLD_GET_MAJOR();
+			int FldCurMin = FLD_GET_MINOR();
+			if ( gEventMajor == 0 && gEventMinor == 0 )
+			{
+				DisplayMessagePrompt(LoadCheckError);
+				return;
+			}
+			FADE( 3, 20 );
+			CALL_EVENT( gEventMajor, gEventMinor );
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
 			return;
 		case 2://Cancel
 			return;
 	}
 }
 
-void EventSelectIds()
-{
-	int temp = SelectNumberPrompt( EventDlg, 3 );
-	if ( temp == -1 )
-		return;
-	gEventMajor = temp;
-	
-	temp = SelectNumberPrompt( EventDlg2, 3 );
-	if ( temp == -1 )
-		return;
-		
-	gEventMinor = temp;
-	EventSelect();
-}
-
-void EventLoadSelected()
+void CallFacilityDisplay()
 {
 	int FldCurMaj = FLD_GET_MAJOR();
 	int FldCurMin = FLD_GET_MINOR();
-	if ( gEventMajor == 0 && gEventMinor == 0 )
+	int selection = MSG_SELECT( ModMenuName, FacilityMenu, 0 );
+	switch ( selection )
 	{
-		DisplayMessagePrompt(LoadCheckError);
-		return;
+		case 0://Town map
+			FLD_SEL_EX( 0 );
+			return;
+		case 1://Save Menu
+			SAVE_MENU();
+			return;
+		case 2://Weapon Shop
+			CALL_WEAPON_SHOP();
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			return;
+		case 3://Item Shop
+			CALL_ITEM_SHOP();
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			return;
+		case 4://Trade Shop
+			CALL_TRADE_SHOP();
+			CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+			return;
+		case 5://Persona Fusion
+			CALL_COMBINE_SHOP();
+			return;
+		case 6://Cancel
+			return;
 	}
-	FADE( 3, 20 );
-	CALL_EVENT( gEventMajor, gEventMinor );
-	CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-	return;
 }
 
 void FlagsEditorDisplay()
@@ -479,7 +349,7 @@ void FlagManualInput()
 	if ( id != -1 )
 	{
 		SET_MSG_VAR( 1, id, 0 );
-		int onOff = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
+		int onOff = SelectOnOffCheck();
 		switch (onOff) 
 		{
 			case 0: // On
@@ -492,13 +362,9 @@ void FlagManualInput()
 				return;
 			case 2: // Check
 				if ( BIT_CHK( id ) )
-				{
 					DisplayMessagePrompt( FlagCheckOn );
-				}
 				else
-				{
 					DisplayMessagePrompt( FlagCheckOff );
-				}
 				return;
 		}
 	}
@@ -510,46 +376,27 @@ void FlagMassEditor()
 	switch ( selection )
 	{
 		case 0://Disable all flags
-			DisableAllBits();
+			for ( int i = 0; i < 0x13FF; i++ ) 
+			{
+				BIT_OFF( i ); 
+			}
 			return;
 		case 1://Enable all flags
-			EnableAllBits();
+			for ( int i = 0; i < 0x13FF; i++ ) 
+			{
+				BIT_ON( i ); 
+			}
 			return;
 		case 2://Swap enabled/disabled flags
-			ToggleAllBits();
+	for ( int i = 0; i < 0x13FF; i++ ) 
+			{
+				if ( BIT_CHK( i ) ) 
+					BIT_OFF( i );
+				else
+					BIT_ON( i );
+			}
 			return;
 		case 3://Cancel
 			return;
-	}
-}
-
-void DisableAllBits() 
-{
-	for ( int i = 0; i < 0x13FF; i++ ) 
-	{
-		BIT_OFF( i ); 
-	}
-}
-
-void EnableAllBits()
-{
-	for ( int i = 0; i < 0x13FF; i++ ) 
-	{
-		BIT_ON( i ); 
-	}
-}
-
-void ToggleAllBits() 
-{
-	for ( int i = 0; i < 0x13FF; i++ ) 
-	{
-		if (BIT_CHK(i)) 
-		{
-			BIT_OFF(i);
-		}
-		else
-		{
-			BIT_ON(i);
-		}
 	}
 }

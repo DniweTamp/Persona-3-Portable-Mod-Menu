@@ -348,7 +348,7 @@
     },
     {
         "Index": "0x0018",
-        "ReturnType": "void",
+        "ReturnType": "int",
         "Name": "FUNCTION_0018",
         "Description": "Address: 0x089790C8",
         "Parameters": [

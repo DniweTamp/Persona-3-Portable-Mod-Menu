@@ -199,7 +199,7 @@
     {
         "Index": "0x1012",
         "ReturnType": "void",
-        "Name": "FLD_FUNCTION_0012",
+        "Name": "FLD_START_SUPPORT_MSG",
         "Description": "Address: 0x088C2F18",
         "Parameters": [
             {
@@ -1398,7 +1398,7 @@
     {
         "Index": "0x106a",
         "ReturnType": "void",
-        "Name": "FLD_FUNCTION_006A",
+        "Name": "CALL_CALENDAR",
         "Description": "Address: 0x089365C4",
         "Parameters": []
     },

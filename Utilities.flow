@@ -80,24 +80,16 @@ int SelectUnitNoProtag()
 		page1:
 	int unitID = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
 	if ( unitID <= 5 )
-	{
 		return unitID;
-	}
-	else if ( unitID == 6 ) //page 2
+	if ( unitID == 6 ) //page 2
 	{
 		unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
 		if ( unitID <= 10 )
-		{
 			return unitID;
-		}
-		else if ( unitID == 11 )
-		{
+		if ( unitID == 11 )
 			goto page1;
-		}
-		else if ( unitID == 12 )
-		{
+		if ( unitID == 12 )
 			return -1;
-		}
 	}
 	return unitID;
 }
@@ -107,26 +99,67 @@ int SelectUnitNoProtagNoFuuka()
 		page1:
 	int unitID = MSG_SELECT( ModMenuName, UnitSelect1NoProtag, 0 ) + 2;
 	if ( unitID <= 5 )
-	{
 		return unitID;
-	}
-	else if ( unitID == 6 ) //page 2
+	if ( unitID == 6 ) //page 2
 	{
 		unitID = MSG_SELECT( ModMenuName, UnitSelect2NoProtagNoFuuka, 0 ) + 7;
 		if ( unitID <= 10 )
-		{
 			return unitID;
-		}
-		else if ( unitID == 11 )
-		{
+		if ( unitID == 11 )
 			goto page1;
-		}
-		else if ( unitID == 12 )
-		{
+		if ( unitID == 12 )
 			return -1;
-		}
 	}
 	return unitID;
+}
+
+int SelectSLink()
+{
+	page1:
+	int selection = MSG_SELECT( CommuDesc, CommuCharSel1, 0 ) + 1;
+	if ( selection < 7 )
+		return selection;
+	if ( selection == 7 )
+		goto page2;
+	page2:
+	{
+		selection = MSG_SELECT( CommuDesc, CommuCharSel2, 0 ) + 7;
+		if ( selection < 7 + 5 )
+			return selection;
+		if ( selection == 7 + 5 )
+			goto page1;
+		if ( selection == 7 + 6 )
+			goto page3;
+	}
+	page3:
+	{
+		selection = MSG_SELECT( CommuDesc, CommuCharSel3, 0 ) + 12;
+		if ( selection < 12 + 5 )
+			return selection;
+		if ( selection == 12 + 5 )
+			goto page2;
+		if ( selection == 12 + 6 )
+			goto page4;
+	}
+	page4:
+	{
+		selection = MSG_SELECT( CommuDesc, CommuCharSel4, 0 ) + 17;
+		if ( selection < 17 + 5 )
+			return selection;
+		if ( selection == 17 + 5 )
+			goto page3;
+		if ( selection == 17 + 6 )
+			goto page5;
+	}
+	page5:
+	{
+		selection = MSG_SELECT( CommuDesc, CommuCharSel5, 0 ) + 22;
+		if ( selection < 22 + 6 )
+			return selection;
+		if ( selection == 22 + 6 )
+			goto page4;
+	}
+	return selection;
 }
 
 int SelectYesNo()
@@ -150,6 +183,12 @@ int SelectOnOff()
 int SelectOffOn()
 {
 	int selection = MSG_SELECT( MSGDummy, SelectOffOn, 0 );
+	return selection;
+}
+
+int SelectOnOffCheck()
+{
+	int selection = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
 	return selection;
 }
 
