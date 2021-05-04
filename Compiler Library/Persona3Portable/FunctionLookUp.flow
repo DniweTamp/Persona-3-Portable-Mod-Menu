@@ -412,9 +412,9 @@
 0x20c7	int	AI_FUNCTION_00C7(int param1, int param2);
 0x20c8	void	AI_FUNCTION_00C8();
 0x20c9	void	AI_FUNCTION_00C9();
-0x20ca	void	AI_FUNCTION_00CA(float param1, float param2, float param3, float param4, float param5, float param6)
-0x20cb	void	AI_FUNCTION_00CB(float param1, float param2, float param3, float param4, float param5, float param6)
-0x20cc	void	AI_FUNCTION_00CC(float param1, float param2, float param3, float param4, float param5, float param6)
+0x20ca	void	AI_FUNCTION_00CA(float param1, float param2, float param3, float param4, float param5, float param6);
+0x20cb	void	AI_FUNCTION_00CB(float param1, float param2, float param3, float param4, float param5, float param6);
+0x20cc	void	AI_FUNCTION_00CC(float param1, float param2, float param3, float param4, float param5, float param6);
 0x20cd	void	AI_FUNCTION_00CD(int param1);
 0x20ce	void	AI_FUNCTION_00CE(int param1, int param2);
 0x20cf	void	AI_FUNCTION_00CF();
