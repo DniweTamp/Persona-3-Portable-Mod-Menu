@@ -8,5 +8,5 @@ void f010_001_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-	station_shortcut();
+	f010_001_shortcut_unhooked();
 } 

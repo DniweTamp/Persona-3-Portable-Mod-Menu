@@ -8,34 +8,5 @@ void f008_001_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-	int var11 = 7;
-	FUNCTION_002C( 14, 5 );
-	int var12 = MSG_SELECT( 37, 36, var11 );
-	
-	if ( ( var12 == 0 ) )
-	{
-		HIT_SCRIPT_04();
-	}
-	else if ( ( var12 == 1 ) )
-	{
-		HIT_SCRIPT_08();
-	}
-	else if ( ( var12 == 2 ) )
-	{
-		HIT_SCRIPT_07();
-	}
-	else if ( ( var12 == 3 ) )
-	{
-		HIT_SCRIPT_05();
-	}
-	else if ( ( var12 == 4 ) )
-	{
-		HIT_SCRIPT_00();
-	}
-	else 
-	{
-		MSG_WND_CLS();
-		return;
-	}
-
+	f008_001_shortcut_unhooked();
 } 

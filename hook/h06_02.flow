@@ -8,5 +8,5 @@ void f006_002_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-	school_shortcut();
+	f006_002_shortcut_unhooked();
 } 

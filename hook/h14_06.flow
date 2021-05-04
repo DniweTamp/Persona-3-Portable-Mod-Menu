@@ -8,5 +8,5 @@ void f014_006_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-	kyoto_shortcut();
+	f014_006_shortcut_unhooked();
 } 

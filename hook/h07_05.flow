@@ -8,5 +8,5 @@ void f007_005_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-	dormitory_shortcut();
+	f007_005_shortcut_unhooked();
 } 
