@@ -8,7 +8,8 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "MsgId"
             }
         ]
     },
@@ -35,7 +36,8 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "SelId"
             }
         ]
     },
@@ -75,7 +77,8 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "BitId"
             }
         ]
     },
@@ -88,7 +91,8 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "BitId"
             }
         ]
     },
@@ -101,7 +105,8 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "BitId"
             }
         ]
     },
@@ -1168,12 +1173,14 @@
             {
                 "Type": "int",
                 "Name": "param1",
-                "Description": ""
+                "Description": "",
+				"Semantic": "MsgId"
             },
             {
                 "Type": "int",
                 "Name": "param2",
-                "Description": ""
+                "Description": "",
+				"Semantic": "SelId"
             },
             {
                 "Type": "int",

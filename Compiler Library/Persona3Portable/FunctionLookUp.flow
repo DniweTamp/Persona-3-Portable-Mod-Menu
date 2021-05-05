@@ -620,6 +620,6 @@
 0x5012	int	SHD_FUNCTION_0012(int param1, int param2);
 0x5013	int	SHD_FUNCTION_0013();
 0x5014	void	PERSONA_EVOLUTION(int param1);
-0x5015	int	SHD_FUNCTION_0015(int param1);
-0x5016	int	SHD_FUNCTION_0016(int param1, int param2);
+0x5015	int	CHECK_TIREDNESS(int param1);
+0x5016	int	SET_TIREDNESS(int param1, int param2);
 0x5017	int	SHD_FUNCTION_0017(int param1);

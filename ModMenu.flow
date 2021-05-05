@@ -227,8 +227,41 @@ void PartyEditorDisplay()
 				PARTY_OUT( unit );
 			PartyEditorDisplay();
 			return;
-		case 2://Cancel
+		case 2://Set Tiredness
+			SetTiredness();
 			return;
+		case 3://Cancel
+			return;
+	}
+}
+
+void SetTiredness()
+{
+	int unit = SelectUnit();
+	if ( unit != -1 )
+	{
+		int selection = MSG_SELECT( ModMenuName, SetTiredness, 0 );
+		switch ( selection )
+		{
+			case 0://Great
+				SET_TIREDNESS( unit, 2 );
+				PartyEditorDisplay();
+				return;
+			case 1://Good
+				SET_TIREDNESS( unit, 0 );
+				PartyEditorDisplay();
+				return;
+			case 2://Tired
+				SET_TIREDNESS( unit, 3 );
+				PartyEditorDisplay();
+				return;
+			case 4://Sick
+				SET_TIREDNESS( unit, 5 );
+				PartyEditorDisplay();
+				return;
+			case 5://Cancel
+				return;
+		}
 	}
 }
 

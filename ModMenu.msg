@@ -81,6 +81,14 @@
 [sel PartyEditMenu]
 [s]Add Party Members[e]
 [s]Remove Party Members[e]
+[s]Set Tiredness[e]
+[s]Cancel[e]
+
+[sel SetTiredness]
+[s]Great[e]
+[s]Good[e]
+[s]Tired[e]
+[s]Sick[e]
 [s]Cancel[e]
 
 [msg MoneyAdded]

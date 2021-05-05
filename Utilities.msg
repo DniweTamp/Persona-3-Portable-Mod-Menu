@@ -33,7 +33,7 @@ Lower[e]
 Cancel[e]
 
 [sel UnitSelect1]
-Protagonist[e]
+[f 4 2][e]
 Yukari[e]
 Aigis[e]
 Mitsuru[e]

@@ -334,11 +334,11 @@
     {
         "Index": "0x5015",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0015",
+        "Name": "CHECK_TIREDNESS",
         "Description": "Address: 0x088C33C8",
         "Parameters": [
             {
-                "Type": "int",
+                "Type": "PartyMember",
                 "Name": "param1",
                 "Description": ""
             }
@@ -347,11 +347,11 @@
     {
         "Index": "0x5016",
         "ReturnType": "int",
-        "Name": "SHD_FUNCTION_0016",
+        "Name": "SET_TIREDNESS",
         "Description": "Address: 0x088C33F8",
         "Parameters": [
             {
-                "Type": "int",
+                "Type": "PartyMember",
                 "Name": "param1",
                 "Description": ""
             },
