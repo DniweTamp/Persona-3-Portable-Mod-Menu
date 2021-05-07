@@ -140,6 +140,9 @@
 [s]Mass Flag Editor[e]
 [s]Cancel[e]
 
+[msg SelectFlagDialog]
+[s]Select a flag to edit (max. 4 digits).[w][e]
+
 [msg FlagCheckOn]
 [s]Flag [f 2 4 1] is on.[w][e]
 

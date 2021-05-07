@@ -34,8 +34,8 @@ void ModMenuInit()
 			return;
 		case 3://Sound Test
 			int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
-			if (bgmId != -1)
-				BGM( bgmId );
+				if (bgmId != -1)
+			BGM( bgmId );
 			return;
 		case 4://Field Select
 			FieldSelect();
@@ -378,7 +378,7 @@ void FlagsEditorDisplay()
 
 void FlagManualInput()
 {
-	int id = SelectNumber( 4 );
+	int id = SelectNumberPrompt( SelectFlagDialog, 4 );
 	if ( id != -1 )
 	{
 		SET_MSG_VAR( 1, id, 0 );

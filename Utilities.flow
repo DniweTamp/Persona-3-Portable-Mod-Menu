@@ -1,16 +1,16 @@
 
 import( "Utilities.msg" );
 
-int SelectDigit( int messageId )
+int SelectDigit()
 {
 	while ( true )
 	{
-		int digit = MSG_SELECT( MSGDummy, Select0to4Dialog, 0 );
+		int digit = SEL( Select0to4Dialog );
 		if ( digit < 5 ) //0 through 4
 			return digit;
 		if ( digit == 5 )
 		{
-			digit = MSG_SELECT( MSGDummy, Select5to9Dialog, 0 ) + 5;
+			digit = SEL( Select5to9Dialog ) + 5;
 			if ( digit < 10 )
 				return digit; //5 through 9 or back
 			else if (digit == 11)
@@ -29,23 +29,50 @@ int SelectNumber( int digitCount )
 	
 	for ( int i = 0; i < digitCount; i++ )
 	{
-		int digit = SelectDigit(MSGDummy);
-        if ( digit == -1 )
-        {
-            // Number should only equal negative one if we cancel
-            // before entering anything.
-            if ( i == 0 )
-            {
-                number = -1;
-                break;
-            }
-            else
-                break;
-        }
+		int digit = SelectDigit();
+		if ( digit == -1 )
+		{
+			// Number should only equal negative one if we cancel
+			// before entering anything.
+			if ( i == 0 )
+			{
+				number = -1;
+				break;
+			}
+			else
+				break;
+		}
 		number *= 10;
 		number += digit;
 	}
 	return number;
+}
+
+int Select10Number()
+{
+		page1:
+	int number = SEL( Select1to5Dialog ) + 1;
+	if ( number <= 5 )
+	{
+		return number;
+	}
+	else if ( number == 6 )
+	{
+		number = SEL( Select6to10Dialog ) + 6;
+		if ( number <= 10 )
+		{
+			return number;
+		}
+		else if ( number == 11 )
+		{
+			goto page1;
+		}
+		else if ( number == 12 )
+		{
+			return -1;
+		}
+	}
+	return 0;
 }
 
 int SelectUnit()
@@ -164,31 +191,31 @@ int SelectSLink()
 
 int SelectYesNo()
 {
-	int selection = MSG_SELECT( MSGDummy, SelectYesNo, 0 );
+	int selection = SEL( SelectYesNo );
 	return selection;
 }
 
 int SelectNoYes()
 {
-	int selection = MSG_SELECT( MSGDummy, SelectOffOn, 0 );
+	int selection = SEL( SelectOffOn );
 	return selection;
 }
 
 int SelectOnOff()
 {
-	int selection = MSG_SELECT( MSGDummy, SelectOnOff, 0 );
+	int selection = SEL( SelectOnOff );
 	return selection;
 }
 
 int SelectOffOn()
 {
-	int selection = MSG_SELECT( MSGDummy, SelectOffOn, 0 );
+	int selection = SEL( SelectOffOn );
 	return selection;
 }
 
 int SelectOnOffCheck()
 {
-	int selection = MSG_SELECT( MSGDummy, SelectOnOffCheck, 0 );
+	int selection = SEL( SelectOnOffCheck );
 	return selection;
 }
 
@@ -201,37 +228,20 @@ void DisplayMessagePrompt( int messageId )
 
 int SelectNumberPrompt( int messageId, int digits )
 {
-	DisplayMessagePrompt( messageId );
+	MSG_WND_DSP();
+	MSG( messageId );
 	int i = SelectNumber( digits );
+	MSG_WND_CLS();
 	return i;
 }
 
 int Select10NumberPrompt( int messageId )
 {
-	DisplayMessagePrompt( messageId );
-		page1:
-	int number = MSG_SELECT( MSGDummy, Select1to5Dialog, 0 ) + 1;
-	if ( number <= 5 )
-	{
-		return number;
-	}
-	else if ( number == 6 )
-	{
-		number = MSG_SELECT( MSGDummy, Select6to10Dialog, 0 ) + 6;
-		if ( number <= 10 )
-		{
-			return number;
-		}
-		else if ( number == 11 )
-		{
-			goto page1;
-		}
-		else if ( number == 12 )
-		{
-			return -1;
-		}
-	}
-	return 0;
+	MSG_WND_DSP();
+	MSG( messageId );
+	int i = Select10Number();
+	MSG_WND_CLS();
+	return i;
 }
 
 int SelectYesNoPrompt( int promptMessageId )
