@@ -113,7 +113,7 @@
     {
         "Index": "0x000a",
         "ReturnType": "int",
-        "Name": "FUNCTION_000A",
+        "Name": "RND",
         "Description": "Address: 0x08978D3C",
         "Parameters": [
             {
@@ -698,7 +698,7 @@
     {
         "Index": "0x002e",
         "ReturnType": "int",
-        "Name": "FUNCTION_002E",
+        "Name": "GET_COUNT",
         "Description": "Address: 0x08979050",
         "Parameters": [
             {
@@ -711,7 +711,7 @@
     {
         "Index": "0x002f",
         "ReturnType": "void",
-        "Name": "FUNCTION_002F",
+        "Name": "SET_COUNT",
         "Description": "Address: 0x08979080",
         "Parameters": [
             {
@@ -775,7 +775,7 @@
     {
         "Index": "0x0035",
         "ReturnType": "int",
-        "Name": "FUNCTION_0035",
+        "Name": "CHK_DAYS_STARTEND",
         "Description": "Address: 0x08972B8C",
         "Parameters": [
             {

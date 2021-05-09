@@ -115,10 +115,10 @@
 [s]1234567890-_.:,;|!"#$%&/[n]()=?+*{}^\<>`~'@[w][e]
 
 [msg FieldDlg [Field Select]]
-[s]Choose the first 3 digits of[n]the field to load.[n][w][e]
+[s]Choose the first 3 digits of[n]the field to load.[n]Current field: [f 2 4 1], [f 2 4 2].[n][w][e]
 
 [msg FieldDlg2 [Field Select]]
-[s]Choose the last 3 digits of[n]the field to load.[n][w][e]
+[s]Choose the last 3 digits of[n]the field to load.[n]Current field: [f 2 4 1], [f 2 4 2].[n][w][e]
 
 [msg EventDlg [Event Select]]
 [s]Choose the first 3 digits of[n]the event to load.[n][w][e]
@@ -129,9 +129,9 @@
 [sel FacilityMenu]
 [s]Town map[e]
 [s]Save Menu[e]
-[s]Weapon Shop[e]
-[s]Item Shop[e]
-[s]Trade Shop[e]
+[s]Weapon Shop (Unstable!)[e]
+[s]Item Shop (Unstable!)[e]
+[s]Trade Shop (Unstable!)[e]
 [s]Persona Fusion[e]
 [s]Cancel[e]
 

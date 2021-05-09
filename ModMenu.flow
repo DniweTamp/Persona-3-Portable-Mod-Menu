@@ -267,6 +267,8 @@ void SetTiredness()
 
 void FieldSelect()
 {
+	SET_MSG_VAR( 1, FLD_GET_MAJOR(), 0);
+	SET_MSG_VAR( 2, FLD_GET_MINOR(), 0);
 	int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
 	switch ( selection )
 	{
