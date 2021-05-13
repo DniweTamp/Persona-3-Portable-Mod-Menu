@@ -3,10 +3,10 @@ import( "../../ModMenu.flow" );
 
 void field_order_party_hook()
 {
-	ModMenuInit();
+    ModMenuInit();
 }
 
 void CallOriginalSquareMenu()
 {
-	field_order_party_unhooked();
+    field_order_party_unhooked();
 }

@@ -3,10 +3,10 @@ import( "../ModMenu.flow" );
 
 void f035_003_shortcut_hook()
 {
-	ModMenuInit();
+    ModMenuInit();
 }
 
 void CallOriginalSquareMenu()
 {
-	f035_003_shortcut_unhooked();
+    f035_003_shortcut_unhooked();
 } 
