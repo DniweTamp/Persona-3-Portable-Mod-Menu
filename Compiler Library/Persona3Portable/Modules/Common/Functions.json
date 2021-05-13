@@ -666,7 +666,7 @@
   {
     "Index": "0x002c",
     "ReturnType": "void",
-    "Name": "FUNCTION_002C",
+    "Name": "SEL_PAD_CHK",
     "Description": "Address: 0x08982AA8",
     "Parameters": [
       {

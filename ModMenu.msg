@@ -11,7 +11,6 @@
 [s]Sound Test[e]
 [s]Field Select[e]
 [s]Next Page[e]
-[s]Cancel[e]
 
 [sel ModMenu2]
 [s]Event Select[e]
@@ -20,7 +19,6 @@
 [s]Font Test[e]
 [s]About[e]
 [s]Previous Page[e]
-[s]Cancel[e]
 
 [sel PlayerMenu]
 [s]Evolve party member persona[e]
@@ -29,14 +27,12 @@
 [s]Set Social Link Rank[e]
 [s]Party Edit[e]
 [s]Next Page[e]
-[s]Cancel[e]
 
 [sel PlayerMenu2]
 [s]Set Protagonist Name[e]
 [s]Sex Change (Unstable!)[e]
 [s]Max Money[e]
 [s]Previous Page[e]
-[s]Cancel[e]
 
 [msg PersonaAddPrompt [Add Persona]]
 [s]Input the ID of the Persona to add.[n](max. 3 digits)[w][e]
@@ -48,7 +44,6 @@
 [s]Academics[e]
 [s]Charm[e]
 [s]Courage[e]
-[s]Cancel[e]
 
 [msg StatPrompt [Stats]]
 [s]Add how many points?[n](max. 2 digits)[w][e]
@@ -71,10 +66,6 @@
 [msg ItemAdded]
 [s]Obtained [f 2 4 2] of [f 2 4 1].[w][e]
 
-[sel CommuEditorOpen]
-[s]Edit SLink Ranks[e]
-[s]Cancel[e]
-
 [msg CommuPrompt]
 [s]Set the Social Link level[n]you want to have.[w][e]
 
@@ -82,14 +73,12 @@
 [s]Add Party Members[e]
 [s]Remove Party Members[e]
 [s]Set Tiredness[e]
-[s]Cancel[e]
 
 [sel SetTiredness]
 [s]Great[e]
 [s]Good[e]
 [s]Tired[e]
 [s]Sick[e]
-[s]Cancel[e]
 
 [msg MoneyAdded]
 [s]You recieved [clr 1]99999999[clr 0] yen.[w][e]
@@ -103,12 +92,10 @@
 [sel FieldSelect]
 [s]Enter Field ID[e]
 [s]Load Field ID[e]
-[s]Cancel[e]
 
 [sel EventSelect]
 [s]Enter Event ID[e]
 [s]Load Event ID[e]
-[s]Cancel[e]
 
 [msg FontTest[The Font Guy]]
 [s]ABCDEFGHIJKLMNOPQRSTUVWXYZ[n]abcdefghijklmnopqrstuvwxyz[n][w][e]
@@ -133,12 +120,10 @@
 [s]Item Shop (Unstable!)[e]
 [s]Trade Shop (Unstable!)[e]
 [s]Persona Fusion[e]
-[s]Cancel[e]
 
 [sel FlagMenu]
 [s]Manual Input[e]
 [s]Mass Flag Editor[e]
-[s]Cancel[e]
 
 [msg SelectFlagDialog]
 [s]Select a flag to edit (max. 4 digits).[w][e]
@@ -159,7 +144,6 @@
 [s]Disable all flags[e]
 [s]Enable all flags[e]
 [s]Swap enabled/disabled flags[e]
-[s]Cancel[e]
 
 [msg ColorTest]
 [s]Colors: [clr 0]0 [clr 1]1 [clr 2]2 [clr 3]3 [clr 4]4 [clr 5]5 [clr 6]6 [clr 7]7 [clr 8]8 [clr 9]9[clr 10]10 [clr 11]11 [clr 12]12 [clr 13]13 [clr 14]14 [clr 15]15[n]

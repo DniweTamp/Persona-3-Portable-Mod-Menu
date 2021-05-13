@@ -14,9 +14,12 @@ void ModMenuInit()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, ModMenu, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Use original square function
             CallOriginalSquareMenu();
             return;
@@ -43,16 +46,17 @@ void ModMenuInit()
         case 5://Next Page
             ModMenuPage2();
             return;
-        case 6://Cancel
-            return;
     }
 }
 
 void ModMenuPage2()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, ModMenu2, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Event Select
             EventSelect();
             return;
@@ -71,16 +75,17 @@ void ModMenuPage2()
         case 5://Previous Page
             ModMenuInit();
             return;
-        case 6://Cancel
-            return;
     }
 }
 
 void PlayerEditorDisplay()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, PlayerMenu, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Evolve party member persona
             int unit = SelectUnitNoProtag();
             if ( unit != -1 )
@@ -94,17 +99,18 @@ void PlayerEditorDisplay()
             return;
         case 3://Set Social Link Rank
             int SLink = SelectSLink();
-            int lvl = Select10NumberPrompt( CommuPrompt );
-            if ( lvl != -1 )
-                CMM_SET_LV( SLink, lvl, 9999 );
+            if ( SLink != -1 )
+            {
+                int lvl = Select10NumberPrompt( CommuPrompt );
+                if ( lvl != -1 )
+                    CMM_SET_LV( SLink, lvl, 9999 );
+            }
             return;
         case 4://Party Edit
             PartyEditorDisplay();
             return;
         case 5://Next Page
             PlayerEditorDisplay2();
-            return;
-        case 6://Cancel
             return;
     }
 }
@@ -113,9 +119,12 @@ void PlayerEditorDisplay2()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Set Protagonist Name
             CALL_NAME_ENTRY();
             CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
@@ -136,17 +145,18 @@ void PlayerEditorDisplay2()
         case 3://Previous Page
             PlayerEditorDisplay();
             return;
-        case 4://Cancel
-            return;
     }
 }
 
 void StatEditorDisplay()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, StatsMenu, 0 );
     int pointsToAdd = 0;
     switch ( selection )
     {
+        case 999: // Cancel
+            return;
         case 0: // Academics
             pointsToAdd = SelectNumberPrompt( StatPrompt, 2 );
             if ( pointsToAdd != -1 )
@@ -162,16 +172,17 @@ void StatEditorDisplay()
             if ( pointsToAdd != -1 )
                 ADD_PC_STAT( 2, pointsToAdd );
             return;
-        case 3: // Cancel
-            return;
     }
 }
 
 void ItemEditorDisplay()
 {
+    SEL_PAD_CHK( 14, 999 );
     int itemType = MSG_SELECT( ModMenuName, ItemMenu, 0 );
     switch ( itemType ) 
     {
+        case 999: // Cancel
+            return;
         case 0: // Melee Weapons
             ItemGetSelect( 0 );
             return;
@@ -199,22 +210,29 @@ void ItemEditorDisplay()
 void ItemGetSelect( int type )
 {
     int itemId = SelectNumberPrompt( ItemPrompt, 4 );
-    int amount = SelectNumberPrompt( ItemPrompt2, 2 );
-    if ( ( itemId != -1 ) || ( amount != -1 ) )
+    
+    if ( itemId != -1 )
     {
-        SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
-        SET_MSG_VAR( 1, type + itemId, 5 );
-        SET_MSG_VAR( 2, amount, 0 );
-        DisplayMessagePrompt( ItemAdded );
+        int amount = SelectNumberPrompt( ItemPrompt2, 2 );
+        if ( amount != -1 )
+        {
+            SET_ITEM_NUM( ( type + itemId ), ( GET_ITEM_NUM( ( type + itemId ) ) + amount ) );
+            SET_MSG_VAR( 1, type + itemId, 5 );
+            SET_MSG_VAR( 2, amount, 0 );
+            DisplayMessagePrompt( ItemAdded );
+        }
     }
 }
 
 void PartyEditorDisplay()
 {
     int unit = 0;
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, PartyEditMenu, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Add Party Members
             unit = SelectUnitNoProtagNoFuuka();
             if ( unit != -1 )
@@ -229,8 +247,7 @@ void PartyEditorDisplay()
             return;
         case 2://Set Tiredness
             SetTiredness();
-            return;
-        case 3://Cancel
+            PartyEditorDisplay();
             return;
     }
 }
@@ -240,26 +257,23 @@ void SetTiredness()
     int unit = SelectUnit();
     if ( unit != -1 )
     {
+        SEL_PAD_CHK( 14, 999 );
         int selection = MSG_SELECT( ModMenuName, SetTiredness, 0 );
         switch ( selection )
         {
+            case 999://Cancel
+                return;
             case 0://Great
                 SET_TIREDNESS( unit, 2 );
-                PartyEditorDisplay();
                 return;
             case 1://Good
                 SET_TIREDNESS( unit, 0 );
-                PartyEditorDisplay();
                 return;
             case 2://Tired
                 SET_TIREDNESS( unit, 3 );
-                PartyEditorDisplay();
                 return;
             case 4://Sick
                 SET_TIREDNESS( unit, 5 );
-                PartyEditorDisplay();
-                return;
-            case 5://Cancel
                 return;
         }
     }
@@ -269,9 +283,12 @@ void FieldSelect()
 {
     SET_MSG_VAR( 1, FLD_GET_MAJOR(), 0);
     SET_MSG_VAR( 2, FLD_GET_MINOR(), 0);
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Enter Field ID
             int temp = SelectNumberPrompt( FieldDlg, 3 );
             if ( temp == -1 )
@@ -290,16 +307,17 @@ void FieldSelect()
             else
                 CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
             return;
-        case 2://Cancel
-            return;
     }
 }
 
 void EventSelect()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, EventSelect, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Enter Event ID
             int temp = SelectNumberPrompt( EventDlg, 3 );
             if ( temp == -1 )
@@ -323,8 +341,6 @@ void EventSelect()
             CALL_EVENT( gEventMajor, gEventMinor );
             CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
             return;
-        case 2://Cancel
-            return;
     }
 }
 
@@ -332,9 +348,12 @@ void CallFacilityDisplay()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, FacilityMenu, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Town map
             FLD_SEL_EX( 0 );
             return;
@@ -356,23 +375,22 @@ void CallFacilityDisplay()
         case 5://Persona Fusion
             CALL_COMBINE_SHOP();
             return;
-        case 6://Cancel
-            return;
     }
 }
 
 void FlagsEditorDisplay()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, FlagMenu, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Manual Input
             FlagManualInput();
             return;
         case 1://Mass Flag Editor
             FlagMassEditor();
-            return;
-        case 2://Cancel
             return;
     }
     
@@ -407,9 +425,12 @@ void FlagManualInput()
 
 void FlagMassEditor()
 {
+    SEL_PAD_CHK( 14, 999 );
     int selection = MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
     switch ( selection )
     {
+        case 999://Cancel
+            return;
         case 0://Disable all flags
             for ( int i = 0; i < 0x13FF; i++ ) 
             {
@@ -430,8 +451,6 @@ void FlagMassEditor()
                 else
                     BIT_ON( i );
             }
-            return;
-        case 3://Cancel
             return;
     }
 }

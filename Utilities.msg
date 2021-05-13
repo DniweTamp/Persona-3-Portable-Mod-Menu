@@ -13,7 +13,6 @@
 [s]8[e]
 [s]9[e]
 [s]Lower[e]
-[s]Cancel[e]
 
 [sel Select1to5Dialog]
 [s]1[e]
@@ -30,7 +29,6 @@
 [s]9[e]
 [s]10[e]
 [s]Lower[e]
-[s]Cancel[e]
 
 [sel UnitSelect1]
 [s][f 4 2][e]
@@ -47,22 +45,6 @@
 [s]Shinjiro[e]
 [s]Koromaru[e]
 [s]Previous Page[e]
-[s]Cancel[e]
-
-[sel UnitSelect1NoProtag]
-[s]Yukari[e]
-[s]Aigis[e]
-[s]Mitsuru[e]
-[s]Junpei[e]
-[s]Next Page[e]
-
-[sel UnitSelect2NoProtagNoFuuka]
-[s]Akihiko[e]
-[s]Ken[e]
-[s]Shinjiro[e]
-[s]Koromaru[e]
-[s]Previous Page[e]
-[s]Cancel[e]
 
 [msg CommuDesc]
 [s]MC SLinks/FEMC SLinks.[w][e]
