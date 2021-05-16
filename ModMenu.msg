@@ -123,6 +123,9 @@
 
 [sel FlagMenu]
 [s]Manual Input[e]
+[s]Add Party Members[e]
+[s]Remove Party Members[e]
+[s]Navigator[e]
 [s]Mass Flag Editor[e]
 
 [msg SelectFlagDialog]
@@ -140,10 +143,22 @@
 [msg FlagOff]
 [s]Flag [f 2 4 1] has been disabled.[w][e]
 
+[sel NaviMenu]
+[s][f 2 4 6][e]
+[s][f 2 4 4][e]
+[s]None[e]
+
 [sel FlagMassEditor]
 [s]Disable all flags[e]
 [s]Enable all flags[e]
 [s]Swap enabled/disabled flags[e]
+[s]Toggle range of flags[e]
+
+[msg FlagRangePrompt]
+[s]Enter the start of the range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
+
+[msg FlagRangePrompt2]
+[s]Enter the end of the range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
 
 [msg ColorTest]
 [s]Colors: [clr 0]0 [clr 1]1 [clr 2]2 [clr 3]3 [clr 4]4 [clr 5]5 [clr 6]6 [clr 7]7 [clr 8]8 [clr 9]9[clr 10]10 [clr 11]11 [clr 12]12 [clr 13]13 [clr 14]14 [clr 15]15[n]

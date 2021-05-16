@@ -37,8 +37,8 @@ void ModMenuInit()
             return;
         case 3://Sound Test
             int bgmId = SelectNumberPrompt( SelectBgmDialog, 3 );
-                if (bgmId != -1)
-            BGM( bgmId );
+            if (bgmId != -1)
+                BGM( bgmId );
             return;
         case 4://Field Select
             FieldSelect();
@@ -389,11 +389,55 @@ void FlagsEditorDisplay()
         case 0://Manual Input
             FlagManualInput();
             return;
-        case 1://Mass Flag Editor
+        case 1://Add Party Members
+            int unit = SelectUnitNoProtag();
+            if ( unit != -1 )
+                BIT_ON( 334 + unit );
+            if ( unit == PartyMember.Mitsuru )  // Mitsuru has a different flag from
+                BIT_ON( 82 );                   // everyone else for some reason??????
+            FlagsEditorDisplay();
+            return;
+        case 2://Remove Party Members
+            unit = SelectUnitNoProtag();
+            if ( unit != -1 )
+                BIT_OFF( 334 + unit );
+            if ( unit == PartyMember.Mitsuru )
+                BIT_OFF( 82 );
+            FlagsEditorDisplay();
+            return;
+        case 3://Navigator
+            Navigator();
+            return;
+        case 4://Mass Flag Editor
             FlagMassEditor();
             return;
     }
     
+}
+
+void Navigator()
+{
+    for ( int i = 0; i < 32; i++ )
+        SET_MSG_VAR( i, i, 4 );
+    SEL_PAD_CHK( 14, 999 );
+    int selection = MSG_SELECT( ModMenuName, NaviMenu, 0 );
+    switch ( selection )
+    {
+        case 999://Cancel
+            return;
+        case 0://Fuuka
+            BIT_OFF( 4887 );
+            BIT_OFF( 321 );
+            return;
+        case 1://Mitsuru
+            BIT_OFF( 4887 );
+            BIT_ON( 321 );
+            return;
+        case 2://None
+            BIT_ON( 4887 );
+            return;
+    }
+
 }
 
 void FlagManualInput()
@@ -432,25 +476,45 @@ void FlagMassEditor()
         case 999://Cancel
             return;
         case 0://Disable all flags
-            for ( int i = 0; i < 0x13FF; i++ ) 
-            {
+            for ( int i = 0; i < 0x1600; i++ )
                 BIT_OFF( i ); 
-            }
             return;
         case 1://Enable all flags
-            for ( int i = 0; i < 0x13FF; i++ ) 
-            {
+            for ( int i = 0; i < 0x1600; i++ )
                 BIT_ON( i ); 
-            }
             return;
         case 2://Swap enabled/disabled flags
-    for ( int i = 0; i < 0x13FF; i++ ) 
+    for ( int i = 0; i < 0x1600; i++ )
             {
-                if ( BIT_CHK( i ) ) 
+                if ( BIT_CHK( i ) )
                     BIT_OFF( i );
                 else
                     BIT_ON( i );
             }
+            return;
+        case 3://Toggle range of flags
+            ToggleRange();
+            return;
+    }
+}
+
+void ToggleRange()
+{
+    int start = SelectNumberPrompt( FlagRangePrompt, 4 );
+    int end = SelectNumberPrompt( FlagRangePrompt2, 4 );
+    SEL_PAD_CHK( 14, 999 );
+    int onOff = SelectOnOff();
+    switch (onOff)
+    {
+        case 999: // Back
+            return;
+        case 0: // On
+            for ( int i = start; i < end; i++ )
+                BIT_ON( i );
+            return;
+        case 1: // Off
+            for ( int i = start; i < end; i++ )
+                BIT_OFF( i );
             return;
     }
 }

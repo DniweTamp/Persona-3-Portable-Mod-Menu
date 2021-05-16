@@ -42,7 +42,7 @@
 0x0029	void	FUNCTION_0029(int param1, int param2, int param3, int param4, int param5);
 0x002a	void	FUNCTION_002A(string param1);
 0x002b	void	FUNCTION_002B(int param1);
-0x002c	void	FUNCTION_002C(int param1, int param2);
+0x002c	void	SEL_PAD_CHK(int param1, int param2);
 0x002d	void	FUNCTION_002D(int param1);
 0x002e	int	GET_COUNT(int param1);
 0x002f	void	SET_COUNT(int param1, int param2);

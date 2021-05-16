@@ -88,6 +88,8 @@ int Select10Number()
 
 int SelectUnit()
 {
+    for ( int i = 0; i < 32; i++ )
+        SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_PAD_CHK( 14, 999 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 0 ) + 1;
@@ -121,6 +123,8 @@ int SelectUnit()
 
 int SelectUnitNoProtag()
 {
+    for ( int i = 0; i < 32; i++ )
+        SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_PAD_CHK( 14, 999 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
@@ -144,6 +148,8 @@ int SelectUnitNoProtag()
 
 int SelectUnitNoProtagNoFuuka()
 {
+    for ( int i = 0; i < 32; i++ )
+        SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_PAD_CHK( 14, 999 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
@@ -231,31 +237,31 @@ int SelectSLink()
 
 int SelectYesNo()
 {
-    int selection = SEL( SelectYesNo );
+    int selection = MSG_SELECT( ModMenuName, SelectYesNo, 0 );
     return selection;
 }
 
 int SelectNoYes()
 {
-    int selection = SEL( SelectOffOn );
+    int selection = MSG_SELECT( ModMenuName, SelectOffOn, 0 );
     return selection;
 }
 
 int SelectOnOff()
 {
-    int selection = SEL( SelectOnOff );
+    int selection = MSG_SELECT( ModMenuName, SelectOnOff, 0 );
     return selection;
 }
 
 int SelectOffOn()
 {
-    int selection = SEL( SelectOffOn );
+    int selection = MSG_SELECT( ModMenuName, SelectOffOn, 0 );
     return selection;
 }
 
 int SelectOnOffCheck()
 {
-    int selection = SEL( SelectOnOffCheck );
+    int selection = MSG_SELECT( ModMenuName, SelectOnOffCheck, 0 );
     return selection;
 }
 
