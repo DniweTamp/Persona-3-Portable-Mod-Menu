@@ -670,7 +670,7 @@
     "Description": "Address: 0x08982AA8",
     "Parameters": [
       {
-        "Type": "int",
+        "Type": "PadButton",
         "Name": "param1",
         "Description": ""
       },

@@ -1031,5 +1031,20 @@
       {"Name":"Medea","Value":210},
       {"Name":"Psyche","Value":211}
     ]
+  },
+  {
+    "Name":"PadButton",
+    "Description":"This enum represents the buttons on the gamepad.",
+    "Members": [
+      {"Name":"Select","Value":0},
+      {"Name":"Start","Value":3},
+      {"Name":"Right","Value":5},
+      {"Name":"Left","Value":7},
+      {"Name":"L","Value":8},
+      {"Name":"R","Value":9},
+      {"Name":"Triangle","Value":12},
+      {"Name":"Circle","Value":14},
+      {"Name":"Square","Value":15}
+    ]
   }
 ]
