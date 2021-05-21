@@ -14,8 +14,8 @@ void ModMenuInit()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int selection = MSG_SELECT( ModMenuName, ModMenu, 0 );
     switch ( selection )
     {
@@ -52,8 +52,8 @@ void ModMenuInit()
 
 void ModMenuPage2()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.L, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.L, 5 );
     int selection = MSG_SELECT( ModMenuName, ModMenu2, 0 );
     switch ( selection )
     {
@@ -82,8 +82,8 @@ void ModMenuPage2()
 
 void PlayerEditorDisplay()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int selection = MSG_SELECT( ModMenuName, PlayerMenu, 0 );
     switch ( selection )
     {
@@ -122,8 +122,8 @@ void PlayerEditorDisplay2()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.L, 3 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.L, 3 );
     int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
     switch ( selection )
     {
@@ -154,7 +154,7 @@ void PlayerEditorDisplay2()
 
 void StatEditorDisplay()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, StatsMenu, 0 );
     int pointsToAdd = 0;
     switch ( selection )
@@ -181,7 +181,7 @@ void StatEditorDisplay()
 
 void ItemEditorDisplay()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int itemType = MSG_SELECT( ModMenuName, ItemMenu, 0 );
     switch ( itemType ) 
     {
@@ -231,7 +231,7 @@ void ItemGetSelect( int type )
 void PartyEditorDisplay()
 {
     int unit = 0;
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, PartyEditMenu, 0 );
     switch ( selection )
     {
@@ -261,7 +261,7 @@ void SetTiredness()
     int unit = SelectUnit();
     if ( unit != -1 )
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
         int selection = MSG_SELECT( ModMenuName, SetTiredness, 0 );
         switch ( selection )
         {
@@ -276,9 +276,6 @@ void SetTiredness()
             case 2://Tired
                 SET_TIREDNESS( unit, 3 );
                 return;
-            case 4://Sick
-                SET_TIREDNESS( unit, 5 );
-                return;
         }
     }
 }
@@ -287,7 +284,7 @@ void FieldSelect()
 {
     SET_MSG_VAR( 1, FLD_GET_MAJOR(), 0);
     SET_MSG_VAR( 2, FLD_GET_MINOR(), 0);
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, FieldSelect, 0 );
     switch ( selection )
     {
@@ -316,7 +313,7 @@ void FieldSelect()
 
 void EventSelect()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, EventSelect, 0 );
     switch ( selection )
     {
@@ -352,7 +349,7 @@ void CallFacilityDisplay()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, FacilityMenu, 0 );
     switch ( selection )
     {
@@ -384,7 +381,7 @@ void CallFacilityDisplay()
 
 void FlagsEditorDisplay()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, FlagMenu, 0 );
     switch ( selection )
     {
@@ -423,7 +420,7 @@ void Navigator()
 {
     for ( int i = 0; i < 32; i++ )
         SET_MSG_VAR( i, i, 4 );
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, NaviMenu, 0 );
     switch ( selection )
     {
@@ -473,7 +470,7 @@ void FlagManualInput()
 
 void FlagMassEditor()
 {
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int selection = MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
     switch ( selection )
     {
@@ -506,7 +503,7 @@ void ToggleRange()
 {
     int start = SelectNumberPrompt( FlagRangePrompt, 4 );
     int end = SelectNumberPrompt( FlagRangePrompt2, 4 );
-    SEL_PAD_CHK( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
     int onOff = SelectOnOff();
     switch (onOff)
     {

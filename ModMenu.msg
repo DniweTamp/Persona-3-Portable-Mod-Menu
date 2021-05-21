@@ -78,7 +78,6 @@
 [s]Great[e]
 [s]Good[e]
 [s]Tired[e]
-[s]Sick[e]
 
 [msg MoneyAdded]
 [s]You recieved [clr 1]99999999[clr 0] yen.[w][e]
@@ -99,7 +98,7 @@
 
 [msg FontTest[The Font Guy]]
 [s]ABCDEFGHIJKLMNOPQRSTUVWXYZ[n]abcdefghijklmnopqrstuvwxyz[n][w][e]
-[s]1234567890-_.:,;|!"#$%&/[n]()=?+*{}^\<>`~'@[w][e]
+//[s]1234567890-_.:,;|!"#$%&/[n]()=?+*{}^\<>`~'@[w][e]
 
 [msg FieldDlg [Field Select]]
 [s]Choose the first 3 digits of[n]the field to load.[n]Current field: [f 2 4 1], [f 2 4 2].[n][w][e]

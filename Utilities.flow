@@ -5,8 +5,8 @@ int SelectDigit()
 {
     while ( true )
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.R, 5 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.R, 5 );
         int digit = MSG_SELECT( ModMenuName, Select0to4Dialog, 0 );
         if ( digit < 5 ) //0 through 4
             return digit;
@@ -17,8 +17,8 @@ int SelectDigit()
         }
         if ( digit == 5 )
         {
-            SEL_PAD_CHK( PadButton.Circle, 999 );
-            SEL_PAD_CHK( PadButton.L, 5 );
+            SEL_DEFKEY( PadButton.Circle, 999 );
+            SEL_DEFKEY( PadButton.L, 5 );
             digit = MSG_SELECT( ModMenuName, Select5to9Dialog, 0 ) + 5;
             if ( digit < 10 )
                 return digit; //5 through 9 or back
@@ -60,8 +60,8 @@ int SelectNumber( int digitCount )
 int Select10Number()
 {
         page1:
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int number = MSG_SELECT( ModMenuName, Select1to5Dialog, 0 ) + 1;
     if ( number == 999 + 1 )
         return -1;
@@ -71,8 +71,8 @@ int Select10Number()
     }
     else if ( number == 6 )
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
         number = MSG_SELECT( ModMenuName, Select6to10Dialog, 0 ) + 6;
         if ( number <= 10 )
         {
@@ -95,8 +95,8 @@ int SelectUnit()
     for ( int i = 0; i < 32; i++ )
         SET_MSG_VAR( i, i, 4 );
         page1:
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 0 ) + 1;
     if ( unitID <= 5 )
     {
@@ -108,8 +108,8 @@ int SelectUnit()
     }
     else if ( unitID == 6 ) //page 2
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
         if ( unitID <= 10 )
         {
@@ -132,8 +132,8 @@ int SelectUnitNoProtag()
     for ( int i = 0; i < 32; i++ )
         SET_MSG_VAR( i, i, 4 );
         page1:
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
     if ( unitID == 999 + 1 )
         return -1;
@@ -141,8 +141,8 @@ int SelectUnitNoProtag()
         return unitID;
     if ( unitID == 6 ) //page 2
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
         if ( unitID == 999 + 6 )
             return -1;
@@ -159,8 +159,8 @@ int SelectUnitNoProtagNoFuuka()
     for ( int i = 0; i < 32; i++ )
         SET_MSG_VAR( i, i, 4 );
         page1:
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 5 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
     if ( unitID == 999 + 1 )
         return -1;
@@ -168,8 +168,8 @@ int SelectUnitNoProtagNoFuuka()
         return unitID;
     if ( unitID == 6 ) //page 2
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 1 ) + 6;
         if ( unitID == 999 + 6 )
             return -1;
@@ -184,8 +184,8 @@ int SelectUnitNoProtagNoFuuka()
 int SelectSLink()
 {
     page1:
-    SEL_PAD_CHK( PadButton.Circle, 999 );
-    SEL_PAD_CHK( PadButton.R, 6 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 6 );
     int selection = MSG_SELECT( CommuDesc, CommuCharSel1, 0 ) + 1;
     if ( selection < 7 )
         return selection;
@@ -195,9 +195,9 @@ int SelectSLink()
         return -1;
     page2:
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
-        SEL_PAD_CHK( PadButton.R, 6 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel2, 0 ) + 7;
         if ( selection < 7 + 5 )
             return selection;
@@ -210,9 +210,9 @@ int SelectSLink()
     }
     page3:
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
-        SEL_PAD_CHK( PadButton.R, 6 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel3, 0 ) + 12;
         if ( selection < 12 + 5 )
             return selection;
@@ -225,9 +225,9 @@ int SelectSLink()
     }
     page4:
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 5 );
-        SEL_PAD_CHK( PadButton.R, 6 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel4, 0 ) + 17;
         if ( selection < 17 + 5 )
             return selection;
@@ -240,8 +240,8 @@ int SelectSLink()
     }
     page5:
     {
-        SEL_PAD_CHK( PadButton.Circle, 999 );
-        SEL_PAD_CHK( PadButton.L, 6 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.L, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel5, 0 ) + 22;
         if ( selection < 22 + 6 )
             return selection;

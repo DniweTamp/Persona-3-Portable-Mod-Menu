@@ -26,7 +26,6 @@ PAUSE
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b06_11.abin" h06_11.bf "%OUTPUT_PATH%\data\field2d\bg\h06_11.bf" "%OUTPUT_PATH%\data\field2d\bg\b06_11.abin"
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b06_16.abin" h06_16.bf "%OUTPUT_PATH%\data\field2d\bg\h06_16.bf" "%OUTPUT_PATH%\data\field2d\bg\b06_16.abin"
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b06_20.abin" h06_20.bf "%OUTPUT_PATH%\data\field2d\bg\h06_20.bf" "%OUTPUT_PATH%\data\field2d\bg\b06_20.abin"
-%PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b07_01.abin" h07_01.bf "%OUTPUT_PATH%\data\field2d\bg\h07_01.bf" "%OUTPUT_PATH%\data\field2d\bg\b07_01.abin"
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b07_02.abin" h07_02.bf "%OUTPUT_PATH%\data\field2d\bg\h07_02.bf" "%OUTPUT_PATH%\data\field2d\bg\b07_02.abin"
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b07_03.abin" h07_03.bf "%OUTPUT_PATH%\data\field2d\bg\h07_03.bf" "%OUTPUT_PATH%\data\field2d\bg\b07_03.abin"
 %PAKPACK% replace "%OUTPUT_PATH%\data\field2d\bg\b07_04.abin" h07_04.bf "%OUTPUT_PATH%\data\field2d\bg\h07_04.bf" "%OUTPUT_PATH%\data\field2d\bg\b07_04.abin"

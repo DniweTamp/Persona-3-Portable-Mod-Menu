@@ -666,7 +666,7 @@
   {
     "Index": "0x002c",
     "ReturnType": "void",
-    "Name": "SEL_PAD_CHK",
+    "Name": "SEL_DEFKEY",
     "Description": "Address: 0x08982AA8",
     "Parameters": [
       {
