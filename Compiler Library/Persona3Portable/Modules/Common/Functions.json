@@ -44,14 +44,14 @@
   {
     "Index": "0x0004",
     "ReturnType": "void",
-    "Name": "FUNCTION_0004",
+    "Name": "SEL_WND_DSP",
     "Description": "Null pointer",
     "Parameters": []
   },
   {
     "Index": "0x0005",
     "ReturnType": "void",
-    "Name": "FUNCTION_0005",
+    "Name": "SEL_WND_CLS",
     "Description": "Null pointer",
     "Parameters": []
   },

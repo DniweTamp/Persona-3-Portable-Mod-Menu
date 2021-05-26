@@ -2,8 +2,8 @@
 0x0001    void    MSG_WND_DSP();
 0x0002    void    MSG_WND_CLS();
 0x0003    int     SEL(int param1);
-0x0004    void    FUNCTION_0004();
-0x0005    void    FUNCTION_0005();
+0x0004    void    SEL_WND_DSP();
+0x0005    void    SEL_WND_CLS();
 0x0006    void    FUNCTION_0006(int param1);
 0x0007    bool    BIT_CHK(int param1);
 0x0008    void    BIT_ON(int param1);
