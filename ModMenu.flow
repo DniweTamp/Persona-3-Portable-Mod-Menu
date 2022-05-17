@@ -386,7 +386,7 @@ void CallFacilityDisplay()
                 SAVE_MENU();
                 return;
             case 2://Weapon Shop
-                warn = SelectNoYesPrompt( UnstableFunc )
+                warn = SelectNoYesPrompt( UnstableFunc );
                 if ( warn == 1 )
                 {
                     CALL_WEAPON_SHOP();
@@ -394,7 +394,7 @@ void CallFacilityDisplay()
                 }
                 return;
             case 3://Item Shop
-                warn = SelectNoYesPrompt( UnstableFunc )
+                warn = SelectNoYesPrompt( UnstableFunc );
                 if ( warn == 1 )
                 {
                     CALL_ITEM_SHOP();
@@ -402,7 +402,7 @@ void CallFacilityDisplay()
                 }
                 return;
             case 4://Trade Shop
-                warn = SelectNoYesPrompt( UnstableFunc )
+                warn = SelectNoYesPrompt( UnstableFunc );
                 if ( warn == 1 )
                 {
                     CALL_TRADE_SHOP();
