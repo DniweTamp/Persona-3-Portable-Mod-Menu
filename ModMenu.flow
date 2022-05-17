@@ -200,7 +200,7 @@ void ItemEditorDisplay()
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
         int itemType = MSG_SELECT( ModMenuName, ItemMenu, 0 );
-        switch ( itemType ) 
+        switch ( itemType )
         {
             case 999: // Cancel
                 return;
@@ -370,6 +370,7 @@ void CallFacilityDisplay()
 {
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
+    int warn = 0;
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
@@ -385,16 +386,28 @@ void CallFacilityDisplay()
                 SAVE_MENU();
                 return;
             case 2://Weapon Shop
-                CALL_WEAPON_SHOP();
-                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                warn = SelectNoYesPrompt( UnstableFunc )
+                if ( warn == 1 )
+                {
+                    CALL_WEAPON_SHOP();
+                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                }
                 return;
             case 3://Item Shop
-                CALL_ITEM_SHOP();
-                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                warn = SelectNoYesPrompt( UnstableFunc )
+                if ( warn == 1 )
+                {
+                    CALL_ITEM_SHOP();
+                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                }
                 return;
             case 4://Trade Shop
-                CALL_TRADE_SHOP();
-                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                warn = SelectNoYesPrompt( UnstableFunc )
+                if ( warn == 1 )
+                {
+                    CALL_TRADE_SHOP();
+                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                }
                 return;
             case 5://Persona Fusion
                 CALL_COMBINE_SHOP();
@@ -474,7 +487,7 @@ void FlagManualInput()
     {
         SET_MSG_VAR( 1, id, 0 );
         int onOff = SelectOnOffCheck();
-        switch (onOff) 
+        switch (onOff)
         {
             case 0: // On
                 BIT_ON( id );
@@ -506,11 +519,11 @@ void FlagMassEditor()
                 return;
             case 0://Disable all flags
                 for ( int i = 0; i < 0x1600; i++ )
-                    BIT_OFF( i ); 
+                    BIT_OFF( i );
                 return;
             case 1://Enable all flags
                 for ( int i = 0; i < 0x1600; i++ )
-                    BIT_ON( i ); 
+                    BIT_ON( i );
                 return;
             case 2://Swap enabled/disabled flags
         for ( int i = 0; i < 0x1600; i++ )

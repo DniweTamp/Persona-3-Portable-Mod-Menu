@@ -22,7 +22,7 @@ int SelectDigit()
             if ( digit < 10 )
                 return digit; //5 through 9 or back
             else if (digit == 999 + 5)
-            {    
+            {
                 digit = -1; //exit
                 break;
             }
@@ -34,7 +34,7 @@ int SelectDigit()
 int SelectNumber( int digitCount )
 {
     int number = 0;
-    
+
     for ( int i = 0; i < digitCount; i++ )
     {
         int digit = SelectDigit();
@@ -284,8 +284,8 @@ int SelectOnOffCheck()
 
 void DisplayMessagePrompt( int messageId )
 {
-    MSG_WND_DSP(); 
-    MSG( messageId ); 
+    MSG_WND_DSP();
+    MSG( messageId );
     MSG_WND_CLS();
 }
 
@@ -309,7 +309,7 @@ int Select10NumberPrompt( int messageId )
 
 int SelectYesNoPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
+    MSG_WND_DSP();
     MSG( promptMessageId );
     int selection = SelectYesNo();
     MSG_WND_CLS();
@@ -318,7 +318,7 @@ int SelectYesNoPrompt( int promptMessageId )
 
 int SelectNoYesPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
+    MSG_WND_DSP();
     MSG( promptMessageId );
     int selection = SelectNoYes();
     MSG_WND_CLS();
@@ -327,7 +327,7 @@ int SelectNoYesPrompt( int promptMessageId )
 
 int SelectOnOffPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
+    MSG_WND_DSP();
     MSG( promptMessageId );
     int selection = SelectOnOff();
     MSG_WND_CLS();
@@ -336,7 +336,7 @@ int SelectOnOffPrompt( int promptMessageId )
 
 int SelectOffOnPrompt( int promptMessageId )
 {
-    MSG_WND_DSP(); 
+    MSG_WND_DSP();
     MSG( promptMessageId );
     int selection = SelectOffOn();
     MSG_WND_CLS();

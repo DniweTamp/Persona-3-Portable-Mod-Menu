@@ -172,5 +172,8 @@
 [msg NotImplemented]
 [s]This feature is currently not implemented.[n][w][e]
 
+[msg UnstableFunc]
+[s]This feature is unstable on real hardware.[n]Do you still wish to use it?[n][w][e]
+
 [msg MSGDummy]
 [s][w][e]
