@@ -260,7 +260,7 @@ int SelectYesNo()
 
 int SelectNoYes()
 {
-    int selection = MSG_SELECT( ModMenuName, SelectOffOn, 0 );
+    int selection = MSG_SELECT( ModMenuName, SelectNoYes, 0 );
     return selection;
 }
 
