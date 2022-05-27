@@ -1,4 +1,4 @@
-import( "../original/h07_02.bf" );
+import( "../original/h07_01.bf" );
 import( "../ModMenu.flow" );
 
 void dormitory_shortcut_hook()
@@ -14,4 +14,4 @@ void myroom_mybed_hook()
 void CallOriginalSquareMenu()
 {
     dormitory_shortcut_unhooked();
-}
+} 
