@@ -19,7 +19,7 @@ int SelectDigit()
         {
             return 998;
         }
-        if ( digit == 5 )
+        if ( digit == 5 )   
         {
             SEL_DEFKEY( PadButton.Circle, 999 );
             SEL_DEFKEY( PadButton.L, 5 );
@@ -57,24 +57,7 @@ int SelectNumber( int digitCount )
         }
         else if ( digit == 998 )
         {
-            SEL_DEFKEY( PadButton.Circle, 999 );
-            SET_MSG_VAR( 1, GET_COUNT( 24 ), 0 );
-            SET_MSG_VAR( 2, GET_COUNT( 25 ), 0 );
-            SET_MSG_VAR( 3, GET_COUNT( 26 ), 0 );
-            SET_MSG_VAR( 4, GET_COUNT( 27 ), 0 );
-            SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
-            SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
-            digit = MSG_SELECT( FavoritesName, SelectFavorites, 0 );
-            switch ( digit )
-            {
-                case 999: return -1;
-                case 0: return GET_COUNT( 24 );
-                case 1: return GET_COUNT( 25 );
-                case 2: return GET_COUNT( 26 );
-                case 3: return GET_COUNT( 27 );
-                case 4: return GET_COUNT( 28 );
-                case 5: return GET_COUNT( 29 );
-            }
+           return NumberSelectFavorites();
         }
         number *= 10;
         number += digit;
@@ -82,6 +65,116 @@ int SelectNumber( int digitCount )
     return number;
 }
 
+int NumberSelectFavorites()
+{
+    page1:
+    SET_MSG_VAR( 1, GET_COUNT( 24 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 25 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 26 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 27 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 996 );
+    int digit = MSG_SELECT( FavoritesName, SelectFavorites, 0 );
+    if ( digit == 999 ) return -1; //Cancel
+    else if ( digit == 0 ) digit = GET_COUNT( 24 );
+    else if ( digit == 1 ) digit = GET_COUNT( 25 );
+    else if ( digit == 2 ) digit = GET_COUNT( 26 );
+    else if ( digit == 3 ) digit = GET_COUNT( 27 );
+    else if ( digit == 4 ) digit = GET_COUNT( 28 );
+    else if ( digit == 5 ) digit = GET_COUNT( 29 );
+    else if ( digit == 996 ) //Next page
+    {
+        page2:
+        SET_MSG_VAR( 1, GET_COUNT( 30 ), 0 );
+        SET_MSG_VAR( 2, GET_COUNT( 31 ), 0 );
+        SET_MSG_VAR( 3, GET_COUNT( 32 ), 0 );
+        SET_MSG_VAR( 4, GET_COUNT( 33 ), 0 );
+        SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
+        SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.R, 996 );
+        SEL_DEFKEY( PadButton.L, 997 );
+        digit = MSG_SELECT( FavoritesName, SelectFavorites1, 0 );
+        if ( digit == 999 ) return -1; //Cancel
+        else if ( digit == 0 ) digit = GET_COUNT( 30 );
+        else if ( digit == 1 ) digit = GET_COUNT( 31 );
+        else if ( digit == 2 ) digit = GET_COUNT( 32 );
+        else if ( digit == 3 ) digit = GET_COUNT( 33 );
+        else if ( digit == 4 ) digit = GET_COUNT( 34 );
+        else if ( digit == 5 ) digit = GET_COUNT( 35 );
+        else if ( digit == 997 ) goto page1; //Previous page
+        else if ( digit == 996 ) //Next page
+        {
+            SET_MSG_VAR( 1, GET_COUNT( 36 ), 0 );
+            SET_MSG_VAR( 2, GET_COUNT( 37 ), 0 );
+            SET_MSG_VAR( 3, GET_COUNT( 38 ), 0 );
+            SET_MSG_VAR( 4, GET_COUNT( 39 ), 0 );
+            SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
+            SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
+            SEL_DEFKEY( PadButton.Circle, 999 );
+            SEL_DEFKEY( PadButton.L, 997 );
+            digit = MSG_SELECT( FavoritesName, SelectFavorites2, 0 );
+            if ( digit == 999 ) return -1; //Cancel
+            else if ( digit == 0 ) digit = GET_COUNT( 36 );
+            else if ( digit == 1 ) digit = GET_COUNT( 37 );
+            else if ( digit == 2 ) digit = GET_COUNT( 38 );
+            else if ( digit == 3 ) digit = GET_COUNT( 39 );
+            else if ( digit == 4 ) digit = GET_COUNT( 40 );
+            else if ( digit == 5 ) digit = GET_COUNT( 41 );
+            else if ( digit == 997 ) goto page2; //Previous page
+        }
+    }
+    return digit;
+}
+/*
+int NumberSelectFavorites1()
+{
+    SET_MSG_VAR( 1, GET_COUNT( 30 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 31 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 32 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 33 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 996 );
+    SEL_DEFKEY( PadButton.L, 997 );
+    int digit = MSG_SELECT( FavoritesName, SelectFavorites1, 0 );
+    if ( digit == 999 ) return -1; //Cancel
+    else if ( digit == 0 ) digit = GET_COUNT( 30 );
+    else if ( digit == 1 ) digit = GET_COUNT( 31 );
+    else if ( digit == 2 ) digit = GET_COUNT( 32 );
+    else if ( digit == 3 ) digit = GET_COUNT( 33 );
+    else if ( digit == 4 ) digit = GET_COUNT( 34 );
+    else if ( digit == 5 ) digit = GET_COUNT( 35 );
+    else if ( digit == 997 ) NumberSelectFavorites(); //Previous page
+    else if ( digit == 996 ) NumberSelectFavorites2(); //Next page
+    return digit;
+}
+
+int NumberSelectFavorites2()
+{
+    SET_MSG_VAR( 1, GET_COUNT( 36 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 37 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 38 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 39 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.L, 997 );
+    int digit = MSG_SELECT( FavoritesName, SelectFavorites2, 0 );
+    if ( digit == 999 ) return -1; //Cancel
+    else if ( digit == 0 ) digit = GET_COUNT( 36 );
+    else if ( digit == 1 ) digit = GET_COUNT( 37 );
+    else if ( digit == 2 ) digit = GET_COUNT( 38 );
+    else if ( digit == 3 ) digit = GET_COUNT( 39 );
+    else if ( digit == 4 ) digit = GET_COUNT( 40 );
+    else if ( digit == 5 ) digit = GET_COUNT( 41 );
+    else if ( digit == 997 ) NumberSelectFavorites1(); //Previous page
+    return digit;
+}
+*/
 int Select10Number()
 {
         page1:
@@ -289,18 +382,83 @@ void SetUpFavorites()
     SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
     SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
     SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 998 );
     int selection = SEL( SelectFavorites );
-    MSG_WND_CLS();
     switch ( selection )
     {
         case 999://Cancel
+            MSG_WND_CLS();
             break;
-        case 0: SET_COUNT( 24, SelectNumber(4) ); break;
-        case 1: SET_COUNT( 25, SelectNumber(4) ); break;
-        case 2: SET_COUNT( 26, SelectNumber(4) ); break;
-        case 3: SET_COUNT( 27, SelectNumber(4) ); break;
-        case 4: SET_COUNT( 28, SelectNumber(4) ); break;
-        case 5: SET_COUNT( 29, SelectNumber(4) ); break;
+        case 998://Next Page
+            SetUpFavorites1();
+            break;
+        case 0: MSG_WND_CLS(); SET_COUNT( 24, SelectNumber(4) ); break;
+        case 1: MSG_WND_CLS(); SET_COUNT( 25, SelectNumber(4) ); break;
+        case 2: MSG_WND_CLS(); SET_COUNT( 26, SelectNumber(4) ); break;
+        case 3: MSG_WND_CLS(); SET_COUNT( 27, SelectNumber(4) ); break;
+        case 4: MSG_WND_CLS(); SET_COUNT( 28, SelectNumber(4) ); break;
+        case 5: MSG_WND_CLS(); SET_COUNT( 29, SelectNumber(4) ); break;
+    }
+}
+
+void SetUpFavorites1()
+{
+    SET_MSG_VAR( 1, GET_COUNT( 30 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 31 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 32 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 33 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.R, 998 );
+    SEL_DEFKEY( PadButton.L, 997 );
+    int selection = SEL( SelectFavorites1 );
+    switch ( selection )
+    {
+        case 999://Cancel
+            MSG_WND_CLS();
+            break;
+        case 998://Next Page
+            SetUpFavorites2();
+            break;
+        case 997://Previous Page
+            MSG_WND_CLS();
+            SetUpFavorites();
+            break;
+        case 0: MSG_WND_CLS(); SET_COUNT( 30, SelectNumber(4) ); break;
+        case 1: MSG_WND_CLS(); SET_COUNT( 31, SelectNumber(4) ); break;
+        case 2: MSG_WND_CLS(); SET_COUNT( 32, SelectNumber(4) ); break;
+        case 3: MSG_WND_CLS(); SET_COUNT( 33, SelectNumber(4) ); break;
+        case 4: MSG_WND_CLS(); SET_COUNT( 34, SelectNumber(4) ); break;
+        case 5: MSG_WND_CLS(); SET_COUNT( 35, SelectNumber(4) ); break;
+    }
+}
+
+void SetUpFavorites2()
+{
+    SET_MSG_VAR( 1, GET_COUNT( 36 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 37 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 38 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 39 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    SEL_DEFKEY( PadButton.L, 997 );
+    int selection = SEL( SelectFavorites2 );
+    switch ( selection )
+    {
+        case 999://Cancel
+            MSG_WND_CLS();
+            break;
+        case 997://Previous Page
+            SetUpFavorites1();
+            break;
+        case 0: MSG_WND_CLS(); SET_COUNT( 36, SelectNumber(4) ); break;
+        case 1: MSG_WND_CLS(); SET_COUNT( 37, SelectNumber(4) ); break;
+        case 2: MSG_WND_CLS(); SET_COUNT( 38, SelectNumber(4) ); break;
+        case 3: MSG_WND_CLS(); SET_COUNT( 39, SelectNumber(4) ); break;
+        case 4: MSG_WND_CLS(); SET_COUNT( 40, SelectNumber(4) ); break;
+        case 5: MSG_WND_CLS(); SET_COUNT( 41, SelectNumber(4) ); break;
     }
 }
 

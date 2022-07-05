@@ -165,7 +165,7 @@
 [clr 16]16 [clr 17]17 [clr 18]18 [clr 19]19 [clr 20]20 [clr 21]21 [clr 22]22 [clr 23]23 [clr 24]24 [clr 25]25 [clr 26]26 [clr 27]27 [clr 28]28 [clr 29]29 [clr 30]30 [clr 31]31[w][e]
 
 [msg FavoritesName]
-[s]Favorite Numbers[w][e]
+[s]Press L/R to see other pages[w][e]
 
 [msg MSGVarTest]
 [s]Variable: [f 2 4 1][w][e]
