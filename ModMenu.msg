@@ -18,6 +18,7 @@
 [s]Flags[e]
 [s]Font Test[e]
 [s]About[e]
+[s]Set up favorites[e]
 [s]Previous Page[e]
 
 [sel PlayerMenu]
@@ -162,6 +163,9 @@
 [msg ColorTest]
 [s]Colors: [clr 0]0 [clr 1]1 [clr 2]2 [clr 3]3 [clr 4]4 [clr 5]5 [clr 6]6 [clr 7]7 [clr 8]8 [clr 9]9[clr 10]10 [clr 11]11 [clr 12]12 [clr 13]13 [clr 14]14 [clr 15]15[n]
 [clr 16]16 [clr 17]17 [clr 18]18 [clr 19]19 [clr 20]20 [clr 21]21 [clr 22]22 [clr 23]23 [clr 24]24 [clr 25]25 [clr 26]26 [clr 27]27 [clr 28]28 [clr 29]29 [clr 30]30 [clr 31]31[w][e]
+
+[msg FavoritesName]
+[s]Favorite Numbers[w][e]
 
 [msg MSGVarTest]
 [s]Variable: [f 2 4 1][w][e]

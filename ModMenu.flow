@@ -58,7 +58,7 @@ void ModMenuPage2()
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
+        SEL_DEFKEY( PadButton.L, 6 );
         int selection = MSG_SELECT( ModMenuName, ModMenu2, 0 );
         switch ( selection )
         {
@@ -79,7 +79,10 @@ void ModMenuPage2()
             case 4://About
                 DisplayMessagePrompt( AboutMsg );
                 break;
-            case 5://Previous Page
+            case 5://Set up favorites
+                SetUpFavorites();
+                break;
+            case 6://Previous Page
                 ModMenuInit();
                 return;
         }

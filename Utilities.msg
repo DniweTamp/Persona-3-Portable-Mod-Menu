@@ -94,6 +94,18 @@
 [s](Nothing)/Shinjiro Aragaki[e]
 [s]Previous Page[e]
 
+[msg SetUp_Favorites]
+[s]To use these numbers simply press triangle[n]
+during any number selection[w][e]
+
+[sel SelectFavorites]
+Favorite 1: [f 2 4 1][e]
+Favorite 2: [f 2 4 2][e]
+Favorite 3: [f 2 4 3][e]
+Favorite 4: [f 2 4 4][e]
+Favorite 5: [f 2 4 5][e]
+Favorite 6: [f 2 4 6][e]
+
 [sel SelectYesNo]
 [s]Yes[e]
 [s]No[e]

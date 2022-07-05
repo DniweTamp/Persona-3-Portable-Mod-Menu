@@ -5,14 +5,19 @@ int SelectDigit()
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
+        SEL_DEFKEY( PadButton.Triangle, 998 );
         SEL_DEFKEY( PadButton.R, 5 );
         int digit = MSG_SELECT( ModMenuName, Select0to4Dialog, 0 );
         if ( digit < 5 ) //0 through 4
             return digit;
-        if ( digit == 999 )
+        else if ( digit == 999 )
         {
             return -1;
             break;
+        }
+        else if ( digit == 998 )
+        {
+            return 998;
         }
         if ( digit == 5 )
         {
@@ -50,6 +55,27 @@ int SelectNumber( int digitCount )
             else
                 break;
         }
+        else if ( digit == 998 )
+        {
+            SEL_DEFKEY( PadButton.Circle, 999 );
+            SET_MSG_VAR( 1, GET_COUNT( 24 ), 0 );
+            SET_MSG_VAR( 2, GET_COUNT( 25 ), 0 );
+            SET_MSG_VAR( 3, GET_COUNT( 26 ), 0 );
+            SET_MSG_VAR( 4, GET_COUNT( 27 ), 0 );
+            SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
+            SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
+            digit = MSG_SELECT( FavoritesName, SelectFavorites, 0 );
+            switch ( digit )
+            {
+                case 999: return -1;
+                case 0: return GET_COUNT( 24 );
+                case 1: return GET_COUNT( 25 );
+                case 2: return GET_COUNT( 26 );
+                case 3: return GET_COUNT( 27 );
+                case 4: return GET_COUNT( 28 );
+                case 5: return GET_COUNT( 29 );
+            }
+        }
         number *= 10;
         number += digit;
     }
@@ -64,7 +90,7 @@ int Select10Number()
     int number = MSG_SELECT( ModMenuName, Select1to5Dialog, 0 ) + 1;
     if ( number == 999 + 1 )
         return -1;
-    if ( number <= 5 )
+    else if ( number <= 5 )
     {
         return number;
     }
@@ -250,6 +276,32 @@ int SelectSLink()
             return -1;
     }
     return selection;
+}
+
+void SetUpFavorites()
+{
+    MSG_WND_DSP();
+    MSG( SetUp_Favorites );
+    SET_MSG_VAR( 1, GET_COUNT( 24 ), 0 );
+    SET_MSG_VAR( 2, GET_COUNT( 25 ), 0 );
+    SET_MSG_VAR( 3, GET_COUNT( 26 ), 0 );
+    SET_MSG_VAR( 4, GET_COUNT( 27 ), 0 );
+    SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
+    SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
+    SEL_DEFKEY( PadButton.Circle, 999 );
+    int selection = SEL( SelectFavorites );
+    MSG_WND_CLS();
+    switch ( selection )
+    {
+        case 999://Cancel
+            break;
+        case 0: SET_COUNT( 24, SelectNumber(4) ); break;
+        case 1: SET_COUNT( 25, SelectNumber(4) ); break;
+        case 2: SET_COUNT( 26, SelectNumber(4) ); break;
+        case 3: SET_COUNT( 27, SelectNumber(4) ); break;
+        case 4: SET_COUNT( 28, SelectNumber(4) ); break;
+        case 5: SET_COUNT( 29, SelectNumber(4) ); break;
+    }
 }
 
 int SelectYesNo()
