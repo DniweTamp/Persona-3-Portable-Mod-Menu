@@ -1,8 +1,11 @@
 import( "../original/h09_09.bf" );
 import( "../ModMenu.flow" );
 
+global bool isFieldBf;
+
 void f009_009_shortcut_hook()
 {
+    isFieldBf = false;
     ModMenuInit();
 }
 
