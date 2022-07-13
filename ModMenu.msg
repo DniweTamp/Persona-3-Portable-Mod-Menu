@@ -91,7 +91,8 @@
 
 [sel FieldSelect]
 [s]Enter Field ID[e]
-[s]Load Field ID[e]
+[s]Load Field[e]
+[s]Load 3D Field[e]
 
 [sel EventSelect]
 [s]Enter Event ID[e]

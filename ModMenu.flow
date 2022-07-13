@@ -78,6 +78,7 @@ void ModMenuPage2()
                 break;
             case 4://About
                 DisplayMessagePrompt( AboutMsg );
+                //QuickTestsMenu();
                 break;
             case 5://Set up favorites
                 SetUpFavorites();
@@ -322,11 +323,17 @@ void FieldSelect()
                     return;
                 gFieldMinor = temp;
                 break;
-            case 1://Load Field ID
+            case 1://Load Field
                 if (gFieldMajor == 0 && gFieldMinor == 0)
                     DisplayMessagePrompt( LoadCheckError );
                 else
                     CALL_FIELD( gFieldMajor, gFieldMinor, 0, 0  );
+                return;
+            case 2://Load 3D Field
+                if (gFieldMajor == 0 && gFieldMinor == 0)
+                    DisplayMessagePrompt( LoadCheckError );
+                else
+                    FCL_FUNCTION_0015( gFieldMajor, gFieldMinor, 0, 0  );
                 return;
         }
     }
