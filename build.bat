@@ -1,7 +1,7 @@
 set COMPILER="path\to\AtlusScriptCompiler.exe"
 set OUTPUT_PATH=path\to\aemulus\p3p\modmenu
 
-%COMPILER% .\hook\field_bf\field.flow -Compile -OutFormat V1 -Library P3P -Encoding P3 -Out "%OUTPUT_PATH%\data\init_free\field.bf" -Hook
+%COMPILER% .\hook\field_bf\field.flow -Compile -OutFormat V1 -Library P3P -Encoding P3 -Out "%OUTPUT_PATH%\data\init_free\field\script\field.bf" -Hook
 
 %COMPILER% .\hook\h06_01.flow -Compile -OutFormat V1 -Library P3P -Encoding P3 -Out "%OUTPUT_PATH%\data\field2d\bg\b06_01\h06_01.bf" -Hook
 %COMPILER% .\hook\h06_02.flow -Compile -OutFormat V1 -Library P3P -Encoding P3 -Out "%OUTPUT_PATH%\data\field2d\bg\b06_02\h06_02.bf" -Hook
