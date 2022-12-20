@@ -14,6 +14,18 @@
 [s]9[e]
 [s]Lower[e]
 
+[sel Select0to9Dialog]
+[s]0[e]
+[s]1[e]
+[s]2[e]
+[s]3[e]
+[s]4[e]
+[s]5[e]
+[s]6[e]
+[s]7[e]
+[s]8[e]
+[s]9[e]
+
 [sel Select1to5Dialog]
 [s]1[e]
 [s]2[e]

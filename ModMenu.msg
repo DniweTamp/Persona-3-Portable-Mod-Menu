@@ -25,13 +25,11 @@
 [s]Evolve party member persona[e]
 [s]Social Stats[e]
 [s]Items[e]
-[s]Set Social Link Rank[e]
 [s]Party Edit[e]
 [s]Next Page[e]
 
 [sel PlayerMenu2]
 [s]Set Protagonist Name[e]
-[s]Sex Change (Unstable!)[e]
 [s]Max Money[e]
 [s]Previous Page[e]
 

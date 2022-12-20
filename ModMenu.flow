@@ -112,19 +112,10 @@ void PlayerEditorDisplay()
             case 2://Items
                 ItemEditorDisplay();
                 break;
-            case 3://Set Social Link Rank
-                int SLink = SelectSLink();
-                if ( SLink != -1 )
-                {
-                    int lvl = Select10NumberPrompt( CommuPrompt );
-                    if ( lvl != -1 )
-                        CMM_SET_LV( SLink, lvl, 9999 );
-                }
-                break;
-            case 4://Party Edit
+            case 3://Party Edit
                 PartyEditorDisplay();
                 break;
-            case 5://Next Page
+            case 4://Next Page
                 PlayerEditorDisplay2();
                 return;
         }
@@ -148,20 +139,11 @@ void PlayerEditorDisplay2()
                 CALL_NAME_ENTRY();
                 CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
                 return;
-            case 1://Sex Change
-                BIT_ON( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
-                CALL_SEX_SELECT();
-                FCL_FUNCTION_0019();
-                BIT_ON( ( 0 + 255 ) );
-                BIT_OFF( ( ( ( ( 0 + 0x0400 ) + 0x0800 ) + 0x0400 ) + 9 ) );
-                WAIT( 60 );
-                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-                return;
-            case 2://Max Money
+            case 1://Max Money
                 ADD_PC_MONEY( 99999999 );
                 DisplayMessagePrompt( MoneyAdded );
                 return;
-            case 3://Previous Page
+            case 2://Previous Page
                 PlayerEditorDisplay();
                 return;
         }

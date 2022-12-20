@@ -19,7 +19,7 @@ int SelectDigit()
         {
             return 998;
         }
-        if ( digit == 5 )   
+        if ( digit == 5 )
         {
             SEL_DEFKEY( PadButton.Circle, 999 );
             SEL_DEFKEY( PadButton.L, 5 );
@@ -128,53 +128,7 @@ int NumberSelectFavorites()
     }
     return digit;
 }
-/*
-int NumberSelectFavorites1()
-{
-    SET_MSG_VAR( 1, GET_COUNT( 30 ), 0 );
-    SET_MSG_VAR( 2, GET_COUNT( 31 ), 0 );
-    SET_MSG_VAR( 3, GET_COUNT( 32 ), 0 );
-    SET_MSG_VAR( 4, GET_COUNT( 33 ), 0 );
-    SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
-    SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
-    SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 996 );
-    SEL_DEFKEY( PadButton.L, 997 );
-    int digit = MSG_SELECT( FavoritesName, SelectFavorites1, 0 );
-    if ( digit == 999 ) return -1; //Cancel
-    else if ( digit == 0 ) digit = GET_COUNT( 30 );
-    else if ( digit == 1 ) digit = GET_COUNT( 31 );
-    else if ( digit == 2 ) digit = GET_COUNT( 32 );
-    else if ( digit == 3 ) digit = GET_COUNT( 33 );
-    else if ( digit == 4 ) digit = GET_COUNT( 34 );
-    else if ( digit == 5 ) digit = GET_COUNT( 35 );
-    else if ( digit == 997 ) NumberSelectFavorites(); //Previous page
-    else if ( digit == 996 ) NumberSelectFavorites2(); //Next page
-    return digit;
-}
 
-int NumberSelectFavorites2()
-{
-    SET_MSG_VAR( 1, GET_COUNT( 36 ), 0 );
-    SET_MSG_VAR( 2, GET_COUNT( 37 ), 0 );
-    SET_MSG_VAR( 3, GET_COUNT( 38 ), 0 );
-    SET_MSG_VAR( 4, GET_COUNT( 39 ), 0 );
-    SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
-    SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
-    SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.L, 997 );
-    int digit = MSG_SELECT( FavoritesName, SelectFavorites2, 0 );
-    if ( digit == 999 ) return -1; //Cancel
-    else if ( digit == 0 ) digit = GET_COUNT( 36 );
-    else if ( digit == 1 ) digit = GET_COUNT( 37 );
-    else if ( digit == 2 ) digit = GET_COUNT( 38 );
-    else if ( digit == 3 ) digit = GET_COUNT( 39 );
-    else if ( digit == 4 ) digit = GET_COUNT( 40 );
-    else if ( digit == 5 ) digit = GET_COUNT( 41 );
-    else if ( digit == 997 ) NumberSelectFavorites1(); //Previous page
-    return digit;
-}
-*/
 int Select10Number()
 {
         page1:
