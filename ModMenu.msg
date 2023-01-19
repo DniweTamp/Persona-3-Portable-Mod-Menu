@@ -115,9 +115,6 @@
 [sel FacilityMenu]
 [s]Town map[e]
 [s]Save Menu[e]
-[s]Weapon Shop (Unstable!)[e]
-[s]Item Shop (Unstable!)[e]
-[s]Trade Shop (Unstable!)[e]
 [s]Persona Fusion[e]
 
 [sel FlagMenu]

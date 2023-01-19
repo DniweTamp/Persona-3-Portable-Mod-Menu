@@ -377,31 +377,7 @@ void CallFacilityDisplay()
             case 1://Save Menu
                 SAVE_MENU();
                 return;
-            case 2://Weapon Shop
-                warn = SelectNoYesPrompt( UnstableFunc );
-                if ( warn == 1 )
-                {
-                    CALL_WEAPON_SHOP();
-                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-                }
-                return;
-            case 3://Item Shop
-                warn = SelectNoYesPrompt( UnstableFunc );
-                if ( warn == 1 )
-                {
-                    CALL_ITEM_SHOP();
-                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-                }
-                return;
-            case 4://Trade Shop
-                warn = SelectNoYesPrompt( UnstableFunc );
-                if ( warn == 1 )
-                {
-                    CALL_TRADE_SHOP();
-                    CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
-                }
-                return;
-            case 5://Persona Fusion
+            case 2://Persona Fusion
                 CALL_COMBINE_SHOP();
                 return;
         }
