@@ -6,7 +6,10 @@ int SelectDigit()
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
         SEL_DEFKEY( PadButton.Triangle, 998 );
-        SEL_DEFKEY( PadButton.R, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 5 );
+        else
+            SEL_DEFKEY( PadButton.R, 5 );
         int digit = MSG_SELECT( ModMenuName, Select0to4Dialog, 0 );
         if ( digit < 5 ) //0 through 4
             return digit;
@@ -22,6 +25,9 @@ int SelectDigit()
         if ( digit == 5 )
         {
             SEL_DEFKEY( PadButton.Circle, 999 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
             SEL_DEFKEY( PadButton.L, 5 );
             digit = MSG_SELECT( ModMenuName, Select5to9Dialog, 0 ) + 5;
             if ( digit < 10 )
@@ -75,7 +81,10 @@ int NumberSelectFavorites()
     SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
     SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 996 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 996 );
+        else
+            SEL_DEFKEY( PadButton.R, 996 );
     int digit = MSG_SELECT( FavoritesName, SelectFavorites, 0 );
     if ( digit == 999 ) return -1; //Cancel
     else if ( digit == 0 ) digit = GET_COUNT( 24 );
@@ -94,8 +103,14 @@ int NumberSelectFavorites()
         SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
         SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.R, 996 );
-        SEL_DEFKEY( PadButton.L, 997 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 996 );
+        else
+            SEL_DEFKEY( PadButton.R, 996 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 997 );
+        else
+            SEL_DEFKEY( PadButton.L, 997 );
         digit = MSG_SELECT( FavoritesName, SelectFavorites1, 0 );
         if ( digit == 999 ) return -1; //Cancel
         else if ( digit == 0 ) digit = GET_COUNT( 30 );
@@ -114,6 +129,9 @@ int NumberSelectFavorites()
             SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
             SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
             SEL_DEFKEY( PadButton.Circle, 999 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 997 );
+        else
             SEL_DEFKEY( PadButton.L, 997 );
             digit = MSG_SELECT( FavoritesName, SelectFavorites2, 0 );
             if ( digit == 999 ) return -1; //Cancel
@@ -133,7 +151,10 @@ int Select10Number()
 {
         page1:
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 5 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 5 );
+    else
+        SEL_DEFKEY( PadButton.R, 5 );
     int number = MSG_SELECT( ModMenuName, Select1to5Dialog, 0 ) + 1;
     if ( number == 999 + 1 )
         return -1;
@@ -144,7 +165,10 @@ int Select10Number()
     else if ( number == 6 )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
         number = MSG_SELECT( ModMenuName, Select6to10Dialog, 0 ) + 6;
         if ( number <= 10 )
         {
@@ -168,7 +192,10 @@ int SelectUnit()
         SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 5 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 5 );
+    else
+        SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 0 ) + 1;
     if ( unitID <= 5 )
     {
@@ -181,7 +208,10 @@ int SelectUnit()
     else if ( unitID == 6 ) //page 2
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
         if ( unitID <= 10 )
         {
@@ -205,7 +235,10 @@ int SelectUnitNoProtag()
         SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 5 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 5 );
+    else
+        SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
     if ( unitID == 999 + 1 )
         return -1;
@@ -214,7 +247,10 @@ int SelectUnitNoProtag()
     if ( unitID == 6 ) //page 2
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 0 ) + 6;
         if ( unitID == 999 + 6 )
             return -1;
@@ -232,7 +268,10 @@ int SelectUnitNoProtagNoFuuka()
         SET_MSG_VAR( i, i, 4 );
         page1:
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 5 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 5 );
+    else
+        SEL_DEFKEY( PadButton.R, 5 );
     int unitID = MSG_SELECT( ModMenuName, UnitSelect1, 1 ) + 1;
     if ( unitID == 999 + 1 )
         return -1;
@@ -241,7 +280,10 @@ int SelectUnitNoProtagNoFuuka()
     if ( unitID == 6 ) //page 2
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
         unitID = MSG_SELECT( ModMenuName, UnitSelect2, 1 ) + 6;
         if ( unitID == 999 + 6 )
             return -1;
@@ -257,7 +299,10 @@ int SelectSLink()
 {
     page1:
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 6 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 6 );
+    else
+        SEL_DEFKEY( PadButton.R, 6 );
     int selection = MSG_SELECT( CommuDesc, CommuCharSel1, 0 ) + 1;
     if ( selection < 7 )
         return selection;
@@ -268,8 +313,14 @@ int SelectSLink()
     page2:
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
-        SEL_DEFKEY( PadButton.R, 6 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 6 );
+        else
+            SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel2, 0 ) + 7;
         if ( selection < 7 + 5 )
             return selection;
@@ -283,8 +334,14 @@ int SelectSLink()
     page3:
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
-        SEL_DEFKEY( PadButton.R, 6 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 6 );
+        else
+            SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel3, 0 ) + 12;
         if ( selection < 12 + 5 )
             return selection;
@@ -298,8 +355,14 @@ int SelectSLink()
     page4:
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 5 );
-        SEL_DEFKEY( PadButton.R, 6 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 5 );
+        else
+            SEL_DEFKEY( PadButton.L, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 6 );
+        else
+            SEL_DEFKEY( PadButton.R, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel4, 0 ) + 17;
         if ( selection < 17 + 5 )
             return selection;
@@ -313,7 +376,10 @@ int SelectSLink()
     page5:
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 6 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 6 );
+        else
+            SEL_DEFKEY( PadButton.L, 6 );
         selection = MSG_SELECT( CommuDesc, CommuCharSel5, 0 ) + 22;
         if ( selection < 22 + 6 )
             return selection;
@@ -336,7 +402,10 @@ void SetUpFavorites()
     SET_MSG_VAR( 5, GET_COUNT( 28 ), 0 );
     SET_MSG_VAR( 6, GET_COUNT( 29 ), 0 );
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 998 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 998 );
+    else
+        SEL_DEFKEY( PadButton.R, 998 );
     int selection = SEL( SelectFavorites );
     switch ( selection )
     {
@@ -364,8 +433,14 @@ void SetUpFavorites1()
     SET_MSG_VAR( 5, GET_COUNT( 34 ), 0 );
     SET_MSG_VAR( 6, GET_COUNT( 35 ), 0 );
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.R, 998 );
-    SEL_DEFKEY( PadButton.L, 997 );
+    if (isPC = true)
+        SEL_DEFKEY( 11, 998 );
+    else
+        SEL_DEFKEY( PadButton.R, 998 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 997 );
+        else
+            SEL_DEFKEY( PadButton.L, 997 );
     int selection = SEL( SelectFavorites1 );
     switch ( selection )
     {
@@ -397,7 +472,10 @@ void SetUpFavorites2()
     SET_MSG_VAR( 5, GET_COUNT( 40 ), 0 );
     SET_MSG_VAR( 6, GET_COUNT( 41 ), 0 );
     SEL_DEFKEY( PadButton.Circle, 999 );
-    SEL_DEFKEY( PadButton.L, 997 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 997 );
+        else
+            SEL_DEFKEY( PadButton.L, 997 );
     int selection = SEL( SelectFavorites2 );
     switch ( selection )
     {

@@ -9,15 +9,20 @@ global int gFieldMinor;
 global int gEventMajor;
 global int gEventMinor;
 global int unitId;
+global bool isPC;
 
 void ModMenuInit()
 {
+    isPC = true;
     int FldCurMaj = FLD_GET_MAJOR();
     int FldCurMin = FLD_GET_MINOR();
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.R, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 5 );
+        else
+            SEL_DEFKEY( PadButton.R, 5 );
         int selection = MSG_SELECT( ModMenuName, ModMenu, 0 );
         switch ( selection )
         {
@@ -58,7 +63,10 @@ void ModMenuPage2()
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 6 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 6 );
+        else
+            SEL_DEFKEY( PadButton.L, 6 );
         int selection = MSG_SELECT( ModMenuName, ModMenu2, 0 );
         switch ( selection )
         {
@@ -95,7 +103,10 @@ void PlayerEditorDisplay()
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.R, 5 );
+        if (isPC = true)
+            SEL_DEFKEY( 11, 4 );
+        else
+            SEL_DEFKEY( PadButton.R, 4 );
         int selection = MSG_SELECT( ModMenuName, PlayerMenu, 0 );
         switch ( selection )
         {
@@ -129,7 +140,10 @@ void PlayerEditorDisplay2()
     while ( true )
     {
         SEL_DEFKEY( PadButton.Circle, 999 );
-        SEL_DEFKEY( PadButton.L, 3 );
+        if (isPC = true)
+            SEL_DEFKEY( 10, 2 );
+        else
+            SEL_DEFKEY( PadButton.L, 2 );
         int selection = MSG_SELECT( ModMenuName, PlayerMenu2, 0 );
         switch ( selection )
         {
