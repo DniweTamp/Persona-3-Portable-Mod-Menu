@@ -8,6 +8,8 @@ global int gFieldMajor;
 global int gFieldMinor;
 global int gEventMajor;
 global int gEventMinor;
+global int gMonth;
+global int gDay;
 global int unitId;
 global bool isPC;
 
@@ -133,6 +135,41 @@ void PlayerEditorDisplay()
     }
 }
 
+void TimeTravel()
+{
+	while ( true )
+    {
+        SEL_DEFKEY( PadButton.Circle, 999 );
+        int selection = MSG_SELECT( ModMenuName, TimeSelect, 0 );
+        switch ( selection )
+        {
+            case 999://Cancel
+                return;
+            case 0://Enter Event ID
+                int temp = SelectNumberPrompt( TimeTravel, 2 );
+                if ( temp == -1 )
+                    return;
+                gMonth = temp;
+                temp = SelectNumberPrompt( TimeTravel2, 2 );
+                if ( temp == -1 )
+                    return;
+                gDay = temp;
+                TimeTravel();
+                break;
+            case 1://Load Event ID
+                if ( gDay == 0 && gMonth == 0 )
+                {
+                    DisplayMessagePrompt(LoadCheckError);
+                    return;
+                }
+                FADE( 3, 20 );
+				FUNCTION_0036( gMonth, gDay, 0 );
+				NEXT_TIME();
+                return;
+        }
+    }
+}
+
 void PlayerEditorDisplay2()
 {
     int FldCurMaj = FLD_GET_MAJOR();
@@ -157,7 +194,10 @@ void PlayerEditorDisplay2()
                 ADD_PC_MONEY( 99999999 );
                 DisplayMessagePrompt( MoneyAdded );
                 return;
-            case 2://Previous Page
+            case 2://Time Travel
+				TimeTravel();
+                return;
+			case 3://Previous Page
                 PlayerEditorDisplay();
                 return;
         }

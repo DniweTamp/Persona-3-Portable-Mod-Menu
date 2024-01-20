@@ -31,6 +31,7 @@
 [sel PlayerMenu2]
 [s]Set Protagonist Name[e]
 [s]Max Money[e]
+[s]Time Travel[e]
 [s]Previous Page[e]
 
 [msg PersonaAddPrompt [Add Persona]]
@@ -111,6 +112,16 @@
 
 [msg EventDlg2 [Event Select]]
 [s]Choose the last 3 digits of[n]the event to load.[n][w][e]
+
+[sel TimeSelect]
+[s]Enter Date[e]
+[s]Load Date[e]
+
+[msg TimeTravel [Time Travel]]
+[s]Choose the first 2 digits of[n]the month to load.[n][w][e]
+
+[msg TimeTravel2 [Time Travel]]
+[s]Choose the last 2 digits of[n]the day to load.[n][w][e]
 
 [sel FacilityMenu]
 [s]Town map[e]
